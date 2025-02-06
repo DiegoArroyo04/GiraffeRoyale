@@ -21,6 +21,7 @@ public class IndexController {
 		return "index";
 	}
 
+	
 	// @GetMapping("/comprobarDatos")
 	// public String iniciarSesion(@RequestParam("nombreUsuario") String nombreUsuario, @RequestParam("pass") String pass, Model model){
 	// 	UsuarioEntity usuario = indexService.buscarPorUsuario(nombreUsuario);

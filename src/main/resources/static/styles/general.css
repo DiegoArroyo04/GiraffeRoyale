@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
 * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 	font-family: 'Lilita One';
 }
 
@@ -13,8 +16,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	margin: 0;
-	padding: 0;
+	
 }
 
 .login {
@@ -28,13 +30,13 @@ body {
 	align-items: center;
 	flex-direction: column;
 	padding-top: 3.5%;
-	margin-top: 14%;
-	margin-bottom: 16%;
+	/* margin-top: 9%; */
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 
 }
 
 .logo {
-	width: 37.5%;
+	width: 30%;
 	height: auto;
 	position: absolute;
 	top: -18.75%;
@@ -61,31 +63,29 @@ body {
 	align-items: center;
 }
 
-.boton-login {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	background-color: #e1a400;
-	margin-bottom: 6%;
+.inputs{
+	width: 75%;
+}
+
+.container-iniciarSesion{
 	width: 100%;
-	border-radius: 20px;
 }
 
-.boton-login button {
+.btn-iniciarSesion{
+	width: 100%;
+	padding: 4%;
 	background-color: #e1a400;
-	border-radius: 20px;
 	border: none;
-	height: 3.5vh;
-	width: 90%;
-	outline: none;
-	color: #FDF0D5;
-	padding: 3%;
+	color: white;
+	border-radius: 20px;
+	font-size: 18px;
 	cursor: pointer;
-	text-align: left;
-	margin-right: 6%;
-	font-size: 2.0vh;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+.btn-iniciarSesion:hover {
+	background-color: #d18b00;
+}
 
 .boton-login button:hover {
 
@@ -106,7 +106,8 @@ body {
 	margin-bottom: 6%;
 	width: 100%;
 	border-radius: 20px;
-
+	padding: 2%;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .usuario input,
@@ -122,6 +123,7 @@ body {
 	cursor: pointer;
 	text-align: left;
 	margin-right: 6%;
+	
 
 }
 
@@ -144,17 +146,17 @@ body {
 	width: 100%;
 	display: flex;
 	justify-content: space-evenly;
-	margin: 6%;
+	margin: 3%;
 	padding: 6%;
 }
 
 .registrarse a {
 	font-family: 'Lilita One';
-	font-size: 2vh;
+	font-size: 19px;
 	background: linear-gradient(180deg, #e1a400, #f86b0c);
 	-webkit-background-clip: text;
 	color: transparent;
-	-webkit-text-stroke: 0.10vh #003049;
+	-webkit-text-stroke: 0.50px #003049;
 	text-align: center;
 	margin-bottom: 4%;
 	text-decoration: none;
@@ -255,7 +257,7 @@ footer a img {
 
 
 /* Pantallas de menos de 768px (Móviles) */
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
 	.login {
 		width: 80%;
 		height: 70%;
@@ -306,4 +308,43 @@ footer a img {
 	}
 
 
+} */
+
+/* Additional adjustments for smaller mobile screens */
+@media (max-width: 480px) {
+	.login {
+		width: 95%;
+		height: 75%;
+		padding-top: 12%;
+		margin-top: 20%;
+		margin-bottom: 15%;
+	}
+
+	.logo {
+		width: 35%;
+		top: -12%;
+	}
+
+	.inputs{
+		width: 85%;
+	}
+
+	.formulario h1 {
+		font-size: 30px;
+		margin-top: 7%;
+		margin-bottom: 8%;
+	}
+
+	.usuario input,
+	.contrasenia input,
+	.boton-login button {
+		font-size: 16px;
+		width: 100%;
+	}
+
+	.registrarse a {
+		font-size: 19px;
+	}
+
+	
 }
