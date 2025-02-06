@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* {
+    font-family: 'Lilita One';
+}
+
+body {
+    background-image: url("../assets/background.jpg");
+    background-size: cover;
+    background-position: center bottom;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.registro {
+    background-color: rgba(253, 240, 213, 0.5);
+    width: 35%;
+    height: 60%;
+    border-radius: 2%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 3.5%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.logo {
+    width: 37.5%;
+    height: auto;
+    position: absolute;
+    top: -17.75%;
+}
+
+h1 {
+    font-size: 2vw;
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+    letter-spacing: 0.15vh;
+    text-align: center;
+    margin-bottom: 6%;
+    margin-top: 7%
+}
+
+
+.formulario,
+.formulario form {
+    width: 100%;
+    display: flex;
+}
+
+.formulario form {
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grupoInput {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+.grupoInput input {
+    background-color: #003049;
+    border-radius: 20px;
+    border: none;
+    height: 3.5vh;
+    width: 100%;
+    outline: none;
+    color: #FDF0D5;
+    padding: 3%;
+    margin-bottom: 6%;
+
+}
+
+
+
+
+.fechanacimiento {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 6%;
+}
+
+
+
+.fechaNacimientolbl label {
+    font-size: 2vh;
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+    letter-spacing: 0.15vh;
+    text-align: center;
+    margin-bottom: 6%;
+    width: 100%;
+
+
+}
+
+
+
+.calendario input {
+    background-color: #003049;
+    border-radius: 20px;
+    border: none;
+    height: 3.5vh;
+    width: 100%;
+    outline: none;
+    color: #FDF0D5;
+    padding: 3%;
+    margin-bottom: 6%;
+
+}
+
+.calendario {
+    width: 23%;
+    margin-top: 2%;
+}
+
+
+::placeholder {
+    color: #FDF0D5;
+}
+
+
+
+.terminos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 6%;
+
+}
+
+.terminos label {
+    font-family: 'Lilita One';
+    font-size: 2vh;
+    background: linear-gradient(180deg, #e1a400, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+    text-align: center;
+    margin-bottom: 4%;
+    text-decoration: none;
+}
+
+
+
+.boton-registro {
+    width: 100%;
+    margin-bottom: 6%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.boton-registro button {
+    background-color: #e1a400;
+    color: #FDF0D5;
+    border: none;
+    border-radius: 20px;
+    height: 4.0vh;
+    width: 30%;
+    cursor: pointer;
+    text-align: center;
+    font-size: 2.0vh;
+
+}
+
+.boton-registro button:hover {
+    color: #003049;
+}
+
+.iniciarSesion {
+    text-align: center;
+    margin-bottom: 6%;
+}
+
+
+a {
+    font-family: 'Lilita One';
+    font-size: 2vh;
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+    text-align: center;
+    margin-bottom: 4%;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #f86b0c;
+
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    background-color: rgba(17, 40, 24, 1);
+    width: 100%;
+    padding: 1% 0;
+    position: relative;
+    min-height: 60px;
+    z-index: 10;
+    margin-top: auto;
+    color: #FDF0D5;
+}
+
+footer a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 15%;
+}
+
+footer a img {
+    width: 40%;
+    height: auto;
+}
+
+/* Eliminar el color de fondo que se aplica cuando el navegador autocompleta un campo */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #003049 inset;
+    -webkit-text-fill-color: #FDF0D5;
+
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo oscuro semitransparente */
+    overflow: auto;
+}
+
+
+
+.contenidoModal {
+    background-color: #FDF0D5;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    max-width: 60%;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.contenidoModalTerminos {
+    background-color: #FDF0D5;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    max-width: 60%;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.contenidoModal p,
+.contenidoModalTerminos p {
+    font-size: 1.5em;
+    color: #003049;
+}
+
+.contenidoModal h2,
+.contenidoModal h3,
+.contenidoModalTerminos h2,
+.contenidoModalTerminos h3 {
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+    font-size: 1.5vw;
+
+
+}
+
+.cerrarModal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.cerrarModal:hover,
+.cerrarModal:focus {
+    color: #f86b0c;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* RESPONSIVE */
+
+/* MOVILES Y TABLETS */
+@media (max-width: 768px) {
+    .registro {
+        width: 90%;
+        margin-top: 15%;
+        margin-bottom: 5%;
+        padding: 5%;
+    }
+
+    h1 {
+        font-size: 4vw;
+        margin: 4% 0;
+    }
+
+    .grupoInput input {
+        height: 4vh;
+        padding: 4%;
+        margin-bottom: 4%;
+    }
+
+    .calendario {
+        width: 60%;
+    }
+
+    .terminos label {
+        font-size: 1.8vh;
+    }
+
+    .logo {
+        width: 25%;
+        height: auto;
+        position: absolute;
+        top: -10%;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+
+    .boton-registro button {
+        height: 5vh;
+        font-size: 2.2vh;
+        margin-top: 4%;
+    }
+
+    a {
+        font-size: 2.2vh;
+        margin-top: 2%;
+    }
+}
+
+/* MOVILES PEQUEÑOS */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 5vw;
+        margin: 4% 0;
+    }
+
+    .grupoInput input {
+        height: 5vh;
+        padding: 4%;
+        margin-bottom: 4%;
+    }
+
+    .terminos label {
+        font-size: 2vh;
+    }
+
+    .boton-registro button {
+        height: 6vh;
+        font-size: 2.5vh;
+        margin-top: 4%;
+    }
+
+    a {
+        font-size: 2.5vh;
+        margin-top: 2%;
+    }
+}

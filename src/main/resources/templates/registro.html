@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse en Giraffe Royale</title>
+    <link rel="stylesheet" type="text/css" href="styles/registro.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        emailjs.init('CyMz5fdCP-83lukkp')
+    </script>
+
+
+
+</head>
+
+<body>
+    <div class="registro">
+        <img class="logo" src="assets/logo-login.png" alt="Logo Inicio">
+        <h1>CREAR UNA NUEVA CUENTA EN GIRAFFE ROYALE</h1>
+        <div class="formulario">
+
+            <form method="post" id="formulario">
+                <div class="grupoInput">
+                    <div class="nombre">
+                        <input type="text" placeholder="Nombre" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="apellidos">
+                        <input type="text" placeholder="Apellidos" id="apellidos" name="apellidos" required>
+                    </div>
+
+                </div>
+                <div class="grupoInput">
+                    <div class="dni">
+                        <input type="text" placeholder="DNI" id="dni" name="dni" required>
+                    </div>
+                    <div class="username">
+                        <input type="text" placeholder="Nombre de Usuario" id="username" name="username" required>
+                    </div>
+
+                </div>
+                <div class="grupoInput">
+                    <div class="pass">
+                        <input type="password" placeholder="Contraseña" id="pass" name="pass" required>
+                    </div>
+                    <div class="pass2">
+                        <input type="password" placeholder="Confirmar Contraseña" id="pass2" required>
+                    </div>
+
+                </div>
+                <div class="grupoInput">
+                    <div class="email">
+                        <input type="email" placeholder="Email" id="email" name="email" required>
+                    </div>
+                    <div class="tfn">
+                        <input type="number" placeholder="Número de telefono" id="telefono" min="0" name="telefono" required>
+                    </div>
+
+                </div>
+
+
+                <div class="fechanacimiento">
+                    <div class="fechaNacimientolbl">
+                        <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                    </div>
+                    <div class="calendario">
+                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" min="1924-12-31"
+                            max="2024-12-31" required>
+                    </div>
+                </div>
+
+
+                <div class="terminos">
+                    <div class="terminosCheck">
+                        <input type="checkbox" required id="terminos_registro">
+                    </div>
+                    <div class="aceptoTerminos">
+                        <label for="terminos_registro">
+                            Acepto los <a href="#" id="abrirModalTerminos">términos y
+                                condiciones</a>
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="boton-registro">
+                    <button type="submit" id="btnRegistro">Registrarse</button>
+                </div>
+                <div class="iniciarSesion">
+                    <a href="/">¿Ya tienes una cuenta?<br />Iniciar Sesion</a>
+                </div>
+            </form>
+
+
+        </div>
+
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="contenidoModal">
+            <span class="cerrarModal">&times;</span>
+            <p id="mensajeModal"></p>
+        </div>
+    </div>
+    <!-- Modal de Términos y Condiciones -->
+    <div id="modalTerminos" class="modal">
+        <div class="contenidoModalTerminos">
+            <span class="cerrarModal">&times;</span>
+            <h2>Términos y Condiciones</h2>
+            <p>Bienvenido a Giraffe Royale. Al registrarte y utilizar nuestro servicio, aceptas cumplir con los
+                siguientes términos y condiciones. Si no estás de acuerdo con alguno de estos términos, te recomendamos
+                que no utilices nuestros servicios.</p>
+            <h3>1. Condiciones de Registro</h3>
+            <p>Para registrarte en Giraffe Royale, debes ser mayor de edad (18 años o más). Al proporcionar tu
+                información personal, garantizas que toda la información es veraz y que no estás utilizando la identidad
+                de otra persona.</p>
+            <h3>2. Uso de la Cuenta</h3>
+            <p>Eres responsable de mantener la confidencialidad de tu contraseña y de restringir el acceso a tu cuenta.
+                Notificarás inmediatamente a Giraffe Royale si sospechas que tu cuenta ha sido utilizada sin tu
+                autorización.</p>
+            <h3>3. Juego Responsable</h3>
+            <p>Giraffe Royale promueve el juego responsable. Si en cualquier momento sientes que el juego se ha
+                convertido en un problema para ti o para alguien que conoces, te instamos a que busques ayuda
+                profesional.</p>
+            <h3>4. Limitación de Responsabilidad</h3>
+            <p>Giraffe Royale no será responsable de ningún daño o pérdida que surja en conexión con el uso de nuestro
+                sitio web o servicios. Esto incluye, pero no se limita a, la pérdida de datos, la pérdida de ganancias o
+                cualquier otro tipo de daño.</p>
+            <h3>5. Cambios en los Términos</h3>
+            <p>Giraffe Royale se reserva el derecho de modificar estos términos y condiciones en cualquier momento. Las
+                modificaciones serán efectivas una vez publicadas en el sitio web. Es tu responsabilidad revisar los
+                términos periódicamente.</p>
+            <h3>6. Ley Aplicable</h3>
+            <p>Estos términos y condiciones se regirán e interpretarán de acuerdo con las leyes del Reino de España.</p>
+            <h3>7. Contacto</h3>
+            <p>Si tienes alguna pregunta sobre estos términos, no dudes en contactarnos a través de
+                support@girafferoyale.com .</p>
+        </div>
+    </div>
+
+
+    <footer>
+        <a href="https://www.juegoseguro.es">
+            <img src="assets/juegasegurocasino.png">
+        </a>
+    </footer>
+    <script src="scripts/funcionalidadesregistro.js"></script>
+</body>
+
+</html>
