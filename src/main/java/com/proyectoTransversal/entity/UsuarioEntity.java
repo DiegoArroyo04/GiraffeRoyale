@@ -37,7 +37,7 @@ public class UsuarioEntity implements Serializable {
 	private String nombreUsuario;
 
 	@Column(name = "PASS", nullable = false)
-	private String contraseña;
+	private String pass;
 
 	@Column(name = "EMAIL", nullable = false)
 	private String email;
@@ -111,12 +111,12 @@ public class UsuarioEntity implements Serializable {
 		this.nombreUsuario = nombreUsuario;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getPass() {
+		return pass;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	public String getEmail() {

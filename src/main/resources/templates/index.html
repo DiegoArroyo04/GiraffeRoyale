@@ -14,7 +14,7 @@
         <img class="logo" src="assets/logo-login.png" alt="Logo Inicio">
         <div class="formulario">
             <h1>INICIAR SESIÓN</h1>
-            <form method="post">
+            <form th:action="@{/comprobarDatos}" method="get">
                 <div class="usuario">
                     <img src="assets/User.png" alt="Icono Usuario">
                     <input type="text" placeholder="Nombre de Usuario" required>
