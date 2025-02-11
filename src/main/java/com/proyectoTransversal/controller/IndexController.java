@@ -34,9 +34,9 @@ public class IndexController {
 				session.setAttribute("usuario", usuario);
 				// COMPROBACION DEL ROL
 				if (usuario.getUsuarioVip() == true) {
-					return "lobbyVip";
+					return "redirect:/lobbyVip";
 				} else {
-					return "lobby";
+					return "redirect:/lobby";
 				}
 			} else {
 				model.addAttribute("mensajeError", "Contraseña incorrecta");
@@ -53,4 +53,16 @@ public class IndexController {
 	public String registroUsuario() {
 		return "registro";
 	}
+
+	@GetMapping("/lobby")
+	public String lobby() {
+
+		return "lobby";
+	}
+
+	@GetMapping("/lobbyVip")
+	public String lobbyVip() {
+		return "lobbyVip";
+	}
+
 }
