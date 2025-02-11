@@ -48,7 +48,8 @@ i18next.init({
                 tituloAjustes: "Ajustes",
                 cambiarIdiomaTexto: "Cambiar Idioma A Ingles:",
                 textoModoOscuro: "Cambiar A Modo Oscuro:",
-                textoModoColor: "Cambiar A Modo Color:"
+                textoModoColor: "Cambiar A Modo Color:",
+                cerrarSesion: "Cerrar Sesión"
 
             }
         },
@@ -72,7 +73,8 @@ i18next.init({
                 tituloAjustes: "Settings",
                 cambiarIdiomaTexto: "Change Language To Spanish",
                 textoModoOscuro: "Switch to Dark Mode:",
-                textoModoColor: "Switch to Color Mode:"
+                textoModoColor: "Switch to Color Mode:",
+                cerrarSesion: "Log out"
 
             }
         }
@@ -83,6 +85,7 @@ i18next.init({
 
 
 function actualizarTexto() {
+
     // Traduce el saldo dinámico
     var saldoElement = document.getElementById("saldo");
     saldoElement.textContent = i18next.t('saldo', { saldo: saldo });
@@ -99,6 +102,7 @@ function actualizarTexto() {
     document.getElementById("tituloAjustes").textContent = i18next.t('tituloAjustes');
     document.getElementById("cambiarIdiomaTexto").textContent = i18next.t('cambiarIdiomaTexto');
     document.getElementById("textoModoOscuro").textContent = i18next.t('textoModoOscuro');
+    document.getElementById("cerrarSesion").textContent = i18next.t('cerrarSesion');
 
 }
 
@@ -149,7 +153,6 @@ document.getElementById("depositarBtn").addEventListener('click', function () {
                 //SALDO PARA HEADER
                 document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
                 //EN EL MODAL DE CREDITOS APARECERA EL SALDO ACTUAL 
-                document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
                 mostrarError(i18next.t('textoConfirmacionDeposito') + deposito + "€");
 
             },
@@ -192,7 +195,6 @@ document.getElementById("retirarBtn").addEventListener('click', function () {
             success: function (response) {
 
                 document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
-                document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
                 mostrarError(i18next.t('textoConfirmacionRetiro') + retiro + "€");
 
             },
@@ -327,3 +329,16 @@ function cargarHora(zonaHoraria) {
     document.getElementById('hora').innerHTML = horaActual;
 
 }
+
+// Mostrar mensaje de error en el modal
+function mostrarError(mensaje) {
+    document.getElementById('mensajeError').textContent = mensaje;
+    document.getElementById('modalError').style.display = "flex";
+
+    //CERRAR AUTOMATICAMENTE A LOS 2 SEGUNDOS
+    setTimeout(() => {
+        document.getElementById('modalError').style.display = "none";
+    }, 2000);
+
+}
+

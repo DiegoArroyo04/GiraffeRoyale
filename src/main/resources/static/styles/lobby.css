@@ -75,7 +75,17 @@ h1 {
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-stroke: 0.10vh #003049;
+    text-align: center;
+}
 
+.encabezadoTitulo {
+    font-family: 'Lilita One';
+    font-size: 3vw;
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+    text-align: center;
 }
 
 .hora {
@@ -173,25 +183,65 @@ h1 {
     gap: 1.5rem;
     width: 100%;
     padding: 2%;
-    border-radius: 20px;
     justify-content: center;
     align-items: center;
 }
 
 .card {
     position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 0;
+    overflow: hidden;
+    border-radius: 20px;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card img {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.842);
-    width: 70%;
+    width: 100%;
     border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .card-overlay {
+    opacity: 1;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+}
+
+
+.play-button {
+    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.9);
 }
 
 
@@ -366,6 +416,90 @@ h1 {
     padding: 0.4rem;
     margin-bottom: 1rem;
 }
+
+
+/*BOTON CERRAR SESION PANEL DE CONFIGURACION*/
+.cerrarSesionBtn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+}
+
+
+.sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign svg {
+    width: 17px;
+}
+
+.sign svg path {
+    fill: white;
+}
+
+.text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+
+.opcionAjustes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cerrarSesionBtn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.cerrarSesionBtn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+
+
+.cerrarSesionBtn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+
+.cerrarSesionBtn:active {
+    transform: translate(2px, 2px);
+}
+
+.cerrarSesionBtn a {
+    text-decoration: none;
+}
+
 
 /* Animación de aparición del modal */
 .modalError .contenidoModalError,
