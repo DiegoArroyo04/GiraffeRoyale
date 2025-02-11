@@ -16,7 +16,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    
+
 }
 
 .registro {
@@ -29,15 +29,15 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    margin-top: 9%;
-  
+    margin-top: 5%;
+
 }
 
 .logo {
     width: 30%;
-	height: auto;
-	position: absolute;
-	top: -10%;
+    height: auto;
+    position: absolute;
+    top: -10%;
 }
 
 h1 {
@@ -48,7 +48,7 @@ h1 {
     -webkit-text-stroke: 0.10vh #003049;
     letter-spacing: 0.15vh;
     text-align: center;
-   
+
     margin-top: 15%
 }
 
@@ -56,7 +56,7 @@ h1 {
 .formulario,
 .formulario form {
     width: 100%;
-   
+
 }
 
 
@@ -64,17 +64,17 @@ h1 {
 .grupoInput {
     padding: 5%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
     gap: 1.5rem;
     width: 100%;
-    
-   
+
+
 }
 
 .grupoInput input {
     background-color: #003049;
     border-radius: 15px;
-    border: none;    
+    border: none;
     width: 100%;
     outline: none;
     color: #FDF0D5;
@@ -201,7 +201,7 @@ a {
     -webkit-text-stroke: 0.10vh #003049;
     text-align: center;
     margin-bottom: 4%;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:hover {
@@ -273,47 +273,49 @@ input:-webkit-autofill {
     overflow-y: auto;
 }
 
+/* Estilos generales para el modal de términos */
 .contenidoModalTerminos {
     background-color: #FDF0D5;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
-    max-width: 60%;
+    width: 80%;
+    max-width: 800px;
     border-radius: 10px;
     position: relative;
-    text-align: center;
+    text-align: left;
     overflow-y: auto;
+    line-height: 1.6;
+    max-height: 80vh;
 }
 
-.contenidoModal p,
 .contenidoModalTerminos p {
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: #003049;
+    margin-bottom: 1.5rem;
 }
 
-.contenidoModal h2,
-.contenidoModal h3,
 .contenidoModalTerminos h2,
 .contenidoModalTerminos h3 {
     background: linear-gradient(180deg, #fdde89, #f86b0c);
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-stroke: 0.10vh #003049;
-    font-size: 1.5vw;
-
+    font-size: 2vw;
+    margin-bottom: 1.5rem;
 
 }
 
 .cerrarModal {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     position: absolute;
     top: 10px;
-    right: 20px;
+    right: 10px;
     cursor: pointer;
+    padding: 5px;
 }
 
 .cerrarModal:hover,
@@ -323,4 +325,10 @@ input:-webkit-autofill {
     cursor: pointer;
 }
 
+/* Mejorar la responsividad */
+@media (max-width: 600px) {
+    .grupoInput {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+    }
 
+}
