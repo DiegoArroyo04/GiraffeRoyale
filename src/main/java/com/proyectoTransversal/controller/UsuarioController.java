@@ -20,11 +20,6 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
-	@GetMapping("/formularioRegistro")
-	public String registroUsuario() {
-		return "registro";
-	}
-
 	// IGNORAR POR EL MOMENTO NO SE REGISTRA PERO TENGO EL METODO PREPARADO
 	@PostMapping("/registrar")
 	public String registroUsuario(@RequestBody UsuarioDTO usuario) {

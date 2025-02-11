@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesion en Giraffe Royale</title>
+    <title>Iniciar Sesión en Giraffe Royale</title>
     <link rel="stylesheet" type="text/css" href="styles/general.css">
     <link rel="shortcut icon" href="assets/LOGO_GIRAFFE_ROYALE.png" type="image/x-icon">
 </head>
@@ -15,14 +15,14 @@
         <img class="logo" src="assets/logo-login.png" alt="Logo Inicio">
         <div class="formulario">
             <h1>INICIAR SESIÓN</h1>
-            <form th:action="@{/comprobarDatos}" method="get" class="inputs">
+            <form th:action="@{/comprobarLogin}" method="get" class="inputs">
                 <div class="usuario">
                     <img src="assets/User.png" alt="Icono Usuario">
-                    <input type="text" placeholder="Nombre de Usuario" required>
+                    <input type="text" placeholder="Nombre de Usuario" name="nombreUsuario" required>
                 </div>
                 <div class="contrasenia">
                     <img src="assets/Lock.png" alt="Icono Contraseña">
-                    <input type="password" placeholder="Contraseña" required>
+                    <input type="password" placeholder="Contraseña" name="pass" required>
                 </div>
                 <div class="container-iniciarSesion">
                     <button type="submit" class="btn-iniciarSesion">Iniciar Sesión</button>
@@ -30,20 +30,18 @@
 
             </form>
         </div>
-
+        <!-- Modal -->
+        <div id="modal" class="modal" th:if="${mensajeError}">
+            <div class="contenidoModal">
+                <span class="cerrarModal">&times;</span>
+                <p id="mensajeModal" th:text="${mensajeError}"></p>
+            </div>
+        </div>
         <div class="registrarse">
-            <a href="/formularioRegistro">¿Aun no tienes una cuenta?<br />Registrarse</a>           
+            <a href="/formularioRegistro">¿Aun no tienes una cuenta?<br />Registrarse</a>
         </div>
     </div>
-
-    <!-- <footer>
-        <a href="https://www.juegoseguro.es">
-            <img src="assets/juegasegurocasino.png" alt="Iconos Juego Seguro">
-        </a>
-
-    </footer> -->
-
-
 </body>
+<script src="scripts/login.js"></script>
 
 </html>

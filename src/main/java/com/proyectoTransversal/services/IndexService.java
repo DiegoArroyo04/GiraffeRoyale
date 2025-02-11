@@ -1,7 +1,7 @@
 package com.proyectoTransversal.services;
 
-// import com.proyectoTransversal.entity.UsuarioEntity;
+import com.proyectoTransversal.entity.UsuarioEntity;
 
 public interface IndexService {
-    // UsuarioEntity buscarPorUsuario(String nombreUsuario);
+    UsuarioEntity buscarPorUsuario(String nombreUsuario);
 }
