@@ -65,4 +65,10 @@ public class IndexController {
 		return "lobbyVip";
 	}
 
+	@GetMapping("/cerrarSesion")
+	public String cerrarSesion(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
+
 }

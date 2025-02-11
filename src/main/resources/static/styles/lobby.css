@@ -1,13 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
+:root {
+    --primary-color: #7a9c2e;
+    --secundary-color: #FFFFFF;
+    --dark-bg-color: #1a1a1a;
+
+}
+
 * {
+
+    box-sizing: border-box;
+
+}
+
+a {
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+}
+
+/* General body styling */
+body {
+    overflow-x: hidden;
+    font-family: 'Lilita One';
+    background-color: var(--primary-color);
+    color: var(--secundary-color);
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lilita One';
+    width: 100%;
+    max-height: 100vh;
+    cursor: url('../assets/crash/cursor.png'), auto;
+
+}
+
+/*SCROLL*/
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #003049;
+
+}
+
+body::-webkit-scrollbar-thumb {
+
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    border-radius: 10px;
+    border: 1px solid #003049;
 }
 
 
+
+.contentenedorVolverMain {
+    display: flex;
+    align-items: center;
+
+}
+
+.home {
+    width: 7vw;
+    height: auto;
+    margin-right: 2vw;
+
+}
 
 .logo {
     width: 5vw;
@@ -45,12 +99,15 @@ h1 {
     width: 2vw;
     height: 4vh;
     margin-left: 2%;
+    transition: transform 0.3s ease, filter 0.3s ease;
 
 }
 
 .saldo img:hover {
 
-    cursor: pointer;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transform: scale(1.1);
+    filter: brightness(1.3);
 
 }
 
@@ -58,7 +115,7 @@ h1 {
     font-family: 'Lilita One';
     font-size: 1.5vw;
     background: linear-gradient(180deg, #fdde89, #f86b0c);
-
+    -webkit-background-clip: text;
     color: transparent;
     -webkit-text-stroke: 0.10vh #003049;
 }
@@ -73,10 +130,13 @@ h1 {
 
 .horaYConfi img {
     margin-left: 10%;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .horaYConfi img:hover {
-    cursor: pointer;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transform: scale(1.1);
+    filter: brightness(1.3);
 }
 
 .horaYConfi img,
@@ -89,13 +149,22 @@ h1 {
 
 }
 
+.ajustesModal {
+    display: none;
+}
 
-body {
-    /* background-image: url(assets/fondo.png); */
-    background-color: #7a9c2e;
-    background-size: cover;
-    background-position: center bottom;
-    min-height: 100vh;
+.depositarYRetirar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2%;
+    width: 100%;
+    height: 100%;
+}
+
+.saldoCreditosInfo {
+    font-size: 1.5vw;
+    margin: 1%;
 }
 
 .cards-container {
@@ -125,61 +194,682 @@ body {
     border-radius: 20px;
 }
 
-.titulo {
-    position: absolute;
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    left: 0;
-    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
     align-items: center;
-    justify-content: flex-end;
-
-    flex-direction: column;
-
-    z-index: 0;
-    text-align: center;
-    font-family: 'Judson';
-    border-radius: 20px;
-    transition: all 0.3s ease-in-out;
+    justify-content: center;
 }
 
-.titulo h2 {
-    font-size: 5vh;
-    position: relative;
+/* Estilo para el contenido del modal */
+.contenidoModal {
+    background-image: url("../assets/crash/fondo\ modal.jpg");
+    background-size: cover;
+    background-position: center top;
+    padding: 2%;
+    padding-top: 0;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+    border: 3px solid #3A5A40;
+
+}
+
+/* BOTON DE CIERRE MODAL */
+.cerrarModal {
+    position: absolute;
+    top: 0%;
+    right: 5%;
+    font-size: 2rem;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    font-family: 'Lilita One';
     background: linear-gradient(180deg, #fdde89, #f86b0c);
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-stroke: 0.10vh #003049;
-
-    z-index: 0;
 }
 
-
-.contentenedorVolverMain {
+.botonesModal {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
+}
+
+.inputModal {
+    width: 100%;
+    text-align: center;
+}
+
+.inputModal::placeholder {
+    text-align: center;
+    color: #003049;
+
+}
+
+.inputModal:focus {
+    outline: 2px solid #F4A261;
+    box-shadow: 0 0 8px rgba(244, 162, 97, 0.5), 0 0 12px rgba(244, 162, 97, 0.3);
+    transition: outline-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*ELIMINA LAS FLECHAS DEL INPUT NUMERICO*/
+.inputModal::-webkit-outer-spin-button,
+.inputModal::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.botonModal {
+    width: 40%;
+}
+
+/* Button styling */
+.botonModal,
+.inputModal {
+    font-family: 'Lilita One';
+    background-color: #FFCB77;
+    color: #003049;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #003049;
+    border-radius: 5px;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transition: all 0.3s ease;
+    margin-top: 2%;
+    -webkit-text-stroke: 0;
+
+}
+
+.botonModal:hover,
+.inputModal:hover {
+    background-color: #F4A261;
+
+}
+
+/* Estilo del Modal de Error */
+.modalError {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
     align-items: center;
+    justify-content: center;
+}
+
+/* Contenido del Modal de Error */
+.contenidoModalError {
+    background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
+    color: #003049;
+    border: 5px solid #3A5A40;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    width: 30%;
+    text-align: center;
+    position: relative;
+}
+
+
+#mensajeError {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 1.5vw;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.cerrarModalError {
+    position: absolute;
+    top: 11px;
+    right: 14px;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transition: color 0.3s ease;
+}
+
+.cerrarModalError:hover {
+    color: #F4A261;
+}
+
+.contenidoAjustesModal {
+    background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
 
 }
 
-.home {
-    width: 7vw;
-    height: auto;
-    margin-right: 2vw;
+/* Estilo para los encabezados del modal de ajustes */
+.contenidoAjustesModal h2 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 2.2vw;
+    color: #FDF0D5;
+    -webkit-text-stroke: 0.15vh #003049;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.contenidoAjustesModal h3 {
+    font-family: 'Lilita One';
+    font-size: 1.6vw;
+    color: #EAE2B7;
+    -webkit-text-stroke: 0.1vh #003049;
+    padding: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+/* Animación de aparición del modal */
+.modalError .contenidoModalError,
+.modal .contenidoModal,
+.modalSonido,
+.modalVictoria {
+    animation: aparecerModal 0.5s ease-out forwards;
+}
+
+/* Animación de entrada */
+@keyframes aparecerModal {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.icono {
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
 
 }
+
+.icono:hover {
+    transform: scale(1.1);
+    filter: brightness(1.3);
+    /* Incrementa el brillo */
+}
+
+.modo-oscuro {
+    filter: grayscale(1) brightness(0.8) contrast(1);
+    background-color: var(--dark-bg-color);
+    cursor: url('../assets/crash/cursorDarkMode.png'), auto;
+
+}
+
+/* Estilos para el scroll en modo oscuro */
+.modo-oscuro::-webkit-scrollbar-track {
+    background: #333333;
+    /* Fondo más oscuro para el track */
+}
+
+.modo-oscuro::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #555555, #888888);
+    /* Gradiente más oscuro para el thumb */
+    border: 1px solid #444444;
+    /* Borde más oscuro */
+}
+
+.modo-oscuro .saldo img:hover,
+.modo-oscuro .horaYConfi img:hover,
+.modo-oscuro .cerrarModal,
+.modo-oscuro .botonModal,
+.modo-oscuro .inputModal,
+.modo-oscuro .cerrarModalError,
+.modo-oscuro .icono,
+.modo-oscuro .cerrarModalVictoria,
+.modo-oscuro .modalSonido img:hover,
+.modo-oscuro .barraVolumen::-webkit-slider-thumb,
+.modo-oscuro .iniciarTiradas,
+.modo-oscuro .cerrarModalTiradas,
+.modo-oscuro .barraTiradas::-webkit-slider-thumb,
+.modo-oscuro .creditos,
+.modo-oscuro .botonTirar,
+.modo-oscuro .footer a img {
+
+    cursor: url('../assets/crash/cursorPointerDark.png'), pointer;
+
+}
+
 
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent), url("../assets/header.jpg");
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent), url("../assets/crash/header.jpg");
     background-size: cover;
     max-width: 100%;
     padding: 0 5%;
 
 }
 
+
+
+.contenedorJuego {
+    position: relative;
+    background-image: url("../assets/crash/fondoJuego.jpg");
+    background-size: auto 100%;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    width: 70%;
+    margin: 2% auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    height: 75%;
+    animation: moverFondo 10000s linear infinite;
+    animation-play-state: paused;
+    /* Pausar la animación por defecto */
+}
+
+
+/* Animación para mover el fondo */
+@keyframes moverFondo {
+    from {
+        background-position: 0 0;
+        /* Posición inicial */
+    }
+
+    to {
+        background-position: -1400000% 0;
+        /* Mueve el fondo hacia la izquierda */
+    }
+}
+
+.imagenGirafa {
+    position: absolute;
+    top: 14.5%;
+    width: 20vw;
+    animation: trotar 0.6s ease-in-out infinite;
+    /* Animación para el trote */
+    animation-play-state: paused;
+    /* Pausar la animación por defecto */
+}
+
+/* Animación para simular el trote */
+@keyframes trotar {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+        /* Posición inicial y final */
+    }
+
+    25% {
+        transform: rotate(-3deg);
+        /* Gira ligeramente hacia atrás */
+    }
+
+    75% {
+        transform: rotate(3deg);
+        /* Gira ligeramente hacia adelante */
+    }
+}
+
+.imagenLeon {
+    display: none;
+    position: absolute;
+    top: 8.5%;
+    width: 38vw;
+    right: 58%;
+    animation: trotar 0.6s ease-in-out forwards, moverDerecha 0.6s ease-in-out forwards;
+
+}
+
+@keyframes moverDerecha {
+    0% {
+        right: 58%;
+        /* Posición inicial */
+    }
+
+    100% {
+        right: 53%;
+        /* Punto donde se detendrá */
+    }
+}
+
+.multi {
+    display: none;
+    position: absolute;
+    top: -9%;
+    font-size: 5vw;
+    animation: crecerReducir 1s infinite, brillar 1s infinite;
+}
+
+/* Animación de brillo */
+@keyframes brillar {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px #ffd700,
+            0 0 20px #ff8c00,
+            0 0 30px #ffa500,
+            0 0 40px #ff4500;
+    }
+
+    50% {
+        text-shadow:
+            0 0 20px #ffdd00,
+            0 0 30px #ffa500,
+            0 0 50px #ff4500,
+            0 0 60px #ff6347;
+    }
+}
+
+
+.contenedorTituloJuego {
+    position: absolute;
+    top: 11%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+
+
+}
+
+.contenedorTituloJuego h1 {
+    font-size: 2.5vw;
+}
+
+/* Animación de crecimiento */
+@keyframes crecerReducir {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+    }
+
+    50% {
+        transform: scale(1.1);
+
+    }
+}
+
+/* Estilo general del modal */
+.modalVictoria {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.modalVictoriaContenido {
+    background-color: #000000d0;
+    padding: 2%;
+    padding-top: 0;
+    border-radius: 13px;
+    width: 30%;
+    height: 45%;
+    text-align: center;
+}
+
+.modalVictoriaContenido img {
+    max-width: 100%;
+
+}
+
+.premioHeader {
+    position: absolute;
+    position: absolute;
+    width: 20vw;
+    top: 25%;
+    left: 40.5%;
+    transform: translateX(-50%);
+    animation: crecerReducir 1s infinite;
+
+}
+
+.girafaPremio {
+    height: 18vh;
+    animation: crecerReducir 1s infinite;
+    padding-bottom: 2%;
+}
+
+.mensajeVictoria {
+    margin-top: 20%;
+    margin-bottom: 10%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffd700;
+    text-align: center;
+    text-shadow: 2px 2px 8px #ff4500, 0 0 15px #ff8c00;
+    animation: crecerReducir 1s infinite;
+}
+
+.cerrarModalVictoria {
+    position: absolute;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    width: 3vw;
+    right: 35%;
+    top: 29%;
+}
+
+
+/* Animación de entrada */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.footerJuego {
+    margin-top: auto;
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    padding: 2vh;
+}
+
+.modalSonido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 15vw;
+    height: 4vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    bottom: 30%;
+    right: 70%;
+    padding: 1%;
+    border-radius: 10px;
+
+}
+
+.modalSonidoPantalla {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    position: absolute;
+}
+
+.modalSonido img {
+    width: 10%;
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+}
+
+
+.modalSonido img:hover {
+    transform: scale(1.2);
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+}
+
+.barraVolumen {
+    appearance: none;
+    background: var(--primary-color);
+    border-radius: 5px;
+    height: 100%;
+}
+
+.barraVolumen::-webkit-slider-thumb {
+
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1vw;
+    height: 2vh;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    border: 1px solid #fff;
+
+
+}
+
+/* Estilo para el thumb cuando está en mute */
+.barraVolumen.mute,
+.mute::-webkit-slider-thumb {
+    background: #c30a0a;
+
+}
+
+
+.valorVolumen {
+    display: inline-block;
+    width: 2.5em;
+    text-align: center;
+    font-size: 1em;
+    color: white;
+}
+
+.creditos {
+    text-align: center;
+    background-color: var(--secundary-color);
+    font-family: 'Lilita One';
+    font-size: 1vw;
+    color: #000000;
+    border-radius: 30px;
+    border: none;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    width: 100%;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 5%;
+
+}
+
+.creditos:hover {
+    transform: scale(1.2);
+    filter: brightness(1.1);
+
+}
+
+.navegacionFooterJuego {
+    width: 50%;
+    display: flex;
+    color: #f6af31;
+    align-items: center;
+}
+
+.navegacionFooterJuego p {
+    color: #f6af31;
+    padding-left: 15%;
+}
+
+
+.creditosApuesta {
+    color: var(--secundary-color) !important;
+    width: 100%;
+    padding-left: 4% !important;
+}
+
+
+.contenedorBotones {
+    display: flex;
+    width: 33%;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+
+}
+
+.jugar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cantidadTiradas {
+    display: none;
+}
+
+.botonTirar {
+    width: 8vw;
+    padding: 1vh 1vw;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    max-height: 100%;
+
+}
+
+.iconos {
+    width: 33%;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.textoTragaperras {
+    width: 33%;
+    display: flex;
+    text-align: center;
+
+}
+
+.textoTragaperras h1 {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: var(--secundary-color);
+}
+
+.botonTirar:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+
+
+.botonTirar:hover {
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+}
 
 
 footer {
@@ -189,8 +879,8 @@ footer {
     background-color: rgba(17, 40, 24, 1);
     width: 100%;
     padding: 1% 0;
-    height: 14vh;
-
+    position: relative;
+    min-height: 60px;
     z-index: 10;
     margin-top: auto;
     color: #FDF0D5;
@@ -202,9 +892,11 @@ footer a {
     justify-content: center;
     width: 100%;
     height: 15%;
+
 }
 
 footer a img {
     width: 40%;
     height: auto;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
 }
