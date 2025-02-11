@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.proyectoTransversal.entity.UsuarioEntity;
 import com.proyectoTransversal.services.IndexService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class IndexController {
 
@@ -22,12 +24,14 @@ public class IndexController {
 
 	@GetMapping("/comprobarLogin")
 	public String iniciarSesion(@RequestParam("nombreUsuario") String nombreUsuario, @RequestParam("pass") String pass,
-			Model model) {
+			Model model, HttpSession session) {
 		UsuarioEntity usuario = indexService.buscarPorUsuario(nombreUsuario);
 
 		// SI EL USUARIO EXISTE COMPROBAMOS LA CONTRASEÑA
 		if (usuario != null) {
 			if (usuario.getPass().equals(pass)) {
+
+				session.setAttribute("usuario", usuario);
 				// COMPROBACION DEL ROL
 				if (usuario.getUsuarioVip() == true) {
 					return "lobbyVip";
