@@ -14,16 +14,13 @@ import com.proyectoTransversal.model.HistoricoDTO;
 import com.proyectoTransversal.model.UsuarioDTO;
 import com.proyectoTransversal.services.UsuarioService;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
-
-	@GetMapping("/formularioRegistro")
-	public String registroUsuario() {
-		return "registro";
-	}
 
 	// IGNORAR POR EL MOMENTO NO SE REGISTRA PERO TENGO EL METODO PREPARADO
 	@PostMapping("/registrar")
@@ -37,6 +34,13 @@ public class UsuarioController {
 		// USUARIO DE PRUEBA PARA NO TENER QUE LOGUEARNOS CONSTANTEMENTE
 		UsuarioEntity usuarioPrueba = usuarioService.encontrarPorId("12345678A");
 		return usuarioPrueba;
+	}
+
+	@GetMapping("/usuarios/obtenerUsuario")
+	public UsuarioEntity obtenerUsuario(HttpSession session) {
+		// USUARIO ACTUAL GUARDADO EN LA SESION
+		UsuarioEntity usuario = (UsuarioEntity) session.getAttribute("usuario");
+		return usuario;
 	}
 
 	// RECOGEMOS EN ESTE OBJETO SU DNI Y EL PRESUPUESTO ACTUALIZADO
