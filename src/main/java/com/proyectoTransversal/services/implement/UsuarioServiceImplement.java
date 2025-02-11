@@ -14,41 +14,40 @@ import com.proyectoTransversal.model.HistoricoDTO;
 import com.proyectoTransversal.repo.UsuarioRepository;
 import com.proyectoTransversal.services.UsuarioService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service
 public class UsuarioServiceImplement implements UsuarioService {
-	
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
-	
 
 	@Override
 	public UsuarioEntity encontrarPorId(String dni) {
-		Optional<UsuarioEntity> optionalUsuario= usuarioRepository.findById(dni);
+		Optional<UsuarioEntity> optionalUsuario = usuarioRepository.findById(dni);
 		return optionalUsuario.orElse(null);
 	}
 
 	@Override
-	public void actualizarSaldo(String dni, BigDecimal nuevoPresupuesto) {
-		UsuarioEntity usuario=encontrarPorId(dni);
+	public void actualizarSaldo(String dni, BigDecimal nuevoPresupuesto, HttpSession session) {
+		UsuarioEntity usuario = encontrarPorId(dni);
 		usuario.setPresupuesto(nuevoPresupuesto);
 		usuarioRepository.save(usuario);
+		session.setAttribute("usuario", usuario);
 	}
 
 	@Override
 	public List<HistoricoDTO> obtenerHistoricosPorDni(UsuarioEntity usuario) {
-		
+
 		List<HistoricoDTO> historicosList = new ArrayList<>();
 		for (HistoricoEntity historico : usuario.getHistoricos()) {
-			HistoricoDTO historicoDto = new HistoricoDTO(historico.getIdHistorico(),historico.getUsuario().getDni(),
+			HistoricoDTO historicoDto = new HistoricoDTO(historico.getIdHistorico(), historico.getUsuario().getDni(),
 					historico.getJuego().getIdJuego(), historico.getApuesta(), historico.getResultado(),
 					historico.getLogCrash().getMultiplicador());
 			historicosList.add(historicoDto);
 		}
-		
+
 		return historicosList;
 	}
-	
-	
-	
+
 }

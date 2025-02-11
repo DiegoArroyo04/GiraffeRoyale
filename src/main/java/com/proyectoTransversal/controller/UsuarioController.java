@@ -45,8 +45,8 @@ public class UsuarioController {
 
 	// RECOGEMOS EN ESTE OBJETO SU DNI Y EL PRESUPUESTO ACTUALIZADO
 	@PostMapping("/usuarios/actualizarSaldo")
-	public String actualizarSaldo(@RequestBody UsuarioDTO usuario) {
-		usuarioService.actualizarSaldo(usuario.getDni(), usuario.getPresupuesto());
+	public String actualizarSaldo(@RequestBody UsuarioDTO usuario, HttpSession session) {
+		usuarioService.actualizarSaldo(usuario.getDni(), usuario.getPresupuesto(), session);
 		return "Saldo actualizado correctamente ";
 	}
 

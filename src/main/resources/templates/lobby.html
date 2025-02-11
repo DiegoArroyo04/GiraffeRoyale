@@ -5,18 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/lobby.css">
-    <title>lobby</title>
+    <title>Lobby-Giraffe Royale</title>
+    <link rel="shortcut icon" href="assets/LOGO_GIRAFFE_ROYALE.png" type="image/x-icon">
+    <script src="https://unpkg.com/i18next@latest/i18next.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
 <body>
     <header id="header">
         <div class="contentenedorVolverMain">
 
-            <a href="https://girafferoyale.vercel.app/">
+            <a href="/lobby">
                 <img src="assets/Home.png" class="home">
             </a>
 
-            <a href="https://girafferoyale.vercel.app/">
+            <a href="/lobby">
                 <img src="assets/LOGO_GIRAFFE_ROYALE.png" class="logo">
             </a>
 
@@ -28,17 +31,18 @@
 
             <h1 id="saldo" class="saldo">Saldo:0€</h1>
 
-            <img src="assets/crash/añadir.png" id="añadirSaldo">
+            <img src="assets/añadir.png" id="añadirSaldo">
 
         </div>
 
 
         <div class="horaYConfi">
             <h1 class="hora" id="hora"></h1>
-            <img id="configuracion" src="assets/crash/configuracion.png">
+            <img id="configuracion" src="assets/configuracion.png">
         </div>
 
     </header>
+
     <section class="cards-container">
         <div class="card">
             <img src="assets/card-tragaperras.png" alt="tragaperras">
@@ -47,15 +51,70 @@
         <div class="card">
             <img src="assets/card-giraffer.png" alt="girafe">
         </div>
-
+        <div class="card">
+            <img src="assets/card-pamplona.png" alt="pamplona">
+        </div>
     </section>
+
+    <div id="modalDepositar" class="modal">
+        <div class="contenidoModal">
+            <span id="cerrarModalDepositar" class="cerrarModal">&times;</span>
+            <div id="depositar" class="depositarYRetirar">
+                <h1 id="depositarTitulo">DEPOSITAR</h1>
+                <input type="number" id="inputDeposito" class="inputModal"
+                    placeholder="Introduce la cantidad que deseas depositar">
+                <div class="botonesModal">
+                    <button id="depositarBtn" class="botonModal">Depositar</button>
+                    <button id="abrirModalRetirar" class="botonModal">Retirar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modalRetirar" class="modal">
+        <div class="contenidoModal">
+            <span id="cerrarModalRetirar" class="cerrarModal">&times;</span>
+            <div id="retirar" class="depositarYRetirar">
+                <h1 id="retirarTitulo">RETIRAR</h1>
+                <input type="number" id="inputRetiro" class="inputModal"
+                    placeholder="Introduce la cantidad que deseas retirar">
+                <div class="botonesModal">
+                    <button id="retirarBtn" class="botonModal">Retirar</button>
+                    <button id="abrirModalDepositar" class="botonModal">Depositar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modalError" class="modalError">
+        <div class="contenidoModalError">
+            <span id="cerrarModalError" class="cerrarModalError">&times;</span>
+            <p id="mensajeError" class="mensajeError"></p>
+        </div>
+    </div>
+    <div id="modalAjustes" class="modal">
+        <div class="contenidoModal contenidoAjustesModal">
+            <span id="cerrarModalAjustes" class="cerrarModalError">&times;</span>
+            <h2 id="tituloAjustes">Ajustes</h2>
+            <div class="opcionAjustes">
+                <h3 id="cambiarIdiomaTexto">Cambiar Idioma A Ingles:</h3>
+                <img id="idioma" src="assets/crash/iconoIngles.png" alt="Idioma" class="icono">
+            </div>
+            <div class="opcionAjustes">
+                <h3 id="textoModoOscuro">Cambiar A Modo Oscuro:</h3>
+                <img src="assets/crash/modoOscuro.png" id="modoOscuro" alt="Modo Oscuro" class="icono">
+            </div>
+            <div class="opcionAjustes">
+                <a href="/cerrarSesion">Cerrar Sesión</a>
+            </div>
+        </div>
+    </div>
     <footer>
         <a href="https://www.juegoseguro.es">
             <img src="assets/juegasegurocasino.png" alt="Iconos Juego Seguro">
         </a>
         <p>© 2024 Giraffe Royale Casino</p>
-        <img src="assets/logo giraffe royale.png" class="logo">
+        <img src="assets/LOGO_GIRAFFE_ROYALE.png" class="logo">
     </footer>
+    <script src="scripts/lobby.js"></script>
 </body>
 
 </html>
