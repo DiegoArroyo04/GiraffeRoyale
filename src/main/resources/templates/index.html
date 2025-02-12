@@ -12,16 +12,16 @@
 <body>
 
     <div class="login">
-        <img class="logo" src="assets/logo-login.png" alt="Logo Inicio">
+        <img class="logo" src="assets/login/logo-login.png" alt="Logo Inicio">
         <div class="formulario">
             <h1>INICIAR SESIÓN</h1>
             <form th:action="@{/comprobarLogin}" method="get" class="inputs">
                 <div class="usuario">
-                    <img src="assets/User.png" alt="Icono Usuario">
+                    <img src="assets/login/User.png" alt="Icono Usuario">
                     <input type="text" placeholder="Nombre de Usuario" name="nombreUsuario" required>
                 </div>
                 <div class="contrasenia">
-                    <img src="assets/Lock.png" alt="Icono Contraseña">
+                    <img src="assets/login/Lock.png" alt="Icono Contraseña">
                     <input type="password" placeholder="Contraseña" name="pass" required>
                 </div>
                 <div class="container-iniciarSesion">
