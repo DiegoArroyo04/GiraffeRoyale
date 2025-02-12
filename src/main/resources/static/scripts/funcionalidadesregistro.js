@@ -218,13 +218,45 @@ function enviarCorreo(form) {
         });
 }
 
+function comprobarNumerosNombreApellidos() {
+    var nombre = document.getElementById("nombre").value;
+    var apellidos = document.getElementById("apellidos").value;
+    var tieneNumeros = false;
+    var numeros = "0123456789";
+
+    // Comprobación en el nombre
+    for (var i = 0; i < nombre.length; i++) {
+        if (numeros.includes(nombre[i])) {
+            tieneNumeros = true;
+            mostrarModal("Un nombre no puede contener numeros.");
+        }
+    }
+
+    // Comprobación en los apellidos si no se encontró antes en el nombre
+    if (!tieneNumeros) {
+        for (var i = 0; i < apellidos.length; i++) {
+            if (numeros.includes(apellidos[i])) {
+                tieneNumeros = true;
+                mostrarModal("Unos apellidos no pueden contener numeros");
+            }
+        }
+    }
+
+    if (tieneNumeros) {
+        return false;
+    } else {
+        return true;
+    }
+
+
+}
 
 function validarFormulario(event) {
     event.preventDefault(); // Evita el envío del formulario
 
 
     //PERMITIR O DENEGAR REGISTRO
-    if ((comprobarDni() == true) && (comprobarContrasenia() == true) && (comprobarTelefono() == true) && (comprobarMayoriaEdad() == true)) {
+    if ((comprobarDni() == true) && (comprobarContrasenia() == true) && (comprobarTelefono() == true) && (comprobarMayoriaEdad() == true) && (comprobarNumerosNombreApellidos() == true)) {
         enviarCorreo(event.target);
         mostrarModal("Cuenta creada con Éxito.");
         return true;
