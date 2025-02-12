@@ -49,6 +49,18 @@ body::-webkit-scrollbar-thumb {
 }
 
 
+/* ----------------HEADER---------------- */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent), url("../assets/header/header.jpg");
+    background-size: cover;
+    max-width: 100%;
+    padding: 0 5%;
+
+}
 
 .contentenedorVolverMain {
     display: flex;
@@ -177,11 +189,30 @@ h1 {
     margin: 1%;
 }
 
+/* -------------------SECCION PRINCIPAL------------------- */
+
 .cards-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartas{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3.5rem;
+    width: 50%;
+    padding: 2%;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartas-vip{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    width: 100%;
+    width: 70%;
     padding: 2%;
     justify-content: center;
     align-items: center;
@@ -244,6 +275,7 @@ h1 {
     box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.9);
 }
 
+/* -------------------------MODALES----------------------- */
 
 .modal {
     display: none;
@@ -575,439 +607,9 @@ h1 {
 
 }
 
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent), url("../assets/crash/header.jpg");
-    background-size: cover;
-    max-width: 100%;
-    padding: 0 5%;
-
-}
-
-
-
-.contenedorJuego {
-    position: relative;
-    background-image: url("../assets/crash/fondoJuego.jpg");
-    background-size: auto 100%;
-    background-position: 0 0;
-    background-repeat: repeat-x;
-    width: 70%;
-    margin: 2% auto;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    overflow: hidden;
-    height: 75%;
-    animation: moverFondo 10000s linear infinite;
-    animation-play-state: paused;
-    /* Pausar la animación por defecto */
-}
-
-
-/* Animación para mover el fondo */
-@keyframes moverFondo {
-    from {
-        background-position: 0 0;
-        /* Posición inicial */
-    }
-
-    to {
-        background-position: -1400000% 0;
-        /* Mueve el fondo hacia la izquierda */
-    }
-}
-
-.imagenGirafa {
-    position: absolute;
-    top: 14.5%;
-    width: 20vw;
-    animation: trotar 0.6s ease-in-out infinite;
-    /* Animación para el trote */
-    animation-play-state: paused;
-    /* Pausar la animación por defecto */
-}
-
-/* Animación para simular el trote */
-@keyframes trotar {
-
-    0%,
-    100% {
-        transform: rotate(0deg);
-        /* Posición inicial y final */
-    }
-
-    25% {
-        transform: rotate(-3deg);
-        /* Gira ligeramente hacia atrás */
-    }
-
-    75% {
-        transform: rotate(3deg);
-        /* Gira ligeramente hacia adelante */
-    }
-}
-
-.imagenLeon {
-    display: none;
-    position: absolute;
-    top: 8.5%;
-    width: 38vw;
-    right: 58%;
-    animation: trotar 0.6s ease-in-out forwards, moverDerecha 0.6s ease-in-out forwards;
-
-}
-
-@keyframes moverDerecha {
-    0% {
-        right: 58%;
-        /* Posición inicial */
-    }
-
-    100% {
-        right: 53%;
-        /* Punto donde se detendrá */
-    }
-}
-
-.multi {
-    display: none;
-    position: absolute;
-    top: -9%;
-    font-size: 5vw;
-    animation: crecerReducir 1s infinite, brillar 1s infinite;
-}
-
-/* Animación de brillo */
-@keyframes brillar {
-
-    0%,
-    100% {
-        text-shadow:
-            0 0 10px #ffd700,
-            0 0 20px #ff8c00,
-            0 0 30px #ffa500,
-            0 0 40px #ff4500;
-    }
-
-    50% {
-        text-shadow:
-            0 0 20px #ffdd00,
-            0 0 30px #ffa500,
-            0 0 50px #ff4500,
-            0 0 60px #ff6347;
-    }
-}
-
-
-.contenedorTituloJuego {
-    position: absolute;
-    top: 11%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-
-
-}
-
-.contenedorTituloJuego h1 {
-    font-size: 2.5vw;
-}
-
-/* Animación de crecimiento */
-@keyframes crecerReducir {
-
-    0%,
-    100% {
-        transform: scale(1);
-
-    }
-
-    50% {
-        transform: scale(1.1);
-
-    }
-}
-
-/* Estilo general del modal */
-.modalVictoria {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    align-items: center;
-    justify-content: center;
-
-}
-
-
-.modalVictoriaContenido {
-    background-color: #000000d0;
-    padding: 2%;
-    padding-top: 0;
-    border-radius: 13px;
-    width: 30%;
-    height: 45%;
-    text-align: center;
-}
-
-.modalVictoriaContenido img {
-    max-width: 100%;
-
-}
-
-.premioHeader {
-    position: absolute;
-    position: absolute;
-    width: 20vw;
-    top: 25%;
-    left: 40.5%;
-    transform: translateX(-50%);
-    animation: crecerReducir 1s infinite;
-
-}
-
-.girafaPremio {
-    height: 18vh;
-    animation: crecerReducir 1s infinite;
-    padding-bottom: 2%;
-}
-
-.mensajeVictoria {
-    margin-top: 20%;
-    margin-bottom: 10%;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffd700;
-    text-align: center;
-    text-shadow: 2px 2px 8px #ff4500, 0 0 15px #ff8c00;
-    animation: crecerReducir 1s infinite;
-}
-
-.cerrarModalVictoria {
-    position: absolute;
-    cursor: url('../assets/crash/cursorPointer.png'), pointer;
-    width: 3vw;
-    right: 35%;
-    top: 29%;
-}
-
-
-/* Animación de entrada */
-@keyframes zoomIn {
-    0% {
-        transform: scale(0.7);
-        opacity: 0;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.footerJuego {
-    margin-top: auto;
-    display: flex;
-    width: 100%;
-    height: auto;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    padding: 2vh;
-}
-
-.modalSonido {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 15vw;
-    height: 4vh;
-    background-color: rgba(0, 0, 0, 0.9);
-    position: absolute;
-    bottom: 30%;
-    right: 70%;
-    padding: 1%;
-    border-radius: 10px;
-
-}
-
-.modalSonidoPantalla {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    position: absolute;
-}
-
-.modalSonido img {
-    width: 10%;
-    transition: transform 0.3s ease, filter 0.3s ease;
-
-}
-
-
-.modalSonido img:hover {
-    transform: scale(1.2);
-    cursor: url('../assets/crash/cursorPointer.png'), pointer;
-}
-
-.barraVolumen {
-    appearance: none;
-    background: var(--primary-color);
-    border-radius: 5px;
-    height: 100%;
-}
-
-.barraVolumen::-webkit-slider-thumb {
-
-    -webkit-appearance: none;
-    appearance: none;
-    width: 1vw;
-    height: 2vh;
-    background: var(--primary-color);
-    border-radius: 50%;
-    cursor: url('../assets/crash/cursorPointer.png'), pointer;
-    border: 1px solid #fff;
-
-
-}
-
-/* Estilo para el thumb cuando está en mute */
-.barraVolumen.mute,
-.mute::-webkit-slider-thumb {
-    background: #c30a0a;
-
-}
-
-
-.valorVolumen {
-    display: inline-block;
-    width: 2.5em;
-    text-align: center;
-    font-size: 1em;
-    color: white;
-}
-
-.creditos {
-    text-align: center;
-    background-color: var(--secundary-color);
-    font-family: 'Lilita One';
-    font-size: 1vw;
-    color: #000000;
-    border-radius: 30px;
-    border: none;
-    cursor: url('../assets/crash/cursorPointer.png'), pointer;
-    width: 100%;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    margin-bottom: 5%;
-
-}
-
-.creditos:hover {
-    transform: scale(1.2);
-    filter: brightness(1.1);
-
-}
-
-.navegacionFooterJuego {
-    width: 50%;
-    display: flex;
-    color: #f6af31;
-    align-items: center;
-}
-
-.navegacionFooterJuego p {
-    color: #f6af31;
-    padding-left: 15%;
-}
-
-
-.creditosApuesta {
-    color: var(--secundary-color) !important;
-    width: 100%;
-    padding-left: 4% !important;
-}
-
-
-.contenedorBotones {
-    display: flex;
-    width: 33%;
-    justify-content: center;
-    height: 100%;
-    align-items: center;
-
-}
-
-.jugar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#cantidadTiradas {
-    display: none;
-}
-
-.botonTirar {
-    width: 8vw;
-    padding: 1vh 1vw;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    max-height: 100%;
-
-}
-
-.iconos {
-    width: 33%;
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-}
-
-.textoTragaperras {
-    width: 33%;
-    display: flex;
-    text-align: center;
-
-}
-
-.textoTragaperras h1 {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    color: var(--secundary-color);
-}
-
-.botonTirar:hover {
-    filter: brightness(1.1);
-    transform: scale(1.05);
-}
-
-
-
-.botonTirar:hover {
-    cursor: url('../assets/crash/cursorPointer.png'), pointer;
-}
-
+/* --------------FOOTER--------------- */
 
 footer {
-
     display: flex;
     align-items: center;
     background-color: rgba(17, 40, 24, 1);
@@ -1033,4 +635,131 @@ footer a img {
     width: 40%;
     height: auto;
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
+}
+
+
+@media (max-width: 768px) {
+    /* ----------------HEADER---------------- */
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px 5%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .contentenedorVolverMain {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .home {
+        width: 15vw;
+        margin-right: 0;
+    }
+
+    .logo {
+        width: 20vw;
+        height: auto;
+    }
+
+    h1, .encabezadoTitulo {
+        font-size: 6vw;
+    }
+
+    .horaYConfi {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 0;
+    }
+
+    .hora {
+        font-size: 4.5vw;
+    }
+
+    .saldo {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .saldo img {
+        width: 6vw;
+        height: auto;
+    }
+
+    .saldo p {
+        font-size: 4vw;
+    }
+
+    .horaYConfi img,
+    .icono {
+        width: 6vw;
+        height: auto;
+        margin: 0;
+    }
+
+    /* ----------------SECCIÓN PRINCIPAL---------------- */
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .cartas, .cartas-vip {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        width: 90%;
+        padding: 5%;
+    }
+
+    .card {
+        border-radius: 15px;
+    }
+
+    .card img {
+        border-radius: 15px;
+    }
+
+    .play-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    /* -----------------MODALES----------------- */
+    .contenidoModal,
+    .contenidoModalError {
+        width: 90%;
+        padding: 5%;
+    }
+
+    .botonesModal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .botonModal {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    #mensajeError {
+        font-size: 4vw;
+    }
+
+    /* -----------------FOOTER----------------- */
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2%;
+    }
+
+    footer a img {
+        width: 60%;
+    }
 }
