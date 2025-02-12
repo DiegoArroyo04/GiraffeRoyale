@@ -10,7 +10,7 @@
 * {
 
     box-sizing: border-box;
-
+    cursor: url('../assets/crash/cursor.png'), auto;
 }
 
 a {
@@ -198,7 +198,7 @@ h1 {
     justify-content: center;
 }
 
-.cartas{
+.cartas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 3.5rem;
@@ -208,7 +208,7 @@ h1 {
     align-items: center;
 }
 
-.cartas-vip{
+.cartas-vip {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
@@ -266,7 +266,7 @@ h1 {
     font-size: 16px;
     font-weight: bold;
     border-radius: 10px;
-    cursor: pointer;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -639,6 +639,7 @@ footer a img {
 
 
 @media (max-width: 768px) {
+
     /* ----------------HEADER---------------- */
     header {
         flex-direction: column;
@@ -667,7 +668,8 @@ footer a img {
         height: auto;
     }
 
-    h1, .encabezadoTitulo {
+    h1,
+    .encabezadoTitulo {
         font-size: 6vw;
     }
 
@@ -710,7 +712,8 @@ footer a img {
         width: 100%;
     }
 
-    .cartas, .cartas-vip {
+    .cartas,
+    .cartas-vip {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 1rem;
         width: 90%;

@@ -5,6 +5,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Lilita One';
+	cursor: url('../assets/crash/cursor.png'), auto;
 }
 
 body {
@@ -17,6 +18,23 @@ body {
 	align-items: center;
 	min-height: 100vh;
 
+}
+
+/*SCROLL*/
+body::-webkit-scrollbar {
+	width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+	background: #003049;
+
+}
+
+body::-webkit-scrollbar-thumb {
+
+	background: linear-gradient(180deg, #fdde89, #f86b0c);
+	border-radius: 10px;
+	border: 1px solid #003049;
 }
 
 .login {
@@ -79,7 +97,7 @@ body {
 	color: white;
 	border-radius: 20px;
 	font-size: 18px;
-	cursor: pointer;
+	cursor: url('../assets/crash/cursorPointer.png'), pointer;
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -120,7 +138,7 @@ body {
 	outline: none;
 	color: #FDF0D5;
 	padding: 3%;
-	cursor: pointer;
+	cursor: url('../assets/crash/cursorPointer.png'), pointer;
 	text-align: left;
 	margin-right: 6%;
 
@@ -249,14 +267,14 @@ footer a img {
 	position: absolute;
 	top: 10px;
 	right: 20px;
-	cursor: pointer;
+	cursor: url('../assets/crash/cursorPointer.png'), pointer;
 }
 
 .cerrarModal:hover,
 .cerrarModal:focus {
 	color: #f86b0c;
 	text-decoration: none;
-	cursor: pointer;
+	cursor: url('../assets/crash/cursorPointer.png'), pointer;
 }
 
 
