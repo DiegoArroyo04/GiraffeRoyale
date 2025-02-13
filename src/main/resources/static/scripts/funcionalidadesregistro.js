@@ -187,6 +187,11 @@ function modalTerminos() {
 
     }
 
+    document.getElementById("btnTerminos").addEventListener("click", function () {
+        document.getElementById('modalTerminos').style.display = 'none';
+        document.getElementById("terminos_registro").checked = true;
+    });
+
     // Cerrar al hacer clic en la "X"
     document.getElementsByClassName('cerrarModal')[1].onclick = function () {
         document.getElementById('modalTerminos').style.display = 'none';
@@ -268,3 +273,51 @@ function validarFormulario(event) {
 
 }
 
+
+//REGISTRO VIP
+document.getElementById("vip").addEventListener("change", function () {
+    const metodosPago = document.getElementById("metodosPago");
+    if (document.getElementById("vip").checked) {
+        metodosPago.classList.remove("hidden");
+        metodosPago.style.display = "flex";
+    } else {
+        metodosPago.style.display = "none";
+        resetearCamposPago();
+    }
+});
+
+document.getElementById("tarjeta").addEventListener("change", function () {
+    document.getElementById("datosTarjeta").classList.remove("hidden");
+    document.getElementById("datosBancarios").classList.add("hidden");
+    resetearCuentaBancaria();
+});
+
+document.getElementById("bancaria").addEventListener("change", function () {
+    document.getElementById("datosBancarios").classList.remove("hidden");
+    document.getElementById("datosTarjeta").classList.add("hidden");
+    resetearTarjeta();
+});
+
+function resetearCamposPago() {
+    document.getElementById("tarjeta").checked = false;
+    document.getElementById("bancaria").checked = false;
+    resetearTarjeta();
+    resetearCuentaBancaria();
+}
+
+function resetearTarjeta() {
+    document.getElementById("datosTarjeta").classList.add("hidden");
+    document.getElementById("numeroTarjeta").value = "";
+    document.getElementById("fechaExpiracion").value = "";
+    document.getElementById("titularCuenta").value = "";
+    titularTarjeta
+    document.getElementById("cvc").value = "";
+}
+
+function resetearCuentaBancaria() {
+    document.getElementById("datosBancarios").classList.add("hidden");
+    document.getElementById("titularCuenta").value = "";
+    document.getElementById("numeroCuenta").value = "";
+    document.getElementById("titularCuenta").value = "";
+
+}

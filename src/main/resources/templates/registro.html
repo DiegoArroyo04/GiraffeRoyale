@@ -65,11 +65,43 @@
                     </div>
                 </div>
 
+                <!-- Agregamos el toggle para usuarios VIP -->
+                <div class="vip-toggle">
+                    <input type="checkbox" id="vip" name="vip">
+                    <label for="vip">¿Quieres Registrarte como Usuario VIP?</label>
+                </div>
+
+                <!-- Contenedor de métodos de pago (inicialmente oculto) -->
+                <div id="metodosPago" class="metodosPago">
+                    <h3>Método de Pago Usuario VIP</h3>
+                    <div class="metodoPago">
+                        <input type="radio" id="tarjeta" name="metodoPago" value="tarjeta">
+                        <label for="tarjeta">Tarjeta de crédito/débito</label>
+                    </div>
+                    <div class="metodoPago">
+                        <input type="radio" id="bancaria" name="metodoPago" value="bancaria">
+                        <label for="bancaria">Cuenta bancaria</label>
+                    </div>
+
+                    <!-- Campos para tarjeta -->
+                    <div id="datosTarjeta" class="hidden grupoInput">
+                        <input type="text" id="numeroTarjeta" name="numeroTarjeta" placeholder="Número de Tarjeta">
+                        <input type="text" id="fechaExpiracion" name="fechaExpiracion"
+                            placeholder="Fecha Expiración Tarjeta">
+                        <input type="text" id="cvc" name="cvc" placeholder="CVC">
+                        <input type="text" id="titularTarjeta" name="titularCuenta" placeholder="Titular de la Tarjeta">
+                    </div>
+
+                    <!-- Campos para cuenta bancaria -->
+                    <div id="datosBancarios" class="hidden grupoInput">
+                        <input type="text" id="titularCuenta" name="titularCuenta" placeholder="Titular de la Cuenta">
+                        <input type="text" id="numeroCuenta" name="numeroCuenta" placeholder="Número de Cuenta">
+                    </div>
+                </div>
 
                 <div class="terminos">
-                    <div class="terminosCheck">
-                        <input type="checkbox" required id="terminos_registro">
-                    </div>
+
+                    <input type="checkbox" required id="terminos_registro">
                     <div class="aceptoTerminos">
                         <label for="terminos_registro">
                             Acepto los <a href="#" id="abrirModalTerminos">términos y
@@ -131,6 +163,9 @@
             <h3>7. Contacto</h3>
             <p>Si tienes alguna pregunta sobre estos términos, no dudes en contactarnos a través de
                 support@girafferoyale.com .</p>
+            <div class="boton-registro">
+                <button type="submit" id="btnTerminos">Acepto Los Términos y Condiciones</button>
+            </div>
         </div>
     </div>
 
