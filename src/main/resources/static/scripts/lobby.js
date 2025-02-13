@@ -237,6 +237,17 @@ document.getElementById("cerrarModalAjustes").addEventListener("click", function
     document.getElementById("modalAjustes").style.display = "none";
 });
 
+//CERRAR MODAL AL HACER CLICK EN LA X
+document.getElementById("cerrarModalTragaperra").addEventListener("click", function () {
+    document.getElementById("modalTragaperra").style.display = "none";
+
+})
+
+//CERRAR MODAL AL HACER CLICK EN LA X
+document.getElementById("cerrarModalJiraffe").addEventListener("click", function () {
+    document.getElementById("modalJiraffe").style.display = "none";
+
+})
 
 // Cierra el modal al hacer clic fuera del contenido
 window.addEventListener("click", (event) => {
@@ -252,6 +263,12 @@ window.addEventListener("click", (event) => {
     if (event.target == document.getElementById("modalAjustes")) {
         document.getElementById("modalAjustes").style.display = "none";
     }
+    if (event.target == document.getElementById("modalTragaperra")) {
+        document.getElementById("modalTragaperra").style.display = "none";
+    }
+    if (event.target == document.getElementById("modalJiraffe")) {
+        document.getElementById("modalJiraffe").style.display = "none";
+    }
 
 });
 
@@ -259,6 +276,17 @@ window.addEventListener("click", (event) => {
 document.getElementById("configuracion").addEventListener("click", function () {
     document.getElementById("modalAjustes").style.display = "flex";
 });
+
+//ABRIR MODAL DESCRIPCIO TRAGAPERRA
+document.getElementById("abrirModalTragaperra").addEventListener("click", function () {
+    document.getElementById("modalTragaperra").style.display = "flex";
+});
+
+//ABRIR MODAL DESCRIPCIO JIRAFFE
+document.getElementById("abrirModalJiraffe").addEventListener("click", function () {
+    document.getElementById("modalJiraffe").style.display = "flex";
+});
+
 //MODO OSCURO
 document.getElementById("modoOscuro").addEventListener("click", function () {
     document.body.classList.toggle("modo-oscuro");
