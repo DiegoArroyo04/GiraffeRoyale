@@ -39,25 +39,22 @@
         <div class="cartas-vip">
             <div class="card">
                 <img src="assets/lobby/card-tragaperras.png" alt="tragaperras">
-                <div class="card-overlay">
-                    <h1>GIRAFFE SPINS AND WINS</h1>
-                    <button class="play-button">Jugar</button>
+                <div class="card-overlay" id="abrirModalTragaperra">
+                    <img src="assets/lobby/iconoInformacion.png" alt="info">
                 </div>
             </div>
 
             <div class="card">
                 <img src="assets/lobby/card-giraffer.png" alt="girafferush">
-                <div class="card-overlay">
-                    <h1>GIRAFFE RUSH</h1>
-                    <button class="play-button">Jugar</button>
+                <div class="card-overlay" id="abrirModalJiraffe">
+                    <img src="assets/lobby/iconoInformacion.png" alt="info">
                 </div>
             </div>
 
             <div class="card">
                 <img src="assets/lobby/card-pamplona.png" alt="pamplona">
                 <div class="card-overlay">
-                    <h1>PAMPLONA RUSH</h1>
-                    <button class="play-button">Jugar</button>
+                    <img src="assets/lobby/iconoInformacion.png" alt="info">
                 </div>
             </div>
         </div>
@@ -122,6 +119,47 @@
             </div>
         </div>
     </div>
+
+    <div id="modalTragaperra" class="modalInfo">
+        <div class="contenidoModalInfo">
+            <span class="cerrarModalError" id="cerrarModalTragaperra">&times;</span>
+            <h2>🎰 Información del Juego</h2>
+            <p><strong>📜 ¿Cómo jugar?</strong></p>
+            <p>Haz girar los carretes usando el botón "Girar" o la barra espaciadora. Obtén combinaciones ganadoras y activa bonos especiales.</p>
+            
+            <p><strong>🏆 Multiplicadores y premios</strong></p>
+            <p>Cada símbolo tiene diferentes valores y puede multiplicar tu apuesta. Durante los giros de bono, los premios aumentan.</p>
+            
+            <p><strong>🌍 Opciones del juego</strong></p>
+            <p>Soporte para español e inglés, modo oscuro/claro y gestión de saldo.</p>
+            
+            <p><strong>⚠️ Reglas importantes</strong></p>
+            <p>No se pueden realizar nuevas acciones mientras los carretes están girando. Verifica tu saldo antes de jugar.</p>
+        </div>
+    </div>
+
+    <div id="modalJiraffe" class="modalInfo">
+        <div class="contenidoModalInfo">
+            <span class="cerrarModalError" id="cerrarModalJiraffe">&times;</span>
+            <h2>🦒 Giraffe Rush: Juego de Aventura</h2>
+
+            <p><strong>📜 ¿Cómo jugar?</strong></p>
+            <p>Presiona el botón "Tirar" para empezar. La jirafa correrá y el multiplicador aumentará.</p>
+            
+            <p><strong>🦁 Evita al León</strong></p>
+            <p>El león persigue a la jirafa. Cuanto más tiempo corra, mayor será el multiplicador, ¡pero también el riesgo!</p>
+            
+            <p><strong>🛑 Decide Cuándo Parar</strong></p>
+            <p>Si presionas "Parar" antes de que el león atrape a la jirafa, ganas tu multiplicador. Si el león alcanza a la jirafa, pierdes la apuesta.</p>
+            
+            <p><strong>🔥 Riesgo Progresivo</strong></p>
+            <p>A medida que el multiplicador sube, la probabilidad de que el león atrape a la jirafa aumenta.</p>
+
+            <p><strong>⚠️ Reglas Importantes</strong></p>
+            <p>No puedes cancelar una tirada una vez que empieza. Debes decidir estratégicamente cuándo detenerte.</p>
+        </div>
+    </div>
+
     <footer>
         <a href="https://www.juegoseguro.es">
             <img src="assets/footer/juegasegurocasino.png" alt="Iconos Juego Seguro">

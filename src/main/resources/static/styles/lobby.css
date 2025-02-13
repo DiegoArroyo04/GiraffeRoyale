@@ -201,6 +201,7 @@ h1 {
 .cartas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    
     gap: 3.5rem;
     width: 50%;
     padding: 2%;
@@ -210,6 +211,7 @@ h1 {
 
 .cartas-vip {
     display: grid;
+    
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     width: 70%;
@@ -222,6 +224,7 @@ h1 {
     position: relative;
     overflow: hidden;
     border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.247);
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -229,29 +232,36 @@ h1 {
 .card img {
     width: 100%;
     border-radius: 20px;
-    transition: transform 0.3s ease-in-out;
+    
 }
 
-.card:hover img {
-    transform: scale(1.1);
-}
+
 
 
 .card-overlay {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    display: flex;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    opacity: 0;
+    padding: 5%;
+    opacity: 1;
     transition: opacity 0.3s ease-in-out;
+    justify-content: flex-end;
 }
 
-.card:hover .card-overlay {
-    opacity: 1;
+.card-overlay img{
+    width: 15%;
 }
+
+.card-overlay img:hover{
+   
+  
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
 
 .card:hover {
     box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
@@ -285,9 +295,12 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px); /* Efecto de desenfoque */
+    background: rgba(0, 0, 0, 0.326); /* Oscurecimiento ligero */
+    font-size:1.5rem;
     align-items: center;
     justify-content: center;
+    transition: backdrop-filter 0.3s ease-in-out;
 }
 
 /* Estilo para el contenido del modal */
@@ -303,6 +316,7 @@ h1 {
     border: 3px solid #3A5A40;
 
 }
+
 
 /* BOTON DE CIERRE MODAL */
 .cerrarModal {
@@ -374,6 +388,67 @@ h1 {
 
 }
 
+.modalInfo{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px); /* Efecto de desenfoque */
+    background: rgba(0, 0, 0, 0.326); /* Oscurecimiento ligero */
+    font-size:1.5rem;
+    align-items: center;
+    justify-content: center;
+    transition: backdrop-filter 0.3s ease-in-out;
+    
+}
+.modalInfo h2 {
+    color: #ffcc80;
+    margin-bottom: 10px;
+    -webkit-text-stroke: 0.15vh #003049;
+}
+
+.modalInfo p {
+    color: white;
+   
+    line-height: 1.6;
+    margin-bottom: 10px;
+    -webkit-text-stroke: 0.15vh #003049;
+}
+
+.contenidoModalInfo {
+    background-image: linear-gradient(to bottom, #F86B0C, #bd9013);
+    backdrop-filter: blur(20px); /* Efecto de desenfoque */
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+    position: relative;
+    text-align: left;
+    overflow-y: auto;
+    line-height: 1.6;
+    max-height: 80vh;
+}
+
+.contenidoModalInfo::-webkit-scrollbar {
+    width: 12px;
+}
+
+.contenidoModalInfo::-webkit-scrollbar-track {
+    background: #003049;
+}
+
+.contenidoModalInfo::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to bottom, #F86B0C, #bd9013);
+    border-radius: 10px;
+    border: 1px solid #003049;
+}
+
+
 /* Estilo del Modal de Error */
 .modalError {
     display: none;
@@ -390,7 +465,7 @@ h1 {
 
 /* Contenido del Modal de Error */
 .contenidoModalError {
-    background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
+    background-image: linear-gradient(to top right, #F86B0C, #bd9013);
     color: #003049;
     border: 5px solid #3A5A40;
     border-radius: 20px;
@@ -412,17 +487,17 @@ h1 {
 
 
 .cerrarModalError {
-    position: absolute;
+    position: fixed;
     top: 11px;
     right: 14px;
-    font-size: 1.5rem;
+    font-size:3rem;
     color: #FFFFFF;
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
     transition: color 0.3s ease;
 }
 
 .cerrarModalError:hover {
-    color: #F4A261;
+    color: #000000;
 }
 
 .contenidoAjustesModal {
