@@ -47,7 +47,7 @@ body::-webkit-scrollbar-thumb {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    margin-top: 5%;
+    margin: 5% 0;
 
 }
 
@@ -98,7 +98,7 @@ h1 {
     color: #FDF0D5;
     padding: 5%;
     margin-bottom: 6%;
-
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
 }
 
 
@@ -116,7 +116,7 @@ h1 {
 
 
 .fechaNacimientolbl label {
-    font-size: 2vh;
+    font-size: 2.3vh;
     background: linear-gradient(180deg, #fdde89, #f86b0c);
     -webkit-background-clip: text;
     color: transparent;
@@ -141,6 +141,7 @@ h1 {
     color: #FDF0D5;
     padding: 9%;
     margin-bottom: 6%;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
 
 }
 
@@ -167,7 +168,7 @@ h1 {
 
 .terminos label {
     font-family: 'Lilita One';
-    font-size: 2vh;
+    font-size: 2.3vh;
     background: linear-gradient(180deg, #e1a400, #f86b0c);
     -webkit-background-clip: text;
     color: transparent;
@@ -176,6 +177,139 @@ h1 {
     margin-bottom: 4%;
     text-decoration: none;
 }
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #003049;
+    border-radius: 5px;
+    background-color: #FDF0D5;
+    position: relative;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    margin-right: 10px;
+}
+
+input[type="checkbox"]:checked {
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    border: 2px solid #e1a400;
+}
+
+input[type="checkbox"]::after {
+    content: '✔';
+    font-size: 16px;
+    color: #003049;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+input[type="checkbox"]:checked::after {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.vip-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6%;
+    width: 100%;
+}
+
+.vip-toggle label {
+    font-size: 2.3vh;
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+    letter-spacing: 0.15vh;
+    text-align: center;
+
+}
+
+.metodosPago {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 6%;
+    width: 100%;
+
+}
+
+.metodosPago h3 {
+    font-size: 1.5vw;
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+    letter-spacing: 0.15vh;
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.metodoPago {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+}
+
+
+.metodoPago label {
+    font-size: 2.3vh;
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+    letter-spacing: 0.15vh;
+    text-align: center;
+    width: 100%;
+
+}
+
+
+.metodoPago input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #003049;
+    background-color: #FDF0D5;
+    border-radius: 50%;
+    position: relative;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    margin-right: 10px;
+}
+
+.metodoPago input[type="radio"]:checked {
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    border: 2px solid #e1a400;
+}
+
+.metodoPago input[type="radio"]::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #003049;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.metodoPago input[type="radio"]:checked::after {
+    display: block;
+}
+
 
 
 
@@ -193,7 +327,7 @@ h1 {
     border: none;
     border-radius: 20px;
     height: 4.0vh;
-    width: 30%;
+    width: 40%;
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
     text-align: center;
     font-size: 2.0vh;
@@ -212,7 +346,7 @@ h1 {
 
 a {
     font-family: 'Lilita One';
-    font-size: 2vh;
+    font-size: 2.3vh;
     background: linear-gradient(180deg, #fdde89, #f86b0c);
     -webkit-background-clip: text;
     color: transparent;
@@ -225,34 +359,10 @@ a {
 a:hover {
     text-decoration: underline;
     color: #f86b0c;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
 
 }
 
-footer {
-    display: flex;
-    align-items: center;
-    background-color: rgba(17, 40, 24, 1);
-    width: 100%;
-    padding: 1% 0;
-    position: relative;
-    min-height: 60px;
-    z-index: 10;
-    margin-top: auto;
-    color: #FDF0D5;
-}
-
-footer a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 15%;
-}
-
-footer a img {
-    width: 40%;
-    height: auto;
-}
 
 /* Eliminar el color de fondo que se aplica cuando el navegador autocompleta un campo */
 input:-webkit-autofill {
@@ -273,7 +383,7 @@ input:-webkit-autofill {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     /* Fondo oscuro semitransparente */
-    overflow: auto;
+
 }
 
 
@@ -289,7 +399,10 @@ input:-webkit-autofill {
     position: relative;
     text-align: center;
     overflow-y: auto;
+
 }
+
+
 
 /* Estilos generales para el modal de términos */
 .contenidoModalTerminos {
@@ -306,6 +419,22 @@ input:-webkit-autofill {
     line-height: 1.6;
     max-height: 80vh;
 }
+
+/* Estilos personalizados del scrollbar solo dentro del modal */
+.contenidoModalTerminos::-webkit-scrollbar {
+    width: 12px;
+}
+
+.contenidoModalTerminos::-webkit-scrollbar-track {
+    background: #003049;
+}
+
+.contenidoModalTerminos::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    border-radius: 10px;
+    border: 1px solid #003049;
+}
+
 
 .contenidoModalTerminos p {
     font-size: 1.2em;

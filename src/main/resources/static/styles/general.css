@@ -85,6 +85,18 @@ body::-webkit-scrollbar-thumb {
 	width: 75%;
 }
 
+/* Eliminar el color de fondo que se aplica cuando el navegador autocompleta un campo */
+/* Eliminar el borde blanco en autocompletado */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0px 1000px #003049 inset !important;
+	-webkit-text-fill-color: #FDF0D5 !important;
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+
 .container-iniciarSesion {
 	width: 100%;
 }
@@ -184,35 +196,9 @@ body::-webkit-scrollbar-thumb {
 .registrarse a:hover {
 	text-decoration: underline;
 	color: #f86b0c;
-
+	cursor: url('../assets/crash/cursorPointer.png'), pointer;
 }
 
-footer {
-	display: flex;
-	align-items: center;
-	background-color: rgba(17, 40, 24, 1);
-	width: 100%;
-	padding: 1% 0;
-	position: relative;
-	min-height: 60px;
-	z-index: 10;
-	margin-top: auto;
-	color: #FDF0D5;
-
-}
-
-footer a {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 15%;
-}
-
-footer a img {
-	width: 40%;
-	height: auto;
-}
 
 /* MODAL */
 
@@ -315,23 +301,7 @@ footer a img {
 		font-size: 1.8vh;
 	}
 
-	footer {
-		display: flex;
-		align-items: center;
-		background-color: rgba(17, 40, 24, 1);
-		width: 100%;
 
-		padding: 1% 0;
-		position: relative;
-		height: 100%;
-
-	}
-
-	footer a img {
-		width: 20%;
-
-
-	}
 
 
 }
