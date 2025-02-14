@@ -1,3 +1,6 @@
+var vip = false;
+var vipTarjeta = false;
+var vipBanco = false;
 
 document.addEventListener("DOMContentLoaded", function () {
     // Event listener para el formulario
@@ -262,9 +265,22 @@ function validarFormulario(event) {
 
     //PERMITIR O DENEGAR REGISTRO
     if ((comprobarDni() == true) && (comprobarContrasenia() == true) && (comprobarTelefono() == true) && (comprobarMayoriaEdad() == true) && (comprobarNumerosNombreApellidos() == true)) {
-        enviarCorreo(event.target);
-        mostrarModal("Cuenta creada con Éxito.");
-        return true;
+        //SI EL FORMULARIO ES VALIDO CORRECTAMENTE COMPROBAR CAMPOS DE PAGO
+        if (vip == true && vipTarjeta == true) {
+
+        }
+
+        if (vip == true && vipBanco == true) {
+
+        }
+
+        if (vip == false) {
+            enviarCorreo(event.target);
+            mostrarModal("Cuenta creada con Éxito.");
+            return true;
+        }
+
+
 
     } else {
 
@@ -276,31 +292,57 @@ function validarFormulario(event) {
 
 //REGISTRO VIP
 document.getElementById("vip").addEventListener("change", function () {
+
     const metodosPago = document.getElementById("metodosPago");
     if (document.getElementById("vip").checked) {
         metodosPago.classList.remove("hidden");
         metodosPago.style.display = "flex";
+        vip = true;
     } else {
         metodosPago.style.display = "none";
+
         resetearCamposPago();
     }
 });
 
 document.getElementById("tarjeta").addEventListener("change", function () {
+
     document.getElementById("datosTarjeta").classList.remove("hidden");
     document.getElementById("datosBancarios").classList.add("hidden");
     resetearCuentaBancaria();
+
+    // Hacer los campos de tarjeta requeridos
+    document.getElementById("numeroTarjeta").required = true;
+    document.getElementById("fechaExpiracion").required = true;
+    document.getElementById("titularTarjeta").required = true;
+    document.getElementById("cvc").required = true;
+
+
+    vipTarjeta = true;
+    vipBanco = false;
+
 });
 
 document.getElementById("bancaria").addEventListener("change", function () {
     document.getElementById("datosBancarios").classList.remove("hidden");
     document.getElementById("datosTarjeta").classList.add("hidden");
     resetearTarjeta();
+
+    // Hacer los campos bancarios requeridos
+    document.getElementById("titularCuenta").required = true;
+    document.getElementById("numeroCuenta").required = true;
+
+    vipBanco = true;
+    vipTarjeta = false;
+
 });
 
 function resetearCamposPago() {
     document.getElementById("tarjeta").checked = false;
     document.getElementById("bancaria").checked = false;
+    vip = false;
+    vipTarjeta = false;
+    vipBanco = false;
     resetearTarjeta();
     resetearCuentaBancaria();
 }
@@ -309,15 +351,38 @@ function resetearTarjeta() {
     document.getElementById("datosTarjeta").classList.add("hidden");
     document.getElementById("numeroTarjeta").value = "";
     document.getElementById("fechaExpiracion").value = "";
-    document.getElementById("titularCuenta").value = "";
-    titularTarjeta
+    document.getElementById("titularTarjeta").value = "";
     document.getElementById("cvc").value = "";
+
+    //QUITAR CAMPOS REQUERIDOS
+    document.getElementById("numeroTarjeta").required = false;
+    document.getElementById("fechaExpiracion").required = false;
+    document.getElementById("titularTarjeta").required = false;
+    document.getElementById("cvc").required = false;
 }
 
 function resetearCuentaBancaria() {
     document.getElementById("datosBancarios").classList.add("hidden");
     document.getElementById("titularCuenta").value = "";
     document.getElementById("numeroCuenta").value = "";
-    document.getElementById("titularCuenta").value = "";
+
+    //QUITAR CAMPOS REQUERIDOS
+    document.getElementById("titularCuenta").required = false;
+    document.getElementById("numeroCuenta").required = false;
+
+}
+
+
+function comprobarTarjeta() {
+    var tarjeta = document.getElementById("numeroTarjeta").value;
+
+    //VERIFICAR LONGITUD
+
+    if (tarjeta.length != 16) {
+        mostrarModal("El número de tarjeta no es válido. Debe tener 16 caracteres");
+        return false;
+    } else {
+        return true;
+    }
 
 }
