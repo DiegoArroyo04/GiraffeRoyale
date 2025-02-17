@@ -7,7 +7,7 @@ CREATE TABLE USUARIO(
     APELLIDOS VARCHAR(500) NOT NULL COMMENT 'Apellidos del usuario',
     USERNAME VARCHAR(100) NOT NULL COMMENT 'Nombre de usuario',
     PASS VARCHAR(100) NOT NULL COMMENT 'Contraseña del usuario',
-    EMAIL VARCHAR(200) NOT NULL COMMENT 'Email del usuario',
+    EMAIL VARCHAR(200) NOT NULL COMMENT 'Email del usuario',	
     TELEFONO VARCHAR(9) NOT NULL COMMENT 'Telefono del usuario',
 	FECHA_NACIMIENTO DATE NOT NULL COMMENT 'Fecha de nacimiento',
     FECHA_REGISTRO DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha de registro automatica no hace falta especificarla',
@@ -16,7 +16,7 @@ CREATE TABLE USUARIO(
 	TARJETA_CREDITO VARCHAR(16) COMMENT 'Número de tarjeta de crédito ',
     FECHA_EXPIRACION_TARJETA DATE COMMENT 'Fecha de expiración de la tarjeta de crédito',
     CVC_TARJETA INT(3) COMMENT 'Código de verificación de la tarjeta',
-    CUENTA_BANCARIA VARCHAR(20) COMMENT 'Número de cuenta bancaria (IBAN)',
+    CUENTA_BANCARIA VARCHAR(24) COMMENT 'Número de cuenta bancaria (IBAN)',
     TITULAR VARCHAR(200) COMMENT 'Nombre del titular de la cuenta bancaria o tarjeta',
 	CONSTRAINT PK_USUARIO PRIMARY KEY (DNI)
 );
@@ -111,9 +111,6 @@ SELECT * FROM HISTORICO;
 SELECT H.* , LC.MULTIPLICADOR
 FROM HISTORICO H, log_crash LC
 WHERE H.ID_HISTORICO = LC.ID_HISTORICO AND USUARIO_DNI = '12345678A' ORDER BY H.ID_HISTORICO DESC LIMIT 5;
-
-
-
 
 
 

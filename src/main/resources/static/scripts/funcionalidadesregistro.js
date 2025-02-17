@@ -2,6 +2,7 @@ var vip = false;
 var vipTarjeta = false;
 var vipBanco = false;
 
+
 document.addEventListener("DOMContentLoaded", function () {
     // Event listener para el formulario
     const formulario = document.getElementById("formulario");
@@ -12,9 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-function comprobarContrasenia() {
+function comprobarContrasenia(pass) {
 
-    var pass = document.getElementById("pass").value;
+
     var pass2 = document.getElementById("pass2").value;
     var caracteresEspeciales = "!@#$%^&*(),.?\":{}|<>/";
     var tieneCaracteresEspeciales = false;
@@ -66,9 +67,9 @@ function comprobarContrasenia() {
 }
 
 
-function comprobarMayoriaEdad() {
+function comprobarMayoriaEdad(fechaNacimiento) {
 
-    var fechaNacimiento = new Date(document.getElementById("fecha_nacimiento").value);
+
 
     var fechaActual = new Date();
 
@@ -93,9 +94,9 @@ function comprobarMayoriaEdad() {
     }
 
 }
-function comprobarDni() {
+function comprobarDni(dni) {
     //FORMATEO DE DNI
-    var dni = document.getElementById("dni").value;
+
     var dniCadena = dni.toString();
     var dniFormateado = dni.toUpperCase();
     var longitudCorrecta = false;
@@ -130,6 +131,7 @@ function comprobarDni() {
         return true;
     } else if (longitudCorrecta == false) {
         mostrarModal("Tamaño de dni no correcto.Por favor Introduzca su dni bien");
+        console.log(contadorNumeros);
         return false;
     } else {
         mostrarModal("Formato de dni invalido.Por favor introduzca su dni bien");
@@ -137,11 +139,12 @@ function comprobarDni() {
     }
 
 
+
 }
 
 
-function comprobarTelefono() {
-    var telefono = document.getElementById("telefono").value;
+function comprobarTelefono(telefono) {
+
     var patronNumeros = "6789";
     var patronCorrecto = false;
     var longitud = false;
@@ -182,6 +185,11 @@ function mostrarModal(mensaje) {
             modal.style.display = "none";
         }
     };
+
+    // Cerrar automáticamente después de 3 segundos
+    setTimeout(function () {
+        modal.style.display = "none";
+    }, 3000);
 }
 
 function modalTerminos() {
@@ -209,8 +217,6 @@ function modalTerminos() {
 }
 
 
-
-
 function enviarCorreo(form) {
     const serviceID = 'service_xzgsr1j';
     const templateID = 'template_qg8x5fm';
@@ -226,9 +232,8 @@ function enviarCorreo(form) {
         });
 }
 
-function comprobarNumerosNombreApellidos() {
-    var nombre = document.getElementById("nombre").value;
-    var apellidos = document.getElementById("apellidos").value;
+function comprobarNumerosNombreApellidos(nombre, apellidos) {
+
     var tieneNumeros = false;
     var numeros = "0123456789";
 
@@ -262,21 +267,145 @@ function comprobarNumerosNombreApellidos() {
 function validarFormulario(event) {
     event.preventDefault(); // Evita el envío del formulario
 
+    var dni = document.getElementById("dni").value;
+    var nombre = document.getElementById("nombre").value;
+    var apellidos = document.getElementById("apellidos").value;
+    var nombreUsuario = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+    var telefono = document.getElementById("telefono").value;
+    var fechaNacimiento = new Date(document.getElementById("fecha_nacimiento").value);
+    var pass = document.getElementById("pass").value;
+    var tarjeta = document.getElementById("numeroTarjeta").value;
+    var fechaExpiracionValue = new Date(document.getElementById("fechaExpiracion").value);
+    var cvcValue = document.getElementById('cvc').value;
+    var titularTarjeta = document.getElementById("titularTarjeta").value;
+    var titularCuenta = document.getElementById("titularCuenta").value;
+    var iban = document.getElementById("numeroCuenta").value;
+
 
     //PERMITIR O DENEGAR REGISTRO
-    if ((comprobarDni() == true) && (comprobarContrasenia() == true) && (comprobarTelefono() == true) && (comprobarMayoriaEdad() == true) && (comprobarNumerosNombreApellidos() == true)) {
+    if ((comprobarDni(dni) == true) && (comprobarContrasenia(pass) == true) && (comprobarTelefono(telefono) == true) && (comprobarMayoriaEdad(fechaNacimiento) == true) && (comprobarNumerosNombreApellidos(nombre, apellidos) == true)) {
+
         //SI EL FORMULARIO ES VALIDO CORRECTAMENTE COMPROBAR CAMPOS DE PAGO
         if (vip == true && vipTarjeta == true) {
+            if (comprobarTarjeta(tarjeta) == true && validarCVC() == true && validarTitularTarjeta(titularTarjeta) == true) {
+
+
+                var datos = {
+                    dni: dni,
+                    nombre: nombre,
+                    apellidos: apellidos,
+                    nombreUsuario: nombreUsuario,
+                    email: email,
+                    telefono: telefono,
+                    fechaNacimiento: fechaNacimiento,
+                    usuarioVip: true,
+                    pass: pass,
+                    tarjetaCredito: tarjeta,
+                    fechaExpiracionTarjeta: fechaExpiracionValue,
+                    cvcTarjeta: cvcValue,
+                    titular: titularTarjeta
+                };
+
+                // Realizar una solicitud AJAX PARA GUARDAR EL USUARIO EN BBDD
+                $.ajax({
+                    type: "POST",
+                    url: "/usuarios/registrar",
+                    contentType: "application/json",
+                    data: JSON.stringify(datos),
+                    success: function (response) {
+                        mostrarModal(response);
+                        if (response == "Cuenta creado con Éxito.") {
+                            enviarCorreo(event.target);
+                        }
+                    },
+                    error: function (error) {
+                        console.error("Error en la solicitud AJAX:", error);
+                    }
+                });
+
+                return true;
+            } else {
+                return false;
+            }
 
         }
 
         if (vip == true && vipBanco == true) {
+            if (validarTitularCuenta(titularCuenta) == true && validarIBAN(iban) == true) {
 
+                var datos = {
+                    dni: dni,
+                    nombre: nombre,
+                    apellidos: apellidos,
+                    nombreUsuario: nombreUsuario,
+                    email: email,
+                    telefono: telefono,
+                    fechaNacimiento: fechaNacimiento,
+                    usuarioVip: true,
+                    pass: pass,
+                    cuentaBancaria: iban,
+                    titular: titularCuenta
+
+                };
+
+                // Realizar una solicitud AJAX PARA GUARDAR EL USUARIO EN BBDD
+                $.ajax({
+                    type: "POST",
+                    url: "/usuarios/registrar",
+                    contentType: "application/json",
+                    data: JSON.stringify(datos),
+                    success: function (response) {
+                        mostrarModal(response);
+                        if (response == "Cuenta creado con Éxito.") {
+                            enviarCorreo(event.target);
+                        }
+                    },
+                    error: function (error) {
+                        console.error("Error en la solicitud AJAX:", error);
+                    }
+                });
+
+                return true;
+            } else {
+                return false;
+            }
         }
 
         if (vip == false) {
-            enviarCorreo(event.target);
-            mostrarModal("Cuenta creada con Éxito.");
+
+
+            var datos = {
+                dni: dni,
+                nombre: nombre,
+                apellidos: apellidos,
+                nombreUsuario: nombreUsuario,
+                email: email,
+                telefono: telefono,
+                fechaNacimiento: fechaNacimiento,
+                usuarioVip: false,
+                pass: pass
+            };
+
+            // Realizar una solicitud AJAX PARA GUARDAR EL USUARIO EN BBDD
+            $.ajax({
+                type: "POST",
+                url: "/usuarios/registrar",
+                contentType: "application/json",
+                data: JSON.stringify(datos),
+                success: function (response) {
+
+                    mostrarModal(response);
+
+                    if (response == "Cuenta creado con Éxito.") {
+                        enviarCorreo(event.target);
+                    }
+                },
+                error: function (error) {
+                    console.error("Error en la solicitud AJAX:", error);
+                }
+            });
+
             return true;
         }
 
@@ -373,16 +502,131 @@ function resetearCuentaBancaria() {
 }
 
 
-function comprobarTarjeta() {
-    var tarjeta = document.getElementById("numeroTarjeta").value;
+function comprobarTarjeta(tarjeta) {
+
 
     //VERIFICAR LONGITUD
-
     if (tarjeta.length != 16) {
         mostrarModal("El número de tarjeta no es válido. Debe tener 16 caracteres");
         return false;
     } else {
         return true;
+    }
+
+}
+
+//VALIDAR FECHA EXPIRACION 
+var fechaExpiracion = document.getElementById("fechaExpiracion");
+var fechaActual = new Date();
+fechaExpiracion.setAttribute("min", fechaActual.toISOString().split("T")[0]);
+
+
+//VALIDACION CVC
+const cvcInput = document.getElementById('cvc');
+
+cvcInput.addEventListener('input', function () {
+    let valor = parseInt(cvcInput.value, 10);
+
+    // Asegúrate de que el valor esté dentro del rango de 1 a 999
+    if (valor < 1) {
+        cvcInput.value = '1';
+    } else if (valor > 999) {
+        cvcInput.value = '999';
+    }
+
+});
+
+function validarCVC() {
+
+    //VERIFICAR LONGITUD
+    if (cvcInput.value.length != 3) {
+        mostrarModal("El cvc no es válido. Debe tener 3 caracteres");
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarTitularTarjeta(titularTarjeta) {
+
+
+    var tieneNumeros = false;
+    var numeros = "0123456789";
+
+    // Comprobación en el titularTarjeta
+    for (var i = 0; i < titularTarjeta.length; i++) {
+        if (numeros.includes(titularTarjeta[i])) {
+            tieneNumeros = true;
+            mostrarModal("Un titular no puede contener numeros.");
+        }
+    }
+
+    if (tieneNumeros) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarTitularCuenta(titularCuenta) {
+
+
+    var tieneNumeros = false;
+    var numeros = "0123456789";
+
+    // Comprobación en el titularTarjeta
+    for (var i = 0; i < titularCuenta.length; i++) {
+        if (numeros.includes(titularCuenta[i])) {
+            tieneNumeros = true;
+            mostrarModal("Un titular no puede contener numeros.");
+        }
+    }
+    if (tieneNumeros) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+function validarIBAN(iban) {
+
+    var letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    var numeros = "0123456789";
+    var tieneSoloNumeros = true;
+    var tieneLetras = true;
+    var tamanio = true;
+
+    //VERIFICAR LONGITUD
+    if (iban.length != 24) {
+        mostrarModal("El IBAN no es válido. Debe tener 24 caracteres");
+        tamanio = false;
+    } else {
+        tamanio = true;
+    }
+
+    //COMPROBAR SUFIJO DE LAS DOS PRIMERAS LETRAS DEL IBAN
+    if (letras.includes(iban[0]) && letras.includes(iban[1])) {
+        tieneLetras = true;
+    } else {
+        tieneLetras = false;
+        mostrarModal("El IBAN debe comenzar por dos letras");
+    }
+
+    // Verificar que el resto sean solo números
+    for (var i = 2; i < iban.length; i++) {
+        if (!numeros.includes(iban[i])) {
+            tieneSoloNumeros = false;
+            mostrarModal("El IBAN debe contener solo números despues de las dos letras")
+            break;
+        }
+    }
+
+    if (tieneSoloNumeros == true && tieneLetras == true && tamanio == true) {
+        return true;
+    } else {
+        return false;
     }
 
 }

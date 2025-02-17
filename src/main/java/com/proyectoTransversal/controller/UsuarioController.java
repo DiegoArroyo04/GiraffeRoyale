@@ -23,10 +23,10 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 
 	// IGNORAR POR EL MOMENTO NO SE REGISTRA PERO TENGO EL METODO PREPARADO
-	@PostMapping("/registrar")
+	@PostMapping("usuarios/registrar")
 	public String registroUsuario(@RequestBody UsuarioDTO usuario) {
 
-		return "Registro recibido para el usuario: ";
+		return usuarioService.registrarUsuario(usuario);
 	}
 
 	@GetMapping("/usuarios/obtenerUsuarioAdmin")

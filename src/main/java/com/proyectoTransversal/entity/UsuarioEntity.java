@@ -50,7 +50,7 @@ public class UsuarioEntity implements Serializable {
 	private Date fechaNacimiento;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "FECHA_REGISTRO", nullable = false)
+	@Column(name = "FECHA_REGISTRO", nullable = true, insertable = false)
 	private Timestamp fechaRegistro;
 
 	@Column(name = "PRESUPUESTO", precision = 10, scale = 2, nullable = false)
