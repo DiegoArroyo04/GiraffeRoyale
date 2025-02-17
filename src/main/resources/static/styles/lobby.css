@@ -201,7 +201,7 @@ h1 {
 .cartas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    
+
     gap: 3.5rem;
     width: 50%;
     padding: 2%;
@@ -211,7 +211,6 @@ h1 {
 
 .cartas-vip {
     display: grid;
-    
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     width: 70%;
@@ -225,14 +224,14 @@ h1 {
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.247);
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card img {
     width: 100%;
     border-radius: 20px;
-    
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+
 }
 
 
@@ -249,15 +248,16 @@ h1 {
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
     justify-content: flex-end;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
 }
 
-.card-overlay img{
+.card-overlay img {
     width: 15%;
 }
 
-.card-overlay img:hover{
-   
-  
+.card-overlay img:hover {
+
+
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -295,9 +295,11 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(8px); /* Efecto de desenfoque */
-    background: rgba(0, 0, 0, 0.326); /* Oscurecimiento ligero */
-    font-size:1.5rem;
+    backdrop-filter: blur(8px);
+    /* Efecto de desenfoque */
+    background: rgba(0, 0, 0, 0.326);
+    /* Oscurecimiento ligero */
+    font-size: 1.5rem;
     align-items: center;
     justify-content: center;
     transition: backdrop-filter 0.3s ease-in-out;
@@ -388,7 +390,7 @@ h1 {
 
 }
 
-.modalInfo{
+.modalInfo {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -396,14 +398,17 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(8px); /* Efecto de desenfoque */
-    background: rgba(0, 0, 0, 0.326); /* Oscurecimiento ligero */
-    font-size:1.5rem;
+    backdrop-filter: blur(8px);
+    /* Efecto de desenfoque */
+    background: rgba(0, 0, 0, 0.326);
+    /* Oscurecimiento ligero */
+    font-size: 1.5rem;
     align-items: center;
     justify-content: center;
     transition: backdrop-filter 0.3s ease-in-out;
-    
+
 }
+
 .modalInfo h2 {
     color: #ffcc80;
     margin-bottom: 10px;
@@ -412,7 +417,7 @@ h1 {
 
 .modalInfo p {
     color: white;
-   
+
     line-height: 1.6;
     margin-bottom: 10px;
     -webkit-text-stroke: 0.15vh #003049;
@@ -420,7 +425,8 @@ h1 {
 
 .contenidoModalInfo {
     background-image: linear-gradient(to bottom, #F86B0C, #bd9013);
-    backdrop-filter: blur(20px); /* Efecto de desenfoque */
+    backdrop-filter: blur(20px);
+    /* Efecto de desenfoque */
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -490,7 +496,7 @@ h1 {
     position: fixed;
     top: 11px;
     right: 14px;
-    font-size:3rem;
+    font-size: 3rem;
     color: #FFFFFF;
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
     transition: color 0.3s ease;

@@ -27,12 +27,10 @@ var usuario = {};
 var ultimas5tiradas;
 var premioTotal = 0;
 
-
-
-//PETICION GET PARA OBTENER USUARIO DE PRUEBA
+//PETICION GET PARA OBTENER USUARIO
 $.ajax({
     type: "GET",
-    url: "/usuarios/obtenerUsuarioAdmin", // URL del endpoint en el backend
+    url: "/usuarios/obtenerUsuario", // URL del endpoint en el backend
     success: function (data) {
         usuario = data;
         saldo = usuario.presupuesto;
@@ -47,6 +45,7 @@ $.ajax({
         console.error("Error al obtener el usuario de prueba:", error);
     }
 });
+
 
 //IDIOMAS
 var idiomaActual = 'es';
