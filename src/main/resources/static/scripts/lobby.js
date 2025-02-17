@@ -2,6 +2,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     cargarHoraInicial()
     actualizarTexto(); // Llamar a la función solo cuando el DOM está listo
+    document.getElementById("giraffeRush").addEventListener("click", function () {
+        window.location.href = "/juegoCrash";
+    });
 });
 
 var usuario = {};
