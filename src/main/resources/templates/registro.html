@@ -87,18 +87,17 @@
 
                     <!-- Campos para tarjeta -->
                     <div id="datosTarjeta" class="hidden grupoInput">
-                        <input type="number" id="numeroTarjeta" name="numeroTarjeta" placeholder="Número de Tarjeta"
-                            min="111111111">
-                        <input type="text" id="fechaExpiracion" name="fechaExpiracion"
+                        <input type="number" id="numeroTarjeta" name="numeroTarjeta" placeholder="Número de Tarjeta">
+                        <input type="date" id="fechaExpiracion" name="fechaExpiracion"
                             placeholder="Fecha Expiración Tarjeta">
-                        <input type="text" id="cvc" name="cvc" placeholder="CVC">
+                        <input type="number" id="cvc" name="cvc" placeholder="CVC" min="1" max="999">
                         <input type="text" id="titularTarjeta" name="titularCuenta" placeholder="Titular de la Tarjeta">
                     </div>
 
                     <!-- Campos para cuenta bancaria -->
                     <div id="datosBancarios" class="hidden grupoInput">
                         <input type="text" id="titularCuenta" name="titularCuenta" placeholder="Titular de la Cuenta">
-                        <input type="text" id="numeroCuenta" name="numeroCuenta" placeholder="Número de Cuenta">
+                        <input type="text" id="numeroCuenta" name="numeroCuenta" placeholder="IBAN">
                     </div>
                 </div>
 

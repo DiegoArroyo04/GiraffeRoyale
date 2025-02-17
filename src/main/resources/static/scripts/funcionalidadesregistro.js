@@ -182,6 +182,11 @@ function mostrarModal(mensaje) {
             modal.style.display = "none";
         }
     };
+
+    // Cerrar automáticamente después de 3 segundos
+    setTimeout(function () {
+        modal.style.display = "none";
+    }, 3000);
 }
 
 function modalTerminos() {
@@ -265,13 +270,27 @@ function validarFormulario(event) {
 
     //PERMITIR O DENEGAR REGISTRO
     if ((comprobarDni() == true) && (comprobarContrasenia() == true) && (comprobarTelefono() == true) && (comprobarMayoriaEdad() == true) && (comprobarNumerosNombreApellidos() == true)) {
+
         //SI EL FORMULARIO ES VALIDO CORRECTAMENTE COMPROBAR CAMPOS DE PAGO
         if (vip == true && vipTarjeta == true) {
+            if (comprobarTarjeta() == true && validarCVC() == true && validarTitularTarjeta() == true) {
+                enviarCorreo(event.target);
+                mostrarModal("Cuenta creada con Éxito.");
+                return true;
+            } else {
+                return false;
+            }
 
         }
 
         if (vip == true && vipBanco == true) {
-
+            if (validarTitularCuenta() == true && validarIBAN() == true) {
+                enviarCorreo(event.target);
+                mostrarModal("Cuenta creada con Éxito.");
+                return true;
+            } else {
+                return false;
+            }
         }
 
         if (vip == false) {
@@ -377,12 +396,130 @@ function comprobarTarjeta() {
     var tarjeta = document.getElementById("numeroTarjeta").value;
 
     //VERIFICAR LONGITUD
-
     if (tarjeta.length != 16) {
         mostrarModal("El número de tarjeta no es válido. Debe tener 16 caracteres");
         return false;
     } else {
         return true;
+    }
+
+}
+
+//VALIDAR FECHA EXPIRACION 
+var fechaExpiracion = document.getElementById("fechaExpiracion");
+var fechaActual = new Date();
+fechaExpiracion.setAttribute("min", fechaActual.toISOString().split("T")[0]);
+
+
+//VALIDACION CVC
+const cvcInput = document.getElementById('cvc');
+
+cvcInput.addEventListener('input', function () {
+    let valor = parseInt(cvcInput.value, 10);
+
+    // Asegúrate de que el valor esté dentro del rango de 1 a 999
+    if (valor < 1) {
+        cvcInput.value = '1';
+    } else if (valor > 999) {
+        cvcInput.value = '999';
+    }
+
+});
+
+function validarCVC() {
+
+    //VERIFICAR LONGITUD
+    if (cvcInput.value.length != 3) {
+        mostrarModal("El cvc no es válido. Debe tener 3 caracteres");
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarTitularTarjeta() {
+    var titularTarjeta = document.getElementById("titularTarjeta").value;
+
+    var tieneNumeros = false;
+    var numeros = "0123456789";
+
+    // Comprobación en el titularTarjeta
+    for (var i = 0; i < titularTarjeta.length; i++) {
+        if (numeros.includes(titularTarjeta[i])) {
+            tieneNumeros = true;
+            mostrarModal("Un titular no puede contener numeros.");
+        }
+    }
+
+    if (tieneNumeros) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarTitularCuenta() {
+    var titularCuenta = document.getElementById("titularCuenta").value;
+
+    var tieneNumeros = false;
+    var numeros = "0123456789";
+
+    // Comprobación en el titularTarjeta
+    for (var i = 0; i < titularCuenta.length; i++) {
+        if (numeros.includes(titularCuenta[i])) {
+            tieneNumeros = true;
+            mostrarModal("Un titular no puede contener numeros.");
+        }
+    }
+    if (tieneNumeros) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+function validarIBAN() {
+    var iban = document.getElementById("numeroCuenta").value;
+    var letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    var numeros = "0123456789";
+    var tieneSoloNumeros = true;
+    var tieneLetras = true;
+    var tamanio = true;
+
+    //VERIFICAR LONGITUD
+    if (iban.length != 24) {
+        mostrarModal("El IBAN no es válido. Debe tener 24 caracteres");
+        tamanio = false;
+    } else {
+        tamanio = true;
+    }
+
+    //COMPROBAR SUFIJO DE LAS DOS PRIMERAS LETRAS DEL IBAN
+    if (letras.includes(iban[0]) && letras.includes(iban[1])) {
+        tieneLetras = true;
+    } else {
+        tieneLetras = false;
+        mostrarModal("El IBAN debe comenzar por dos letras");
+    }
+
+    // Verificar que el resto sean solo números
+    for (var i = 2; i < iban.length; i++) {
+        if (!numeros.includes(iban[i])) {
+            tieneSoloNumeros = false;
+            mostrarModal("El IBAN debe contener solo números despues de las dos letras")
+            break;
+        }
+    }
+
+
+
+
+    if (tieneSoloNumeros == true && tieneLetras == true && tamanio == true) {
+        return true;
+    } else {
+        return false;
     }
 
 }
