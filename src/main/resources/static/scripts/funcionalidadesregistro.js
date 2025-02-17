@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function comprobarContrasenia(pass) {
 
-
     var pass2 = document.getElementById("pass2").value;
     var caracteresEspeciales = "!@#$%^&*(),.?\":{}|<>/";
     var tieneCaracteresEspeciales = false;
@@ -315,8 +314,16 @@ function validarFormulario(event) {
                     data: JSON.stringify(datos),
                     success: function (response) {
                         mostrarModal(response);
-                        if (response == "Cuenta creado con Éxito.") {
+                        if (response.trim() == "Cuenta creada con Éxito.") {
+                            console.log(response);
                             enviarCorreo(event.target);
+
+                            //REDIRIGIR AL LOGIN
+                            setTimeout(function () {
+                                window.location.href = '/';
+                            }, 3000);
+
+
                         }
                     },
                     error: function (error) {
@@ -357,8 +364,15 @@ function validarFormulario(event) {
                     data: JSON.stringify(datos),
                     success: function (response) {
                         mostrarModal(response);
-                        if (response == "Cuenta creado con Éxito.") {
+                        if (response.trim() == "Cuenta creada con Éxito.") {
+                            console.log(response);
                             enviarCorreo(event.target);
+
+                            //REDIRIGIR AL LOGIN
+                            setTimeout(function () {
+                                window.location.href = '/';
+                            }, 3000);
+
                         }
                     },
                     error: function (error) {
@@ -396,9 +410,13 @@ function validarFormulario(event) {
                 success: function (response) {
 
                     mostrarModal(response);
-
-                    if (response == "Cuenta creado con Éxito.") {
+                    if (response.trim() == "Cuenta creada con Éxito.") {
+                        console.log(response);
                         enviarCorreo(event.target);
+                        //REDIRIGIR AL LOGIN
+                        setTimeout(function () {
+                            window.location.href = '/';
+                        }, 3000);
                     }
                 },
                 error: function (error) {
