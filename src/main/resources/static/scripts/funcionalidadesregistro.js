@@ -2,6 +2,7 @@ var vip = false;
 var vipTarjeta = false;
 var vipBanco = false;
 
+
 document.addEventListener("DOMContentLoaded", function () {
     // Event listener para el formulario
     const formulario = document.getElementById("formulario");
@@ -12,9 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-function comprobarContrasenia() {
+function comprobarContrasenia(pass) {
 
-    var pass = document.getElementById("pass").value;
+
     var pass2 = document.getElementById("pass2").value;
     var caracteresEspeciales = "!@#$%^&*(),.?\":{}|<>/";
     var tieneCaracteresEspeciales = false;
@@ -66,9 +67,9 @@ function comprobarContrasenia() {
 }
 
 
-function comprobarMayoriaEdad() {
+function comprobarMayoriaEdad(fechaNacimiento) {
 
-    var fechaNacimiento = new Date(document.getElementById("fecha_nacimiento").value);
+
 
     var fechaActual = new Date();
 
@@ -93,9 +94,9 @@ function comprobarMayoriaEdad() {
     }
 
 }
-function comprobarDni() {
+function comprobarDni(dni) {
     //FORMATEO DE DNI
-    var dni = document.getElementById("dni").value;
+
     var dniCadena = dni.toString();
     var dniFormateado = dni.toUpperCase();
     var longitudCorrecta = false;
@@ -130,6 +131,7 @@ function comprobarDni() {
         return true;
     } else if (longitudCorrecta == false) {
         mostrarModal("Tamaño de dni no correcto.Por favor Introduzca su dni bien");
+        console.log(contadorNumeros);
         return false;
     } else {
         mostrarModal("Formato de dni invalido.Por favor introduzca su dni bien");
@@ -137,11 +139,12 @@ function comprobarDni() {
     }
 
 
+
 }
 
 
-function comprobarTelefono() {
-    var telefono = document.getElementById("telefono").value;
+function comprobarTelefono(telefono) {
+
     var patronNumeros = "6789";
     var patronCorrecto = false;
     var longitud = false;
@@ -214,8 +217,6 @@ function modalTerminos() {
 }
 
 
-
-
 function enviarCorreo(form) {
     const serviceID = 'service_xzgsr1j';
     const templateID = 'template_qg8x5fm';
@@ -231,9 +232,8 @@ function enviarCorreo(form) {
         });
 }
 
-function comprobarNumerosNombreApellidos() {
-    var nombre = document.getElementById("nombre").value;
-    var apellidos = document.getElementById("apellidos").value;
+function comprobarNumerosNombreApellidos(nombre, apellidos) {
+
     var tieneNumeros = false;
     var numeros = "0123456789";
 
@@ -267,15 +267,63 @@ function comprobarNumerosNombreApellidos() {
 function validarFormulario(event) {
     event.preventDefault(); // Evita el envío del formulario
 
+    var dni = document.getElementById("dni").value;
+    var nombre = document.getElementById("nombre").value;
+    var apellidos = document.getElementById("apellidos").value;
+    var nombreUsuario = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+    var telefono = document.getElementById("telefono").value;
+    var fechaNacimiento = new Date(document.getElementById("fecha_nacimiento").value);
+    var pass = document.getElementById("pass").value;
+    var tarjeta = document.getElementById("numeroTarjeta").value;
+    var fechaExpiracionValue = new Date(document.getElementById("fechaExpiracion").value);
+    var cvcValue = document.getElementById('cvc').value;
+    var titularTarjeta = document.getElementById("titularTarjeta").value;
+    var titularCuenta = document.getElementById("titularCuenta").value;
+    var iban = document.getElementById("numeroCuenta").value;
+
 
     //PERMITIR O DENEGAR REGISTRO
-    if ((comprobarDni() == true) && (comprobarContrasenia() == true) && (comprobarTelefono() == true) && (comprobarMayoriaEdad() == true) && (comprobarNumerosNombreApellidos() == true)) {
+    if ((comprobarDni(dni) == true) && (comprobarContrasenia(pass) == true) && (comprobarTelefono(telefono) == true) && (comprobarMayoriaEdad(fechaNacimiento) == true) && (comprobarNumerosNombreApellidos(nombre, apellidos) == true)) {
 
         //SI EL FORMULARIO ES VALIDO CORRECTAMENTE COMPROBAR CAMPOS DE PAGO
         if (vip == true && vipTarjeta == true) {
-            if (comprobarTarjeta() == true && validarCVC() == true && validarTitularTarjeta() == true) {
-                enviarCorreo(event.target);
-                mostrarModal("Cuenta creada con Éxito.");
+            if (comprobarTarjeta(tarjeta) == true && validarCVC() == true && validarTitularTarjeta(titularTarjeta) == true) {
+
+
+                var datos = {
+                    dni: dni,
+                    nombre: nombre,
+                    apellidos: apellidos,
+                    nombreUsuario: nombreUsuario,
+                    email: email,
+                    telefono: telefono,
+                    fechaNacimiento: fechaNacimiento,
+                    usuarioVip: true,
+                    pass: pass,
+                    tarjetaCredito: tarjeta,
+                    fechaExpiracionTarjeta: fechaExpiracionValue,
+                    cvcTarjeta: cvcValue,
+                    titular: titularTarjeta
+                };
+
+                // Realizar una solicitud AJAX PARA GUARDAR EL USUARIO EN BBDD
+                $.ajax({
+                    type: "POST",
+                    url: "/usuarios/registrar",
+                    contentType: "application/json",
+                    data: JSON.stringify(datos),
+                    success: function (response) {
+                        mostrarModal(response);
+                        if (response == "Cuenta creado con Éxito.") {
+                            enviarCorreo(event.target);
+                        }
+                    },
+                    error: function (error) {
+                        console.error("Error en la solicitud AJAX:", error);
+                    }
+                });
+
                 return true;
             } else {
                 return false;
@@ -284,9 +332,40 @@ function validarFormulario(event) {
         }
 
         if (vip == true && vipBanco == true) {
-            if (validarTitularCuenta() == true && validarIBAN() == true) {
-                enviarCorreo(event.target);
-                mostrarModal("Cuenta creada con Éxito.");
+            if (validarTitularCuenta(titularCuenta) == true && validarIBAN(iban) == true) {
+
+                var datos = {
+                    dni: dni,
+                    nombre: nombre,
+                    apellidos: apellidos,
+                    nombreUsuario: nombreUsuario,
+                    email: email,
+                    telefono: telefono,
+                    fechaNacimiento: fechaNacimiento,
+                    usuarioVip: true,
+                    pass: pass,
+                    cuentaBancaria: iban,
+                    titular: titularCuenta
+
+                };
+
+                // Realizar una solicitud AJAX PARA GUARDAR EL USUARIO EN BBDD
+                $.ajax({
+                    type: "POST",
+                    url: "/usuarios/registrar",
+                    contentType: "application/json",
+                    data: JSON.stringify(datos),
+                    success: function (response) {
+                        mostrarModal(response);
+                        if (response == "Cuenta creado con Éxito.") {
+                            enviarCorreo(event.target);
+                        }
+                    },
+                    error: function (error) {
+                        console.error("Error en la solicitud AJAX:", error);
+                    }
+                });
+
                 return true;
             } else {
                 return false;
@@ -294,8 +373,39 @@ function validarFormulario(event) {
         }
 
         if (vip == false) {
-            enviarCorreo(event.target);
-            mostrarModal("Cuenta creada con Éxito.");
+
+
+            var datos = {
+                dni: dni,
+                nombre: nombre,
+                apellidos: apellidos,
+                nombreUsuario: nombreUsuario,
+                email: email,
+                telefono: telefono,
+                fechaNacimiento: fechaNacimiento,
+                usuarioVip: false,
+                pass: pass
+            };
+
+            // Realizar una solicitud AJAX PARA GUARDAR EL USUARIO EN BBDD
+            $.ajax({
+                type: "POST",
+                url: "/usuarios/registrar",
+                contentType: "application/json",
+                data: JSON.stringify(datos),
+                success: function (response) {
+
+                    mostrarModal(response);
+
+                    if (response == "Cuenta creado con Éxito.") {
+                        enviarCorreo(event.target);
+                    }
+                },
+                error: function (error) {
+                    console.error("Error en la solicitud AJAX:", error);
+                }
+            });
+
             return true;
         }
 
@@ -392,8 +502,8 @@ function resetearCuentaBancaria() {
 }
 
 
-function comprobarTarjeta() {
-    var tarjeta = document.getElementById("numeroTarjeta").value;
+function comprobarTarjeta(tarjeta) {
+
 
     //VERIFICAR LONGITUD
     if (tarjeta.length != 16) {
@@ -438,8 +548,8 @@ function validarCVC() {
 
 }
 
-function validarTitularTarjeta() {
-    var titularTarjeta = document.getElementById("titularTarjeta").value;
+function validarTitularTarjeta(titularTarjeta) {
+
 
     var tieneNumeros = false;
     var numeros = "0123456789";
@@ -460,8 +570,8 @@ function validarTitularTarjeta() {
 
 }
 
-function validarTitularCuenta() {
-    var titularCuenta = document.getElementById("titularCuenta").value;
+function validarTitularCuenta(titularCuenta) {
+
 
     var tieneNumeros = false;
     var numeros = "0123456789";
@@ -480,8 +590,8 @@ function validarTitularCuenta() {
     }
 
 }
-function validarIBAN() {
-    var iban = document.getElementById("numeroCuenta").value;
+function validarIBAN(iban) {
+
     var letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     var numeros = "0123456789";
     var tieneSoloNumeros = true;
@@ -512,9 +622,6 @@ function validarIBAN() {
             break;
         }
     }
-
-
-
 
     if (tieneSoloNumeros == true && tieneLetras == true && tamanio == true) {
         return true;

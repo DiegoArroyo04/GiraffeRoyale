@@ -3,10 +3,6 @@ package com.proyectoTransversal.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-
 public class UsuarioDTO {
 
     private String dni;
@@ -203,6 +199,15 @@ public class UsuarioDTO {
 
     public void setTitular(String titular) {
         this.titular = titular;
+    }
+
+    @Override
+    public String toString() {
+        return "UsuarioDTO [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nombreUsuario="
+                + nombreUsuario + ", email=" + email + ", telefono=" + telefono + ", fechaNacimiento=" + fechaNacimiento
+                + ", presupuesto=" + presupuesto + ", usuarioVip=" + usuarioVip + ", pass=" + pass + ", tarjetaCredito="
+                + tarjetaCredito + ", fechaExpiracionTarjeta=" + fechaExpiracionTarjeta + ", cvcTarjeta=" + cvcTarjeta
+                + ", cuentaBancaria=" + cuentaBancaria + ", titular=" + titular + "]";
     }
 
 }
