@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("tragaperras").addEventListener("click", function () {
         window.location.href = "/tragaperras";
     });
+
+    document.getElementById("pamplonaRush").addEventListener("click", function () {
+        window.location.href = "/juegoSanFermin";
+    });
 });
 
 var usuario = {};
