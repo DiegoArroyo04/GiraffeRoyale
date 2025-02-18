@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("giraffeRush").addEventListener("click", function () {
         window.location.href = "/juegoCrash";
     });
+    document.getElementById("tragaperras").addEventListener("click", function () {
+        window.location.href = "/tragaperras";
+    });
 });
 
 var usuario = {};

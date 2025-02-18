@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girraffe Spins And Wins</title>
+    <link rel="stylesheet" type="text/css" href="styles/tragaperras.css">
+    <link rel="icon" type="image/png" href="assets/logo giraffe royale.png">
+    <script src="https://unpkg.com/i18next@latest/i18next.min.js"></script>
+</head>
+
+<body>
+    <div id="preloader" class="preloader">
+        <img src="assets/tragaperras/Preload.jpeg">
+    </div>
+    <header id="header">
+        <div class="contentenedorVolverMain">
+            <a href="/lobby">
+                <img src="assets/header/Home.png" class="home">
+            </a>
+            <a href="/lobby">
+                <img src="assets/header/LOGO_GIRAFFE_ROYALE.png" class="logo">
+            </a>
+        </div>
+        <h1>GIRAFFE ROYALE</h1>
+        <div class="saldo">
+            <h1 id="saldo" class="saldo">Saldo:0€</h1>
+            <img src="assets/header/añadir.png" id="añadirSaldo">
+        </div>
+        <div class="horaYConfi">
+            <h1 class="hora" id="hora"></h1>
+            <img id="configuracion" src="assets/header/configuracion.png">
+        </div>
+    </header>
+    <main>
+        <div id="contenedorJuego" class="contenedorJuego">
+
+            <div class="contenedorTituloJuego">
+                <h1>GIRAFFE SPINS AND WINS</h1>
+            </div>
+            <div class="marco">
+                <div id="carrete1" class="carrete">
+                    <img src="assets/tragaperras/iconoGirafa.png">
+                    <img src="assets/tragaperras/iconoArbol.png">
+                    <img src="assets/tragaperras/iconoLoro.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoLoro.png">
+                    <img src="assets/tragaperras/iconoArbol.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoLoro.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                </div>
+                <div id="carrete2" class="carrete">
+                    <img src="assets/tragaperras/iconoGirafa.png">
+                    <img src="assets/tragaperras/iconoArbol.png">
+                    <img src="assets/tragaperras/iconoLoro.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoLoro.png">
+                    <img src="assets/tragaperras/iconoArbol.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoLoro.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                </div>
+                <div id="carrete3" class="carrete">
+                    <img src="assets/tragaperras/iconoGirafa.png">
+                    <img src="assets/tragaperras/iconoArbol.png">
+                    <img src="assets/tragaperras/iconoLoro.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoLoro.png">
+                    <img src="assets/tragaperras/iconoArbol.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoPlatanos.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                    <img src="assets/tragaperras/iconoLoro.png">
+                    <img src="assets/tragaperras/iconoFlor.png">
+                </div>
+
+            </div>
+
+            <div class="footerJuego">
+
+                <div class="iconos">
+                    <div class="navegacionFooterJuego">
+                        <button id="creditos" class="creditos">Insertar Creditos</button>
+                    </div>
+                    <div class="navegacionFooterJuego">
+                        <img src="assets/tragaperras/iconoInformacion.png" id="info" class="icono">
+                        <p id="creditosTexto">CREDITOS:</p>
+                        <p id="creditosTotales" class="creditosApuesta">0</p>
+                    </div>
+                    <div class="navegacionFooterJuego">
+                        <img src="assets/tragaperras/sonido.png" id="sonido" class="icono">
+                        <p id="apuestaTexto">APUESTA:</p>
+                        <p id="apuesta" class="creditosApuesta">20</p>
+                    </div>
+                </div>
+                <div class="textoTragaperras">
+                    <h1 id="textoTragaperras">¡TIRE PARA GANAR!</h1>
+                </div>
+                <div class="contenedorBotones">
+                    <img src="assets/tragaperras/disminuirApuesta.png" id="disminuirApuesta" class="icono">
+                    <div class="jugar">
+                        <img src="assets/tragaperras/botonTirar.png" class="botonTirar" id="botonTirar">
+                        <img src="assets/tragaperras/autoplay.png" id="tiradasAutomaticas" class="icono">
+                        <p id="cantidadTiradas"></p>
+                    </div>
+                    <img src="assets/tragaperras/aumentarApuesta.png" id="aumentarApuesta" class="icono">
+                </div>
+            </div>
+
+            <div id="modalSonidoPantalla" class="modalSonidoPantalla">
+                <div id="modalSonido" class="modalSonido">
+                    <img id="iconoSonidoModal" src="assets/tragaperras/sonidoMuteRojo.png">
+                    <input type="range" id="barraVolumen" class="barraVolumen" min="0" max="100" value="100">
+                    <span id="valorVolumen" class="valorVolumen">100</span>
+                </div>
+            </div>
+
+            <div id="modalTiradasAutomaticasPantalla" class="modalSonidoPantalla">
+                <div id="modalTiradasAutomaticasContenido" class="modalTiradasAutomaticasContenido">
+                    <span id="cerrarModalTiradas" class="cerrarModalTiradas">&times;</span>
+                    <p id="tituloTiradas" class="tituloTiradas">NUMERO DE TIRADAS AUTOMÁTICAS</p>
+                    <div class="contenedorElegirTiradas">
+                        <input type="range" id="barraTiradas" class="barraTiradas" min="0" max="100" value="70">
+                        <span id="valorTiradas" class="valorTiradas">70</span>
+                    </div>
+                    <button id="iniciarTiradas" class="iniciarTiradas">INICIAR TIRADAS AUTOMÁTICAS</button>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+        <div id="modalDepositar" class="modal">
+            <div class="contenidoModal">
+                <span id="cerrarModalDepositar" class="cerrarModal">&times;</span>
+                <div id="depositar" class="depositarYRetirar">
+                    <h1 id="depositarTitulo">DEPOSITAR</h1>
+                    <input type="number" id="inputDeposito" class="inputModal"
+                        placeholder="Introduce la cantidad que deseas depositar">
+                    <div class="botonesModal">
+                        <button id="depositarBtn" class="botonModal">Depositar</button>
+                        <button id="abrirModalRetirar" class="botonModal">Retirar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modalRetirar" class="modal">
+            <div class="contenidoModal">
+                <span id="cerrarModalRetirar" class="cerrarModal">&times;</span>
+                <div id="retirar" class="depositarYRetirar">
+                    <h1 id="retirarTitulo">RETIRAR</h1>
+                    <input type="number" id="inputRetiro" class="inputModal"
+                        placeholder="Introduce la cantidad que deseas retirar">
+                    <div class="botonesModal">
+                        <button id="retirarBtn" class="botonModal">Retirar</button>
+                        <button id="abrirModalDepositar" class="botonModal">Depositar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modalDepositarCreditos" class="modal">
+            <div class="contenidoModal">
+                <span id="cerrarModalDepositarCreditos" class="cerrarModal">&times;</span>
+                <div id="depositarCreditos" class="depositarYRetirar">
+                    <h1 id="insertarCreditosTitulo">CONVERTIR EUROS A CREDITOS</h1>
+                    <h1 id="saldoCreditosInfo" class="saldoCreditosInfo">Saldo actual:0€</h1>
+                    <input type="number" id="inputEurosACreditos" class="inputModal"
+                        placeholder="Introduce la cantidad de euros que deseas convertir a creditos">
+                    <div class="botonesModal">
+                        <button id="convertirBtn" class="botonModal">Convertir a creditos</button>
+                        <button id="abrirModalRetirarCreditos" class="botonModal">Retirar creditos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modalRetirarCreditos" class="modal">
+            <div class="contenidoModal">
+                <span id="cerrarModalRetirarCreditos" class="cerrarModal">&times;</span>
+                <div id="retirarCreditos" class="depositarYRetirar">
+                    <h1 id="retirarCreditosTitulo">CONVERTIR CREDITOS A EUROS</h1>
+                    <h1 id="creditosInfo" class="saldoCreditosInfo">Creditos actuales:0</h1>
+                    <input type="number" id="inputRetiroCreditos" class="inputModal"
+                        placeholder="Introduce la cantidad de creditos que deseas convertir a euros">
+                    <div class="botonesModal">
+                        <button id="retirarCreditosBtn" class="botonModal">Retirar creditos</button>
+                        <button id="abrirModalDepositarCreditos" class="botonModal">Convertir euros a creditos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modalError" class="modalError">
+            <div class="contenidoModalError">
+                <span id="cerrarModalError" class="cerrarModalError">&times;</span>
+                <p id="mensajeError" clas="mensajeError"></p>
+            </div>
+        </div>
+
+
+        <div id="modalAjustes" class="modal">
+            <div class="contenidoModal contenidoAjustesModal">
+                <span id="cerrarModalAjustes" class="cerrarModalError">&times;</span>
+                <h2 id="tituloAjustes">Ajustes</h2>
+                <div class="opcionAjustes">
+                    <h3 id="cambiarIdiomaTexto">Cambiar Idioma A Ingles:</h3>
+                    <img id="idioma" src="assets/tragaperras/iconoIngles.png" alt="Idioma" class="icono">
+                </div>
+                <div class="opcionAjustes">
+                    <h3 id="textoModoOscuro">Cambiar A Modo Oscuro:</h3>
+                    <img src="assets/tragaperras/modoOscuro.png" id="modoOscuro" alt="Modo Oscuro" class="icono">
+                </div>
+            </div>
+        </div>
+        <div id="modalVictoria" class="modalVictoria">
+            <div class="modalVictoriaContenido">
+                <span id="cerrarModalVictoria" class="cerrarModalVictoria">&times;</span>
+                <img src="assets/tragaperras/premioHeader.png" class="premioHeader">
+                <p id="modalVictoriaMensaje" class="mensajeVictoria">PREMIO</p>
+                <img src="assets/tragaperras/girafaPremios.png" class="girafaPremio">
+            </div>
+        </div>
+
+
+        <div id="modalTablaPremios" class="tablaPremios ">
+            <span id="cerrarModalTablaPremios" class="cerrarModalError">&times;</span>
+            <h2 id="tituloTablaPremios">Tabla de Premios</h2>
+            <table class="tablaEstilos">
+                <tr>
+                    <th id="combinacion">Combinación</th>
+                    <th id="jirafa"><img src="assets/tragaperras/iconoGirafa.png" alt="Jirafa"> Jirafa</th>
+                    <th id="arbol"><img src="assets/tragaperras/iconoArbol.png" alt="Árbol"> Árbol</th>
+                    <th id="loro"><img src="assets/tragaperras/iconoLoro.png" alt="Loro"> Loro</th>
+                    <th id="platanos"><img src="assets/tragaperras/iconoPlatanos.png" alt="Plátanos"> Plátanos</th>
+                    <th id="flor"><img src="assets/tragaperras/iconoFlor.png" alt="Flor"> Flor</th>
+
+                </tr>
+                <tr>
+                    <td id="lineaCentral">Línea central</td>
+                    <td>x100</td>
+                    <td>x30</td>
+                    <td>x20</td>
+                    <td>x10</td>
+                    <td>x5</td>
+                </tr>
+                <tr>
+                    <td id="lineaSuperiorInferior">Línea superior/inferior</td>
+                    <td>x50</td>
+                    <td>x15</td>
+                    <td>x10</td>
+                    <td>x5</td>
+                    <td>x2.5</td>
+                </tr>
+                <tr>
+                    <td id="lineaDiagonal">Línea en Diagonal</td>
+                    <td>x50</td>
+                    <td>x15</td>
+                    <td>x10</td>
+                    <td>x5</td>
+                    <td>x2.5</td>
+                </tr>
+                <tr>
+                    <td id="activadorGirosTabla">Activador de Giros</td>
+                    <td colspan="5" id="activadorGirosDescripcion">3 Jirafas activan 10 giros gratuitos con el
+                        multiplicador de la jirafa aplicado a
+                        todos los símbolos.</td>
+                </tr>
+                <tr>
+                    <td id="acumuladorMultiplicadores">Acumulador de multiplicadores</td>
+                    <td colspan="5" id="acumuladorMultiplicadoresDescripcion">¡Si se obtienen varias combinaciones
+                        ganadoras, ¡los multiplicadores de todas se
+                        suman!
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+
+    </main>
+
+    <footer>
+        <a href="https://www.juegoseguro.es">
+            <img src="assets/footer/juegasegurocasino.png" alt="Iconos Juego Seguro">
+        </a>
+        <p>© 2024 Giraffe Royale Casino</p>
+        <img src="assets/header/LOGO_GIRAFFE_ROYALE.png" class="logo">
+    </footer>
+
+    <script src="scripts/tragaperras.js"></script>
+</body>
+
+</html>
