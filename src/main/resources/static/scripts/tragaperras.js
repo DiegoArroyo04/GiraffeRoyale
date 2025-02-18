@@ -20,8 +20,28 @@ var musicaSuena = true;
 var saldo = 0.00;
 var creditos = 0;
 var apuesta = 20;
+var usuario = {};
 
 var intervaloTiradas = null;
+
+//PETICION GET PARA OBTENER USUARIO
+$.ajax({
+    type: "GET",
+    url: "/usuarios/obtenerUsuario", // URL del endpoint en el backend
+    success: function (data) {
+        usuario = data;
+        saldo = usuario.presupuesto;
+        // Actualizar elementos del DOM dentro del success
+        var saldoElement = document.getElementById("saldo");
+        saldoElement.textContent = i18next.t('saldo', { saldo: saldo });
+
+        var saldoActualElement = document.getElementById("saldoCreditosInfo");
+        saldoActualElement.textContent = i18next.t('saldoActual', { saldo: saldo });
+    },
+    error: function (error) {
+        console.error("Error al obtener el usuario de prueba:", error);
+    }
+});
 
 //ICONOS
 var girafa = "iconoGirafa.png";
@@ -376,11 +396,30 @@ window.addEventListener("load", function () {
 
         if (!isNaN(deposito) && deposito > 0) {
             saldo += deposito;
-            //SALDO PARA HEADER
-            document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
-            //EN EL MODAL DE CREDITOS APARECERA EL SALDO ACTUAL 
-            document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
-            mostrarError(i18next.t('textoConfirmacionDeposito') + deposito + "€");
+            var datos = {
+                dni: usuario.dni,
+                presupuesto: saldo
+            };
+
+            // Realizar una solicitud AJAX PARA ACTUALIZAR EL SALDO EN BBDD
+            $.ajax({
+                type: "POST",
+                url: "/usuarios/actualizarSaldo",
+                contentType: "application/json",
+                data: JSON.stringify(datos),
+                success: function (response) {
+
+                    //SALDO PARA HEADER
+                    document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
+                    //EN EL MODAL DE CREDITOS APARECERA EL SALDO ACTUAL 
+                    document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
+                    mostrarError(i18next.t('textoConfirmacionDeposito') + deposito + "€");
+
+                },
+                error: function (error) {
+                    console.error("Error en la solicitud AJAX:", error);
+                }
+            });
         } else {
             mostrarError(i18next.t('textoErrorFormatoDeposito'));
         }
@@ -399,9 +438,29 @@ window.addEventListener("load", function () {
         // Verifica si el valor es válido y que no sea mayor que el saldo
         if (!isNaN(retiro) && retiro > 0 && retiro <= saldo) {
             saldo -= retiro; // Resta el saldo retirado
-            document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
-            document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
-            mostrarError(i18next.t('textoConfirmacionRetiro') + retiro + "€");
+            var datos = {
+                dni: usuario.dni,
+                presupuesto: saldo
+            };
+
+            // Realizar una solicitud AJAX PARA ACTUALIZAR EL SALDO EN BBDD
+            $.ajax({
+                type: "POST",
+                url: "/usuarios/actualizarSaldo",
+                contentType: "application/json",
+                data: JSON.stringify(datos),
+                success: function (response) {
+
+                    document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
+                    document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
+                    mostrarError(i18next.t('textoConfirmacionRetiro') + retiro + "€");
+
+                },
+                error: function (error) {
+                    console.error("Error en la solicitud AJAX:", error);
+                }
+            });
+
         } else if (retiro > saldo) {
             mostrarError(i18next.t('textoErrorRetiroSaldoInsuficiente'));
         } else {
@@ -562,14 +621,42 @@ window.addEventListener("load", function () {
 
         if (!isNaN(eurosACreditos) && eurosACreditos > 0 && eurosACreditos <= saldo) {
 
-            mostrarError(i18next.t('hasConvertido') + eurosACreditos + i18next.t('eurosA') + (eurosACreditos * 100) + i18next.t('creditosTextoModalConversion'));
-            creditos += (eurosACreditos * 100);
-            saldo -= eurosACreditos;
-            document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
-            document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
-            document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
-            document.getElementById("creditosTotales").innerHTML = creditos;
-            document.getElementById("inputEurosACreditos").value = "";
+            //PETICION GET PARA OBTENER CUANTOS CREDITOS TIENE ESTE JUEGO POR EURO
+            $.ajax({
+                type: "GET",
+                url: "/convertirACreditos?id=1", // URL del endpoint en el backend junto con el id del juego
+                success: function (multiplicador) {
+                    creditos += (eurosACreditos * multiplicador);
+                    saldo -= eurosACreditos;
+                    var datos = {
+                        dni: usuario.dni,
+                        presupuesto: saldo
+                    };
+                    // Realizar una solicitud AJAX PARA ACTUALIZAR EL SALDO EN BBDD
+                    $.ajax({
+                        type: "POST",
+                        url: "/usuarios/actualizarSaldo",
+                        contentType: "application/json",
+                        data: JSON.stringify(datos),
+                        success: function (response) {
+
+                            document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
+                            document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
+                            document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
+                            document.getElementById("creditosTotales").innerHTML = creditos;
+                            document.getElementById("inputEurosACreditos").value = "";
+                            mostrarError(i18next.t('hasConvertido') + eurosACreditos + i18next.t('eurosA') + (eurosACreditos * multiplicador) + i18next.t('creditosTextoModalConversion'));
+
+                        },
+                        error: function (error) {
+                            console.error("Error en la solicitud AJAX:", error);
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.error("Error al obtener el multiplicador del juego:", error);
+                }
+            });
 
         } else if (eurosACreditos > saldo) {
 
@@ -597,14 +684,43 @@ window.addEventListener("load", function () {
         var creditosAEuros = parseFloat(document.getElementById("inputRetiroCreditos").value);
 
         if (!isNaN(creditosAEuros) && creditosAEuros > 0 && creditosAEuros <= creditos) {
-            mostrarError(i18next.t('hasConvertido') + creditosAEuros + i18next.t('creditosA') + (creditosAEuros / 100) + " €");
-            creditos -= creditosAEuros;
-            saldo += (creditosAEuros / 100);
-            document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
-            document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
-            document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
-            document.getElementById("creditosTotales").innerHTML = creditos;
-            document.getElementById("inputRetiroCreditos").value = "";
+            //PETICION GET PARA OBTENER CUANTOS CREDITOS TIENE ESTE JUEGO POR EURO
+            $.ajax({
+                type: "GET",
+                url: "/convertirACreditos?id=1", // URL del endpoint en el backend junto con el id del juego
+                success: function (multiplicador) {
+                    saldo += parseFloat((creditosAEuros / multiplicador).toFixed(2));
+                    creditos -= creditosAEuros;
+
+                    var datos = {
+                        dni: usuario.dni,
+                        presupuesto: saldo
+                    };
+                    // Realizar una solicitud AJAX PARA ACTUALIZAR EL SALDO EN BBDD
+                    $.ajax({
+                        type: "POST",
+                        url: "/usuarios/actualizarSaldo",
+                        contentType: "application/json",
+                        data: JSON.stringify(datos),
+                        success: function (response) {
+
+                            document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
+                            document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
+                            document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
+                            document.getElementById("creditosTotales").innerHTML = creditos;
+                            document.getElementById("inputRetiroCreditos").value = "";
+                            mostrarError(i18next.t('hasConvertido') + creditosAEuros + i18next.t('creditosA') + (creditosAEuros / multiplicador).toFixed(2) + " €");
+                        },
+                        error: function (error) {
+                            console.error("Error en la solicitud AJAX:", error);
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.error("Error al obtener el multiplicador del juego:", error);
+                }
+            });
+
         } else if (creditosAEuros > creditos) {
             mostrarError(i18next.t('errorCreditosInsuficientesConversion'));
         } else {
@@ -1063,6 +1179,7 @@ function mostrarError(mensaje) {
 function comprobarSimbolos(carrete1, carrete2, carrete3, apuestaActual) {
 
     var premioTotal = 0;
+    var combinacion = "";
 
     var girafa = {
         imagen: "assets/tragaperras/iconoGirafa.png",
@@ -1119,12 +1236,49 @@ function comprobarSimbolos(carrete1, carrete2, carrete3, apuestaActual) {
 
     }
 
-    // Procesar todos los símbolos y acumular premios
-    premioTotal += calcularPremioCombinado(girafa, carrete1, carrete2, carrete3, apuestaActual);
-    premioTotal += calcularPremioCombinado(arbol, carrete1, carrete2, carrete3, apuestaActual);
-    premioTotal += calcularPremioCombinado(loro, carrete1, carrete2, carrete3, apuestaActual);
-    premioTotal += calcularPremioCombinado(platanos, carrete1, carrete2, carrete3, apuestaActual);
-    premioTotal += calcularPremioCombinado(flor, carrete1, carrete2, carrete3, apuestaActual);
+
+
+    // Procesar todos los símbolos y acumular premios y multiplicadores
+    let resultadoGirafa = calcularPremioCombinado(girafa, carrete1, carrete2, carrete3, apuestaActual);
+    premioTotal += resultadoGirafa.premio;          // Acumular el premio
+    //SI EL RESULTADO ES DISTINTO DE SIN COMBINAR SIGNIFICA QUE HAY UNA COMBINACION GANADORA 
+    if (resultadoGirafa.combinacion !== "Sin combinar") {
+        combinacion = resultadoGirafa.combinacion;
+    }
+
+
+    let resultadoArbol = calcularPremioCombinado(arbol, carrete1, carrete2, carrete3, apuestaActual);
+    premioTotal += resultadoArbol.premio;
+    //SI EL RESULTADO ES DISTINTO DE SIN COMBINAR SIGNIFICA QUE HAY UNA COMBINACION GANADORA 
+    if (resultadoArbol.combinacion !== "Sin combinar") {
+        combinacion = resultadoArbol.combinacion;
+    }
+
+
+    let resultadoLoro = calcularPremioCombinado(loro, carrete1, carrete2, carrete3, apuestaActual);
+    premioTotal += resultadoLoro.premio;
+    //SI EL RESULTADO ES DISTINTO DE SIN COMBINAR SIGNIFICA QUE HAY UNA COMBINACION GANADORA 
+    if (resultadoLoro.combinacion !== "Sin combinar") {
+        combinacion = resultadoLoro.combinacion;
+    }
+
+
+
+    let resultadoPlatanos = calcularPremioCombinado(platanos, carrete1, carrete2, carrete3, apuestaActual);
+    premioTotal += resultadoPlatanos.premio;
+    //SI EL RESULTADO ES DISTINTO DE SIN COMBINAR SIGNIFICA QUE HAY UNA COMBINACION GANADORA 
+    if (resultadoPlatanos.combinacion !== "Sin combinar") {
+        combinacion += " " + resultadoPlatanos.combinacion;
+    }
+
+
+    let resultadoFlor = calcularPremioCombinado(flor, carrete1, carrete2, carrete3, apuestaActual);
+    premioTotal += resultadoFlor.premio;
+    //SI EL RESULTADO ES DISTINTO DE SIN COMBINAR SIGNIFICA QUE HAY UNA COMBINACION GANADORA 
+    if (resultadoFlor.combinacion !== "Sin combinar") {
+        combinacion += " " + resultadoFlor.combinacion;
+    }
+
 
     // Si hay algún multiplicador, calcular el premio
     if (premioTotal > 0) {
@@ -1135,12 +1289,54 @@ function comprobarSimbolos(carrete1, carrete2, carrete3, apuestaActual) {
         document.getElementById("textoTragaperras").innerHTML = i18next.t('ganancias') + premioTotal + i18next.t('creditosModalVictoria');
         setTimeout(() => document.getElementById("textoTragaperras").innerHTML = i18next.t('tirar'), 5000);
         hayPremio = true;
+
     } else {
         document.getElementById("textoTragaperras").innerHTML = i18next.t('tirar');
+        combinacion = "Sin combinar";
     }
 
 
+    //REGISTRAR TIRADA EN BBDD Y FINALIZAR LA TIRADA
+    finalizarTirada(apuestaActual, premioTotal, combinacion.trim());
+
+
 }
+
+
+//REGISTRAR TIRADA EN BBDD
+function finalizarTirada(apuestaActual, premioTotal, combinacion) {
+
+    var resultado = premioTotal - apuestaActual;
+
+
+    var datos = {
+        usuarioDni: usuario.dni,
+        idJuego: 1,
+        apuesta: apuestaActual,
+        resultado: resultado,
+        combinacion: combinacion
+    };
+
+    // Realizar una solicitud AJAX para crear la tirada  EN BBDD
+    $.ajax({
+        type: "POST",
+        url: "/crearTiradaTragaperras",
+        contentType: "application/json",
+        data: JSON.stringify(datos),
+        success: function (response) {
+            console.log("Tirada registrada " + response);
+        },
+        error: function (error) {
+            console.error("Error en la solicitud AJAX:", error);
+        }
+    });
+
+
+
+}
+
+
+
 function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaActual) {
 
 
@@ -1151,8 +1347,15 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
 
     //ACUMULARA EL MULTIPLICADOR DE TODAS LAS CASUISTICAS Y SI HAY MAS DE DOS SE SUMARA 
     var multiplicadorTotal = 0;
+
     //ALMACENA LAS IMAGENES DE LAS COMBINACIONES GANADORAS PARA RESALTARLAS
     var combinacionesGanadoras = [];
+
+
+    var combinacionTexto = "";
+
+    //OBTENER EL NOMBRE DEL SIMBOLO 
+    var nombreSimbolo = obtenerNombreImagen(simbolo.imagen).replace("icono", "").replace(".png", "").toUpperCase();
 
     // COMBINACION LINEA CENTRAL
     if (obtenerNombreImagen(carrete1[1].src) === obtenerNombreImagen(carrete2[1].src) &&
@@ -1160,6 +1363,9 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
         obtenerNombreImagen(simbolo.imagen) === obtenerNombreImagen(carrete1[1].src)) {
         multiplicadorTotal += simbolo.multiCentral;
         combinacionesGanadoras.push([carrete1[1], carrete2[1], carrete3[1]]);
+        //CONCATENAR COMBINACION GANADORA
+        combinacionTexto += "Central " + nombreSimbolo + " ";
+
     }
 
     // COMBINACION LINEA SUPERIOR
@@ -1168,6 +1374,8 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
         obtenerNombreImagen(simbolo.imagen) === obtenerNombreImagen(carrete1[0].src)) {
         multiplicadorTotal += simbolo.multiHorizontalesArribaAbajo;
         combinacionesGanadoras.push([carrete1[0], carrete2[0], carrete3[0]]);
+        //CONCATENAR COMBINACION GANADORA
+        combinacionTexto += "Superior " + nombreSimbolo + " ";
     }
 
     // COMBINACION LINEA INFERIOR
@@ -1176,6 +1384,8 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
         obtenerNombreImagen(simbolo.imagen) === obtenerNombreImagen(carrete1[2].src)) {
         multiplicadorTotal += simbolo.multiHorizontalesArribaAbajo;
         combinacionesGanadoras.push([carrete1[2], carrete2[2], carrete3[2]]);
+        //CONCATENAR COMBINACION GANADORA
+        combinacionTexto += "Inferior " + nombreSimbolo + " ";
     }
 
     // COMBINACION DIAGONAL IZQUIERDA
@@ -1184,6 +1394,8 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
         obtenerNombreImagen(simbolo.imagen) === obtenerNombreImagen(carrete1[0].src)) {
         multiplicadorTotal += simbolo.multiDiagonal;
         combinacionesGanadoras.push([carrete1[0], carrete2[1], carrete3[2]]);
+        //CONCATENAR COMBINACION GANADORA
+        combinacionTexto += "Diagonal izquierda " + nombreSimbolo + " ";
     }
 
     // COMBINACION DIAGONAL DERECHA
@@ -1192,6 +1404,8 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
         obtenerNombreImagen(simbolo.imagen) === obtenerNombreImagen(carrete3[0].src)) {
         multiplicadorTotal += simbolo.multiDiagonal;
         combinacionesGanadoras.push([carrete3[0], carrete2[1], carrete1[2]]);
+        //CONCATENAR COMBINACION GANADORA
+        combinacionTexto += "Diagonal Derecha " + nombreSimbolo + " ";
     }
 
     // Resalta combinaciones ganadoras
@@ -1211,8 +1425,12 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
     }
 
 
-    // Devuelve el premio calculado para este símbolo
-    return apuestaActual * multiplicadorTotal;
+
+    // DEVUELVE UN OBJETO CON EL PREMIO Y SU COMBINACION SI HA SIDO EXITOSA
+    return {
+        premio: apuestaActual * multiplicadorTotal, // Premio calculado
+        combinacion: combinacionTexto.trim() || "Sin combinar" //COMBINACION
+    };
 
 }
 
@@ -1353,3 +1571,109 @@ function tiradasAutomaticas() {
     }
 
 }
+
+
+//VER HISTORICOS 
+document.getElementById("historialTiradasAbrir").addEventListener("click", function () {
+    document.getElementById("modalHistorial").style.display = "flex";
+
+    //PETICION GET PARA OBTENER LOS HISTORICOS DEL USUARIO 
+    $.ajax({
+        type: "GET",
+        url: `/usuarios/obtenerHistoricosUsuario?dni=${usuario.dni}`, //MANDAR DNI DEL USUARIO PARA BUSCARLO
+        success: function (historicos) {
+
+            // Filtrar por los registros del juego
+            let idJuegoBuscado = 1;
+            let historicosFiltrados = historicos.filter(historico => Number(historico.idJuego) === idJuegoBuscado);
+
+
+            // Ordenar por ID de manera descendente 
+            historicosFiltrados.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
+
+            //obtener ultimas 5 tiradas
+            ultimas5tiradas = historicosFiltrados.slice(0, 5);
+
+
+            var tablaHistorialBody = document.getElementById("tablaHistorialBody");
+
+            // Limpiar el contenido previo
+            tablaHistorialBody.innerHTML = "";
+
+            // Agregar las filas dinámicamente
+            ultimas5tiradas.forEach(tirada => {
+                var fila = document.createElement("tr");
+
+                // Crear las celdas
+                var apuestaCelda = document.createElement("td");
+                apuestaCelda.textContent = tirada.apuesta;
+
+                var multiplicadorCelda = document.createElement("td");
+                multiplicadorCelda.textContent = tirada.multiplicador.toFixed(2);
+
+                var resultadoCelda = document.createElement("td");
+                resultadoCelda.textContent = tirada.resultado;
+
+                // Añadir las celdas a la fila
+                fila.appendChild(apuestaCelda);
+                fila.appendChild(multiplicadorCelda);
+                fila.appendChild(resultadoCelda);
+
+                // Añadir la fila al cuerpo de la tabla
+                tablaHistorialBody.appendChild(fila);
+            });
+
+
+        },
+        error: function (error) {
+            console.error("Error al obtener los historicos del usuario:", error);
+
+        }
+    });
+});
+
+
+window.addEventListener('beforeunload', function (event) {
+
+    //AL SALIR SI TIENE CREDITOS PENDIENTES CONVERTIRLOS A EUROS
+    if (creditos > 0) {
+        event.preventDefault();
+        //PETICION GET PARA OBTENER CUANTOS CREDITOS TIENE ESTE JUEGO PARA CONVERTIR USUARIO DE PRUEBA
+        $.ajax({
+            type: "GET",
+            url: "/convertirACreditos?id=1", // URL del endpoint en el backend junto con el id del juego
+            success: function (multiplicador) {
+                //REDONDEAR A DOS DECIMALES EL SALDO PARA ASEGURARNOS QUE LA INSERCCION SERA CON DOS DECIMALES 
+                saldo += parseFloat((creditos / multiplicador).toFixed(2));
+                creditos = 0;
+
+                var datos = {
+                    dni: usuario.dni,
+                    presupuesto: saldo
+                };
+                // Realizar una solicitud AJAX PARA ACTUALIZAR EL SALDO EN BBDD
+                $.ajax({
+                    type: "POST",
+                    url: "/usuarios/actualizarSaldo",
+                    contentType: "application/json",
+                    data: JSON.stringify(datos),
+                    success: function (response) {
+
+                        document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
+                        document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
+                        document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
+                        document.getElementById("creditosTotales").innerHTML = creditos;
+                        document.getElementById("inputRetiroCreditos").value = "";
+                        mostrarError(i18next.t('hasConvertido') + creditosAEuros + i18next.t('creditosA') + (creditosAEuros / multiplicador).toFixed(2) + " €");
+                    },
+                    error: function (error) {
+                        console.error("Error en la solicitud AJAX:", error);
+                    }
+                });
+            },
+            error: function (error) {
+                console.error("Error al obtener el multiplicador del juego:", error);
+            }
+        });
+    }
+});

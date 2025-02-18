@@ -12,21 +12,21 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="log_tragaperras")
-public class LogTragaperrasEntity  implements Serializable {
+@Table(name = "log_tragaperras")
+public class LogTragaperrasEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_LOG_TRAGAPERRAS", unique = true, nullable = false)
 	private Long idLogTragaperras;
-	
+
 	@OneToOne
 	@JoinColumn(name = "ID_HISTORICO", nullable = false)
 	private HistoricoEntity historico;
-	
-	@Column(name = "COMBINACION",nullable = false)
+
+	@Column(name = "COMBINACION", nullable = false)
 	private String combinacion;
 
 	public Long getIdLogTragaperras() {
@@ -56,6 +56,11 @@ public class LogTragaperrasEntity  implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
+	// CONSTRUCTOR PARA REGISTRAR TIRADA
+	public LogTragaperrasEntity(HistoricoEntity historico, String combinacion) {
+		this.historico = historico;
+		this.combinacion = combinacion;
+	}
+
 }
