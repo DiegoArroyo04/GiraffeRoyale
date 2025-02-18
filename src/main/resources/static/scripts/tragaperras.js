@@ -760,11 +760,11 @@ function actualizarTexto() {
     document.getElementById("abrirModalDepositarCreditos").textContent = i18next.t('abrirModalDepositarCreditos');
     document.getElementById("tituloTablaPremios").textContent = i18next.t('tituloTablaPremios');
     document.getElementById("combinacion").textContent = i18next.t('combinacion');
-    document.getElementById("jirafa").innerHTML = '<img src="assets/iconoGirafa.png" alt="Jirafa"> ' + i18next.t('jirafa');
-    document.getElementById("arbol").innerHTML = '<img src="assets/iconoArbol.png" alt="Árbol"> ' + i18next.t('arbol');
-    document.getElementById("loro").innerHTML = '<img src="assets/iconoLoro.png" alt="Loro"> ' + i18next.t('loro');
-    document.getElementById("platanos").innerHTML = '<img src="assets/iconoPlatanos.png" alt="Plátanos"> ' + i18next.t('platanos');
-    document.getElementById("flor").innerHTML = '<img src="assets/iconoFlor.png" alt="Flor"> ' + i18next.t('flor');
+    document.getElementById("jirafa").innerHTML = '<img src="assets/tragaperras/iconoGirafa.png" alt="Jirafa"> ' + i18next.t('jirafa');
+    document.getElementById("arbol").innerHTML = '<img src="assets/tragaperras/iconoArbol.png" alt="Árbol"> ' + i18next.t('arbol');
+    document.getElementById("loro").innerHTML = '<img src="assets/tragaperras/iconoLoro.png" alt="Loro"> ' + i18next.t('loro');
+    document.getElementById("platanos").innerHTML = '<img src="assets/tragaperras/iconoPlatanos.png" alt="Plátanos"> ' + i18next.t('platanos');
+    document.getElementById("flor").innerHTML = '<img src="assets/tragaperras/iconoFlor.png" alt="Flor"> ' + i18next.t('flor');
     document.getElementById("lineaCentral").textContent = i18next.t('lineaCentral');
     document.getElementById("lineaSuperiorInferior").textContent = i18next.t('lineaSuperiorInferior');
     document.getElementById("lineaDiagonal").textContent = i18next.t('lineaDiagonal');
