@@ -281,7 +281,7 @@ h1 {
 
 /* Estilo para el contenido del modal */
 .contenidoModal {
-    background-image: url("../assets/crash/fondo\ modal.jpg");
+    background-image: url("../assets/crash/fondo modal.jpg");
     background-size: cover;
     background-position: center top;
     padding: 2%;

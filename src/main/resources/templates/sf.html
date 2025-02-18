@@ -4,15 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <link rel="icon" type="image/png" href="assets/crash/logo giraffe royale.png">
     <link rel="stylesheet" href="styles/sf.css" />      
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
-    <script src="https://kit.fontawesome.com/89b0664de4.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/i18next@latest/i18next.min.js"></script>
+   
     <title>Pamplona Rush</title>
 </head>
 
 <body>
+    <div id="preloader" class="preloader">
+        <img src="assets/pamplona/Preload.jpeg">
+    </div>
     <header id="header">
         <div class="contentenedorVolverMain">
             <a href="/lobby">
@@ -84,12 +87,12 @@
                 <button id="creditos" class="creditos">Creditos</button>
             </div>
             <div class="navegacionFooterJuego">
-                <img src="assets/crash/iconoInformacion.png" id="info" class="icono">
+                <img src="assets/pamplona/iconoInformacion.png" id="info" class="icono">
                 <p id="creditosTexto">CREDITOS:</p>
                 <p id="creditosTotales" class="creditosApuesta">0</p>
             </div>
             <div class="navegacionFooterJuego">
-                <img src="assets/crash/sonido.png" id="sonido" class="icono">
+                <img src="assets/pamplona/sonido.png" id="sonido" class="icono">
                 <p id="apuestaTexto">APUESTA:</p>
                 <p id="apuesta" class="creditosApuesta">20</p>
             </div>
@@ -98,12 +101,12 @@
             <h1 id="textoTragaperras">¡TIRE PARA GANAR!</h1>
         </div>
         <div class="contenedorBotones">
-            <img src="assets/crash/disminuirApuesta.png" id="disminuirApuesta" class="icono">
+            <img src="assets/pamplona/disminuirApuesta.png" id="disminuirApuesta" class="icono">
             <div class="jugar">
-                <img src="assets/crash/botonTirar.png" class="botonTirar" id="botonTirar">
-                <img src="assets/crash/historialTiradas.png" id="historialTiradasAbrir" class="icono">
+                <img src="../assets/pamplona/botonTirar.png" class="botonTirar" id="botonTirar">
+                <img src="../assets/pamplona/historialTiradas.png" id="historialTiradasAbrir" class="icono">
             </div>
-            <img src="assets/crash/aumentarApuesta.png" id="aumentarApuesta" class="icono">
+            <img src="../assets/pamplona/aumentarApuesta.png" id="aumentarApuesta" class="icono">
         </div>
     </div>
 
@@ -129,7 +132,7 @@
 
     <div id="modalSonidoPantalla" class="modalSonidoPantalla">
         <div id="modalSonido" class="modalSonido">
-            <img id="iconoSonidoModal" src="assets/crash/sonidoMuteRojo.png">
+            <img id="iconoSonidoModal" src="assets/pamplona/sonidoMuteRojo.png">
             <input type="range" id="barraVolumen" class="barraVolumen" min="0" max="100" value="100">
             <span id="valorVolumen" class="valorVolumen">100</span>
         </div>
@@ -210,20 +213,20 @@
             <h2 id="tituloAjustes">Ajustes</h2>
             <div class="opcionAjustes">
                 <h3 id="cambiarIdiomaTexto">Cambiar Idioma A Ingles:</h3>
-                <img id="idioma" src="assets/crash/iconoIngles.png" alt="Idioma" class="icono">
+                <img id="idioma" src="assets/pamplona/iconoIngles.png" alt="Idioma" class="icono">
             </div>
             <div class="opcionAjustes">
                 <h3 id="textoModoOscuro">Cambiar A Modo Oscuro:</h3>
-                <img src="assets/crash/modoOscuro.png" id="modoOscuro" alt="Modo Oscuro" class="icono">
+                <img src="assets/pamplona/modoOscuro.png" id="modoOscuro" alt="Modo Oscuro" class="icono">
             </div>
         </div>
     </div>
     <div id="modalVictoria" class="modalVictoria">
         <div class="modalVictoriaContenido">
             <span id="cerrarModalVictoria" class="cerrarModalVictoria">&times;</span>
-            <img src="assets/crash/premioHeader.png" class="premioHeader">
+            <img src="assets/pamplona/premioHeader.png" class="premioHeader">
             <p id="modalVictoriaMensaje" class="mensajeVictoria">PREMIO</p>
-            <img src="assets/crash/girafaPremios.png" class="girafaPremio">
+            <img src="assets/pamplona/girafaPremios.png" class="girafaPremio">
         </div>
     </div>
 
