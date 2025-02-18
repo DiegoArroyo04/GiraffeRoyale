@@ -535,9 +535,15 @@ function comprobarTarjeta(tarjeta) {
 
 //VALIDAR FECHA EXPIRACION 
 var fechaExpiracion = document.getElementById("fechaExpiracion");
-var fechaActual = new Date();
-fechaExpiracion.setAttribute("min", fechaActual.toISOString().split("T")[0]);
 
+// Obtener la fecha actual (AÑO y MES)
+var fechaActual = new Date();
+var año = fechaActual.getFullYear();
+var mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0');//MES DE DOS DIGITIOS
+var fechaMinima = `${año}-${mes}`;
+
+// Establecer el mínimo permitido en el campo
+fechaExpiracion.setAttribute("min", fechaMinima);
 
 //VALIDACION CVC
 const cvcInput = document.getElementById('cvc');

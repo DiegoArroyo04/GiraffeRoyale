@@ -22,7 +22,6 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
-	// IGNORAR POR EL MOMENTO NO SE REGISTRA PERO TENGO EL METODO PREPARADO
 	@PostMapping("usuarios/registrar")
 	public String registroUsuario(@RequestBody UsuarioDTO usuario) {
 
