@@ -623,7 +623,7 @@ window.addEventListener("load", function () {
                             document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
                             document.getElementById("creditosTotales").innerHTML = creditos;
                             document.getElementById("inputEurosACreditos").value = "";
-                            mostrarError(i18next.t('hasConvertido') + eurosACreditos + i18next.t('eurosA') + (eurosACreditos * 200) + i18next.t('creditosTextoModalConversion'));
+                            mostrarError(i18next.t('hasConvertido') + eurosACreditos + i18next.t('eurosA') + (eurosACreditos * multiplicador) + i18next.t('creditosTextoModalConversion'));
 
                         },
                         error: function (error) {
@@ -668,7 +668,7 @@ window.addEventListener("load", function () {
                 type: "GET",
                 url: "/convertirACreditos?id=2", // URL del endpoint en el backend junto con el id del juego
                 success: function (multiplicador) {
-                    saldo += parseFloat((creditos / multiplicador).toFixed(2));
+                    saldo += parseFloat((creditosAEuros / multiplicador).toFixed(2));
                     creditos -= creditosAEuros;
 
 
@@ -689,7 +689,7 @@ window.addEventListener("load", function () {
                             document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
                             document.getElementById("creditosTotales").innerHTML = creditos;
                             document.getElementById("inputRetiroCreditos").value = "";
-                            mostrarError(i18next.t('hasConvertido') + creditosAEuros + i18next.t('creditosA') + (creditosAEuros / 200).toFixed(2) + " €");
+                            mostrarError(i18next.t('hasConvertido') + creditosAEuros + i18next.t('creditosA') + (creditosAEuros / multiplicador).toFixed(2) + " €");
                         },
                         error: function (error) {
                             console.error("Error en la solicitud AJAX:", error);
@@ -809,11 +809,16 @@ window.addEventListener("load", function () {
             url: `/usuarios/obtenerHistoricosUsuario?dni=${usuario.dni}`, //MANDAR DNI DEL USUARIO PARA BUSCARLO
             success: function (historicos) {
 
+                // Filtrar por los registros del juego
+                let idJuegoBuscado = 2;
+                let historicosFiltrados = historicos.filter(historico => Number(historico.idJuego) === idJuegoBuscado);
+
+
                 // Ordenar por ID de manera descendente 
-                historicos.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
+                historicosFiltrados.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
 
                 //obtener ultimas 5 tiradas
-                ultimas5tiradas = historicos.slice(0, 5);
+                ultimas5tiradas = historicosFiltrados.slice(0, 5);
 
 
                 var tablaHistorialBody = document.getElementById("tablaHistorialBody");
@@ -1179,7 +1184,7 @@ window.addEventListener('beforeunload', function (event) {
                         document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
                         document.getElementById("creditosTotales").innerHTML = creditos;
                         document.getElementById("inputRetiroCreditos").value = "";
-                        mostrarError(i18next.t('hasConvertido') + creditosAEuros + i18next.t('creditosA') + (creditosAEuros / 200).toFixed(2) + " €");
+                        mostrarError(i18next.t('hasConvertido') + creditosAEuros + i18next.t('creditosA') + (creditosAEuros / multiplicador).toFixed(2) + " €");
                     },
                     error: function (error) {
                         console.error("Error en la solicitud AJAX:", error);

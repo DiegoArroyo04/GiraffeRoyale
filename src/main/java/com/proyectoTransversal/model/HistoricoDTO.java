@@ -9,8 +9,9 @@ public class HistoricoDTO {
 	private int apuesta;
 	private BigDecimal resultado;
 	private double multiplicador;
+	private String combinacion;
 
-	// CONSTRUCTOR PARA RECIBIR TIRADA DESDE JSON
+	// CONSTRUCTOR PARA RECIBIR TIRADA DESDE JSON CRASH GAME
 	public HistoricoDTO(String usuarioDni, Long idJuego, int apuesta, BigDecimal resultado, double multiplicador) {
 		this.usuarioDni = usuarioDni;
 		this.idJuego = idJuego;
@@ -22,7 +23,7 @@ public class HistoricoDTO {
 	// CONSTRUCTOR PARA ORDENAR POR ULTIMAS TIRADAS
 	public HistoricoDTO(Long idHistorico, String usuarioDni, Long idJuego, int apuesta, BigDecimal resultado,
 			double multiplicador) {
-		
+
 		this.idHistorico = idHistorico;
 		this.usuarioDni = usuarioDni;
 		this.idJuego = idJuego;
@@ -31,9 +32,19 @@ public class HistoricoDTO {
 		this.multiplicador = multiplicador;
 	}
 
-	
+	// CONSTRUCTOR PARA RECIBIR TIRADA DESDE JSON TRAGAPERRAS
+	public HistoricoDTO(Long idHistorico, String usuarioDni, Long idJuego, int apuesta, BigDecimal resultado,
+			String combinacion) {
+		this.idHistorico = idHistorico;
+		this.usuarioDni = usuarioDni;
+		this.idJuego = idJuego;
+		this.apuesta = apuesta;
+		this.resultado = resultado;
+		this.combinacion = combinacion;
+	}
+
 	public HistoricoDTO() {
-		
+
 	}
 
 	public String getUsuarioDni() {
@@ -84,10 +95,12 @@ public class HistoricoDTO {
 		this.idHistorico = idHistorico;
 	}
 
-	@Override
-	public String toString() {
-		return "HistoricoDTO [idHistorico=" + idHistorico + ", usuarioDni=" + usuarioDni + ", idJuego=" + idJuego
-				+ ", apuesta=" + apuesta + ", resultado=" + resultado + ", multiplicador=" + multiplicador + "]";
+	public String getCombinacion() {
+		return combinacion;
+	}
+
+	public void setCombinacion(String combinacion) {
+		this.combinacion = combinacion;
 	}
 
 }
