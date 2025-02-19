@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -75,7 +76,7 @@ public class UsuarioEntity implements Serializable {
 	@Column(name = "TITULAR")
 	private String titular;
 
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "usuario") // Relación uno a muchos con HistoricoEntity
 	@JsonIgnore // Ignorar esta propiedad al serializar
 	Set<HistoricoEntity> historicos = new HashSet<HistoricoEntity>();
 

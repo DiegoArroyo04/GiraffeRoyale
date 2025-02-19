@@ -12,6 +12,7 @@ import com.proyectoTransversal.entity.HistoricoEntity;
 import com.proyectoTransversal.entity.UsuarioEntity;
 import com.proyectoTransversal.model.HistoricoDTO;
 import com.proyectoTransversal.model.UsuarioDTO;
+import com.proyectoTransversal.repo.HistoricoRepository;
 import com.proyectoTransversal.repo.UsuarioRepository;
 import com.proyectoTransversal.services.UsuarioService;
 
@@ -22,6 +23,9 @@ public class UsuarioServiceImplement implements UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+
+	@Autowired
+	private HistoricoRepository historicoRepository;
 
 	@Override
 	public UsuarioEntity encontrarPorId(String dni) {
@@ -35,20 +39,6 @@ public class UsuarioServiceImplement implements UsuarioService {
 		usuario.setPresupuesto(nuevoPresupuesto);
 		usuarioRepository.save(usuario);
 		session.setAttribute("usuario", usuario);
-	}
-
-	@Override
-	public List<HistoricoDTO> obtenerHistoricosPorDni(UsuarioEntity usuario) {
-
-		List<HistoricoDTO> historicosList = new ArrayList<>();
-		for (HistoricoEntity historico : usuario.getHistoricos()) {
-			HistoricoDTO historicoDto = new HistoricoDTO(historico.getIdHistorico(), historico.getUsuario().getDni(),
-					historico.getJuego().getIdJuego(), historico.getApuesta(), historico.getResultado(),
-					historico.getLogCrash().getMultiplicador());
-			historicosList.add(historicoDto);
-		}
-
-		return historicosList;
 	}
 
 	@Override
@@ -90,6 +80,19 @@ public class UsuarioServiceImplement implements UsuarioService {
 		usuarioRepository.save(usuarioEntity);
 		return "Cuenta creada con Éxito.";
 
+	}
+
+	@Override
+	public List<HistoricoDTO> obtenerHistoricosTragaperrasPorDni(UsuarioEntity usuario, Long idJuego) {
+
+		return historicoRepository.encontrarTiradasTragaperras(usuario, idJuego);
+
+	}
+
+	@Override
+	public List<HistoricoDTO> obtenerHistoricosCrashPorDni(UsuarioEntity usuario, Long idJuego) {
+
+		return historicoRepository.encontrarTiradasCrashGame(usuario, idJuego);
 	}
 
 }

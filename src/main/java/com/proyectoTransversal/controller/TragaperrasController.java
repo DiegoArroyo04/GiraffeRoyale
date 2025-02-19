@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TragaperrasController {
 
     @GetMapping("/tragaperras")
-    public String juegoSanFermin() {
+    public String tragaperras() {
         return "tragaperras";
     }
 
