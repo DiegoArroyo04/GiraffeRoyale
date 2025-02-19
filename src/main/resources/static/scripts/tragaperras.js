@@ -31,6 +31,7 @@ $.ajax({
     success: function (data) {
         usuario = data;
         saldo = usuario.presupuesto;
+
         // Actualizar elementos del DOM dentro del success
         var saldoElement = document.getElementById("saldo");
         saldoElement.textContent = i18next.t('saldo', { saldo: saldo });
@@ -39,7 +40,7 @@ $.ajax({
         saldoActualElement.textContent = i18next.t('saldoActual', { saldo: saldo });
     },
     error: function (error) {
-        console.error("Error al obtener el usuario de prueba:", error);
+        console.error("Error al obtener el usuario:", error);
     }
 });
 
@@ -85,7 +86,7 @@ i18next.init({
                 cambiarIdiomaTexto: "Cambiar Idioma A Ingles:",
                 textoModoOscuro: "Cambiar A Modo Oscuro:",
                 textoModoColor: "Cambiar A Modo Color:",
-                creditosBoton: "Insertar Creditos",
+                creditosBoton: "Creditos",
                 insertarCreditosTitulo: "CONVERTIR EUROS A CREDITOS",
                 placeholderEurosACreditos: "Introduce la cantidad de euros que deseas convertir a creditos",
                 convertirBtn: "Convertir a creditos",
@@ -126,6 +127,14 @@ i18next.init({
                 hasGanado: "¡HAS GANADO ",
                 creditosModalVictoria: " CREDITOS!",
                 ganancias: "GANANCIAS: ",
+                tituloHistorial: "HISTORIAL DE TUS ULTIMAS 5 TIRADAS",
+                historialApuesta: "Apuesta",
+                historialCombinación: "Combinacion",
+                historialResultado: "Creditos obtenidos",
+                tituloHistorial: "HISTORIAL DE TUS ULTIMAS 5 TIRADAS",
+                historialApuesta: "Apuesta",
+                historialCombinacion: "Combinación",
+                historialResultado: "Creditos obtenidos",
 
             }
         },
@@ -152,7 +161,7 @@ i18next.init({
                 cambiarIdiomaTexto: "Change Language To Spanish",
                 textoModoOscuro: "Switch to Dark Mode:",
                 textoModoColor: "Switch to Color Mode:",
-                creditosBoton: "Insert Credits",
+                creditosBoton: "Credits",
                 insertarCreditosTitulo: "BECOME EUROS TO CREDITS",
                 placeholderEurosACreditos: "Enter the amount of euros you want to convert to credits",
                 convertirBtn: "Convert to credits",
@@ -193,6 +202,10 @@ i18next.init({
                 hasGanado: "YOU'VE WON ",
                 creditosModalVictoria: " CREDITS!",
                 ganancias: "WINS: ",
+                tituloHistorial: "HISTORY OF YOUR LAST 5 SPINS",
+                historialApuesta: "Bet",
+                historialCombinacion: "Combination",
+                historialResultado: "Credits obtained",
 
             }
         }
@@ -519,6 +532,11 @@ window.addEventListener("load", function () {
         document.getElementById("modalVictoria").style.display = "none";
     });
 
+    // Cerrar el modal de error al hacer clic en la "X"
+    document.getElementById("cerrarModalHistorial").addEventListener("click", function () {
+        document.getElementById("modalHistorial").style.display = "none";
+    });
+
 
     // Cierra el modal al hacer clic fuera del contenido
     window.addEventListener("click", (event) => {
@@ -552,6 +570,9 @@ window.addEventListener("load", function () {
         }
         if (event.target == document.getElementById("modalVictoria")) {
             document.getElementById("modalVictoria").style.display = "none";
+        }
+        if (event.target == document.getElementById("modalHistorial")) {
+            document.getElementById("modalHistorial").style.display = "none";
         }
 
     });
@@ -837,6 +858,58 @@ window.addEventListener("load", function () {
 
     });
 
+    //VER HISTORICOS 
+    document.getElementById("historialTiradasAbrir").addEventListener("click", function () {
+        document.getElementById("modalHistorial").style.display = "flex";
+
+        //PETICION GET PARA OBTENER LOS HISTORICOS DEL USUARIO 
+        $.ajax({
+            type: "GET",
+            url: `/usuarios/obtenerHistoricosTragaperrasUsuario?dni=${usuario.dni}&idJuego=1`, //MANDAR DNI DEL USUARIO PARA BUSCARLO
+            success: function (historicos) {
+
+                //obtener ultimas 5 tiradas
+                ultimas5tiradas = historicos.slice(0, 5);
+
+                var tablaHistorialBody = document.getElementById("tablaHistorialBody");
+
+                // Limpiar el contenido previo
+                tablaHistorialBody.innerHTML = "";
+
+                // Agregar las filas dinámicamente
+                ultimas5tiradas.forEach(tirada => {
+                    var fila = document.createElement("tr");
+
+                    // Crear las celdas
+                    var apuestaCelda = document.createElement("td");
+                    apuestaCelda.textContent = tirada.apuesta;
+
+                    var combinacionCelda = document.createElement("td");
+                    combinacionCelda.textContent = tirada.combinacion;
+
+                    var resultadoCelda = document.createElement("td");
+                    resultadoCelda.textContent = tirada.resultado;
+
+                    // Añadir las celdas a la fila
+                    fila.appendChild(apuestaCelda);
+                    fila.appendChild(combinacionCelda);
+                    fila.appendChild(resultadoCelda);
+
+                    // Añadir la fila al cuerpo de la tabla
+                    tablaHistorialBody.appendChild(fila);
+                });
+
+
+            },
+            error: function (error) {
+                console.error("Error al obtener los historicos del usuario:", error);
+
+            }
+        });
+
+    });
+
+
 
 });
 function actualizarTexto() {
@@ -892,6 +965,10 @@ function actualizarTexto() {
     document.getElementById("apuestaTexto").textContent = i18next.t('apuestaTexto');
     document.getElementById("tituloTiradas").textContent = i18next.t('tituloTiradas');
     document.getElementById("iniciarTiradas").textContent = i18next.t('iniciarTiradas');
+    document.getElementById("tituloHistorial").textContent = i18next.t('tituloHistorial');
+    document.getElementById("historialApuesta").textContent = i18next.t('historialApuesta');
+    document.getElementById("historialCombinacion").textContent = i18next.t('historialCombinacion');
+    document.getElementById("historialResultado").textContent = i18next.t('historialResultado');
 
 }
 
@@ -1573,64 +1650,6 @@ function tiradasAutomaticas() {
 }
 
 
-//VER HISTORICOS 
-document.getElementById("historialTiradasAbrir").addEventListener("click", function () {
-    document.getElementById("modalHistorial").style.display = "flex";
-
-    //PETICION GET PARA OBTENER LOS HISTORICOS DEL USUARIO 
-    $.ajax({
-        type: "GET",
-        url: `/usuarios/obtenerHistoricosUsuario?dni=${usuario.dni}`, //MANDAR DNI DEL USUARIO PARA BUSCARLO
-        success: function (historicos) {
-
-            // Filtrar por los registros del juego
-            let idJuegoBuscado = 1;
-            let historicosFiltrados = historicos.filter(historico => Number(historico.idJuego) === idJuegoBuscado);
-
-
-            // Ordenar por ID de manera descendente 
-            historicosFiltrados.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
-
-            //obtener ultimas 5 tiradas
-            ultimas5tiradas = historicosFiltrados.slice(0, 5);
-
-
-            var tablaHistorialBody = document.getElementById("tablaHistorialBody");
-
-            // Limpiar el contenido previo
-            tablaHistorialBody.innerHTML = "";
-
-            // Agregar las filas dinámicamente
-            ultimas5tiradas.forEach(tirada => {
-                var fila = document.createElement("tr");
-
-                // Crear las celdas
-                var apuestaCelda = document.createElement("td");
-                apuestaCelda.textContent = tirada.apuesta;
-
-                var multiplicadorCelda = document.createElement("td");
-                multiplicadorCelda.textContent = tirada.multiplicador.toFixed(2);
-
-                var resultadoCelda = document.createElement("td");
-                resultadoCelda.textContent = tirada.resultado;
-
-                // Añadir las celdas a la fila
-                fila.appendChild(apuestaCelda);
-                fila.appendChild(multiplicadorCelda);
-                fila.appendChild(resultadoCelda);
-
-                // Añadir la fila al cuerpo de la tabla
-                tablaHistorialBody.appendChild(fila);
-            });
-
-
-        },
-        error: function (error) {
-            console.error("Error al obtener los historicos del usuario:", error);
-
-        }
-    });
-});
 
 
 window.addEventListener('beforeunload', function (event) {

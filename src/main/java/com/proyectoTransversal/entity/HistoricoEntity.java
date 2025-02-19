@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -130,6 +132,13 @@ public class HistoricoEntity implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "HistoricoEntity [idHistorico=" + idHistorico + ", fecha=" + fecha + ", usuario=" + usuario + ", juego="
+				+ juego + ", apuesta=" + apuesta + ", resultado=" + resultado + ", logTragaperras=" + logTragaperras
+				+ ", logCrash=" + logCrash + "]";
 	}
 
 }

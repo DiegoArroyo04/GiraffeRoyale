@@ -20,18 +20,6 @@ public class HistoricoDTO {
 		this.multiplicador = multiplicador;
 	}
 
-	// CONSTRUCTOR PARA ORDENAR POR ULTIMAS TIRADAS
-	public HistoricoDTO(Long idHistorico, String usuarioDni, Long idJuego, int apuesta, BigDecimal resultado,
-			double multiplicador) {
-
-		this.idHistorico = idHistorico;
-		this.usuarioDni = usuarioDni;
-		this.idJuego = idJuego;
-		this.apuesta = apuesta;
-		this.resultado = resultado;
-		this.multiplicador = multiplicador;
-	}
-
 	// CONSTRUCTOR PARA RECIBIR TIRADA DESDE JSON TRAGAPERRAS
 	public HistoricoDTO(Long idHistorico, String usuarioDni, Long idJuego, int apuesta, BigDecimal resultado,
 			String combinacion) {
@@ -41,6 +29,20 @@ public class HistoricoDTO {
 		this.apuesta = apuesta;
 		this.resultado = resultado;
 		this.combinacion = combinacion;
+	}
+
+	// CONSTRUCTOR PARA MOSTRAR TIRADAS TRAGAPERRAS
+	public HistoricoDTO(int apuesta, BigDecimal resultado, String combinacion) {
+		this.apuesta = apuesta;
+		this.resultado = resultado;
+		this.combinacion = combinacion;
+	}
+
+	// CONSTRUCTOR PARA MOSTRAR TIRADAS CRASH GAME
+	public HistoricoDTO(int apuesta, BigDecimal resultado, double multiplicador) {
+		this.apuesta = apuesta;
+		this.resultado = resultado;
+		this.multiplicador = multiplicador;
 	}
 
 	public HistoricoDTO() {

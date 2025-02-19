@@ -2,6 +2,8 @@ package com.proyectoTransversal.entity;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -61,6 +63,10 @@ public class LogTragaperrasEntity implements Serializable {
 	public LogTragaperrasEntity(HistoricoEntity historico, String combinacion) {
 		this.historico = historico;
 		this.combinacion = combinacion;
+	}
+
+	public LogTragaperrasEntity() {
+
 	}
 
 }

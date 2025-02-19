@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.proyectoTransversal.entity.HistoricoEntity;
 import com.proyectoTransversal.entity.UsuarioEntity;
 import com.proyectoTransversal.model.HistoricoDTO;
 import com.proyectoTransversal.model.UsuarioDTO;
@@ -49,10 +50,23 @@ public class UsuarioController {
 		return "Saldo actualizado correctamente ";
 	}
 
+	// UTIL PARA OBTENER HISTORICOS DE UN USUARIO EN LOS CRASH GAME
 	@GetMapping("/usuarios/obtenerHistoricosUsuario")
-	public List<HistoricoDTO> obtenerHistoricoUsuario(@RequestParam("dni") String dni) {
+	public List<HistoricoDTO> obtenerHistoricoUsuario(@RequestParam("dni") String dni,
+			@RequestParam("idJuego") Long idJuego) {
+
 		UsuarioEntity usuario = usuarioService.encontrarPorId(dni);
-		return usuarioService.obtenerHistoricosPorDni(usuario);
+		return usuarioService.obtenerHistoricosCrashPorDni(usuario, idJuego);
+	}
+
+	// UTIL PARA OBTENER LOS HISTORICOS DE UN USUARIO EN LA TRAGAPERRAS
+	@GetMapping("/usuarios/obtenerHistoricosTragaperrasUsuario")
+	public List<HistoricoDTO> obtenerHistoricosTragaperrasUsuario(@RequestParam("dni") String dni,
+			@RequestParam("idJuego") Long idJuego) {
+
+		UsuarioEntity usuario = usuarioService.encontrarPorId(dni);
+
+		return usuarioService.obtenerHistoricosTragaperrasPorDni(usuario, idJuego);
 	}
 
 }
