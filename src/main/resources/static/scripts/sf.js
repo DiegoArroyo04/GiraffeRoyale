@@ -705,7 +705,7 @@ window.addEventListener("load", function () {
     document.getElementById("modalInstrucciones").style.display = "flex";
   });
 
-    //SONIDO
+  //SONIDO
   document.getElementById("iconoSonidoModal").addEventListener("click", function () {
 
     //PAUSAR LA MUSICA
@@ -742,12 +742,15 @@ window.addEventListener("load", function () {
       url: `/usuarios/obtenerHistoricosUsuario?dni=${usuario.dni}`, //MANDAR DNI DEL USUARIO PARA BUSCARLO
       success: function (historicos) {
 
+        // Filtrar por los registros del juego
+        let idJuegoBuscado = 2;
+        let historicosFiltrados = historicos.filter(historico => Number(historico.idJuego) === idJuegoBuscado);
+
         // Ordenar por ID de manera descendente 
-        historicos.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
+        historicosFiltrados.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
 
         //obtener ultimas 5 tiradas
-        ultimas5tiradas = historicos.slice(0, 5);
-
+        ultimas5tiradas = historicosFiltrados.slice(0, 5);
 
         var tablaHistorialBody = document.getElementById("tablaHistorialBody");
 
