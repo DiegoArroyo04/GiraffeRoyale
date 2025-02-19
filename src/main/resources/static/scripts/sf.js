@@ -739,22 +739,11 @@ window.addEventListener("load", function () {
     //PETICION GET PARA OBTENER LOS HISTORICOS DEL USUARIO 
     $.ajax({
       type: "GET",
-      url: `/usuarios/obtenerHistoricosUsuario?dni=${usuario.dni}`, //MANDAR DNI DEL USUARIO PARA BUSCARLO
+      url: `/usuarios/obtenerHistoricosUsuario?dni=${usuario.dni}&idJuego=3`, //MANDAR DNI DEL USUARIO PARA BUSCARLO
       success: function (historicos) {
-
-        // Filtrar por los registros del juego
-        let idJuegoBuscado = 3;
-        let historicosFiltrados = historicos.filter(historico => Number(historico.idJuego) === idJuegoBuscado);
-
-        // Ordenar por ID de manera descendente 
-        historicos.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
-
-        // Ordenar por ID de manera descendente 
-        historicosFiltrados.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
 
         //obtener ultimas 5 tiradas
         ultimas5tiradas = historicos.slice(0, 5);
-
 
         var tablaHistorialBody = document.getElementById("tablaHistorialBody");
 
@@ -791,6 +780,7 @@ window.addEventListener("load", function () {
 
       }
     });
+
   });
 });
 
