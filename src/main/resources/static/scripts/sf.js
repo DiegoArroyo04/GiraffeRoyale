@@ -21,22 +21,22 @@ var ultimas5tiradas;
 var premioTotal = 0;
 
 
-//PETICION GET PARA OBTENER USUARIO DE PRUEBA
+//PETICION GET PARA OBTENER USUARIO
 $.ajax({
   type: "GET",
-  url: "/usuarios/obtenerUsuarioAdmin", // URL del endpoint en el backend
+  url: "/usuarios/obtenerUsuario", // URL del endpoint en el backend
   success: function (data) {
-    usuario = data;
-    saldo = usuario.presupuesto;
-    // Actualizar elementos del DOM dentro del success
-    var saldoElement = document.getElementById("saldo");
-    saldoElement.textContent = i18next.t('saldo', { saldo: saldo });
+      usuario = data;
+      saldo = usuario.presupuesto;
+      // Actualizar elementos del DOM dentro del success
+      var saldoElement = document.getElementById("saldo");
+      saldoElement.textContent = i18next.t('saldo', { saldo: saldo });
 
-    var saldoActualElement = document.getElementById("saldoCreditosInfo");
-    saldoActualElement.textContent = i18next.t('saldoActual', { saldo: saldo });
+      var saldoActualElement = document.getElementById("saldoCreditosInfo");
+      saldoActualElement.textContent = i18next.t('saldoActual', { saldo: saldo });
   },
   error: function (error) {
-    console.error("Error al obtener el usuario de prueba:", error);
+      console.error("Error al obtener el usuario de prueba:", error);
   }
 });
 
