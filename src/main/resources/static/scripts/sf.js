@@ -21,22 +21,22 @@ var ultimas5tiradas;
 var premioTotal = 0;
 
 
-//PETICION GET PARA OBTENER USUARIO
+//PETICION GET PARA OBTENER USUARIO DE PRUEBA
 $.ajax({
   type: "GET",
   url: "/usuarios/obtenerUsuario", // URL del endpoint en el backend
   success: function (data) {
-      usuario = data;
-      saldo = usuario.presupuesto;
-      // Actualizar elementos del DOM dentro del success
-      var saldoElement = document.getElementById("saldo");
-      saldoElement.textContent = i18next.t('saldo', { saldo: saldo });
+    usuario = data;
+    saldo = usuario.presupuesto;
+    // Actualizar elementos del DOM dentro del success
+    var saldoElement = document.getElementById("saldo");
+    saldoElement.textContent = i18next.t('saldo', { saldo: saldo });
 
-      var saldoActualElement = document.getElementById("saldoCreditosInfo");
-      saldoActualElement.textContent = i18next.t('saldoActual', { saldo: saldo });
+    var saldoActualElement = document.getElementById("saldoCreditosInfo");
+    saldoActualElement.textContent = i18next.t('saldoActual', { saldo: saldo });
   },
   error: function (error) {
-      console.error("Error al obtener el usuario de prueba:", error);
+    console.error("Error al obtener el usuario de prueba:", error);
   }
 });
 
@@ -747,10 +747,14 @@ window.addEventListener("load", function () {
         let historicosFiltrados = historicos.filter(historico => Number(historico.idJuego) === idJuegoBuscado);
 
         // Ordenar por ID de manera descendente 
+        historicos.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
+
+        // Ordenar por ID de manera descendente 
         historicosFiltrados.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
 
         //obtener ultimas 5 tiradas
-        ultimas5tiradas = historicosFiltrados.slice(0, 5);
+        ultimas5tiradas = historicos.slice(0, 5);
+
 
         var tablaHistorialBody = document.getElementById("tablaHistorialBody");
 
@@ -947,6 +951,7 @@ function empezarJuego() {
   //Actualizamos texto
   document.getElementById("textoTragaperras").innerHTML = i18next.t('buenaSuerte');
   //ARRANCAR ANIMACIONES
+  // document.getElementById('fondoPamplona').loop = true;
   document.getElementById('fondoPamplona').play();
   document.getElementById('correr').className = "personaje";
 

@@ -25,7 +25,7 @@
                 <img src="assets/header/LOGO_GIRAFFE_ROYALE.png" class="logo">
             </a>
         </div>
-        <h1>GIRAFFE ROYALE</h1>
+        <h1 class="titulo">GIRAFFE ROYALE</h1>
         <div class="saldo">
             <h1 id="saldo" class="saldo">Saldo:0€</h1>
             <img src="assets/header/añadir.png" id="añadirSaldo">
@@ -39,97 +39,45 @@
     <section class="contenedorPrincipal">
         <h1 id="multi" class="multiplicador">0.00x</h1>
         <div class="fondo">
-            <video id="fondoPamplona" src="../assets/pamplona/fondoJuego_2_2.mp4" ></video>
+            <video id="fondoPamplona" src="../assets/pamplona/fondoJuego_2_2.mp4" loop ></video>
         </div>
         <div class="parado" id="correr"></div>   
 
     </section>
-    <!-- <section class="section-btn">
-        <div class="historial">
-            <ul>
-                <li>3.45</li>
-                <li>6.90</li>
-                <li>1.35</li>
-                <li>3.45</li>
-                <li>6.90</li>
-                <li>1.35</li>
-                <li>3.45</li>
-                <li>6.90</li>
-                <li>1.35</li>
-                <li>3.45</li>
-                <li>6.90</li>
-                <li>1.35</li>
-                <li>3.45</li>
-                <li>6.90</li>
-                <li>1.35</li>
-                <li>3.45</li>
-                <li>6.90</li>
-                <li>1.35</li>
-            </ul>
-        </div>
-        <div class="contenedor-btn">
-            <div class="control-saldo">
-                <label>Apuesta: <span id="cant-apuesta" >0 </span></label>
-                <label>Creditos: <span id="saldoCreditos">0</span></label>
-            </div>
-            <div class="btn-jugar">
-                <button>-</button>
-                <button class="btn-principal" id="iniciar">Comenzar</button>
-                <button class="btn-principal" id="pause">Stop</button>
-                <button>+</button>
-            </div>
-        </div>
-    </section> -->
+    
 
     <div class="footerJuego">
-        <div class="iconos">
-            <div class="navegacionFooterJuego">
+        <div class="iconosFoot">
+            <div class="btnCreditos-container">
                 <button id="creditos" class="creditos">Creditos</button>
             </div>
-            <div class="navegacionFooterJuego">
-                <img src="assets/pamplona/iconoInformacion.png" id="info" class="icono">
-                <p id="creditosTexto">CREDITOS:</p>
-                <p id="creditosTotales" class="creditosApuesta">0</p>
-            </div>
-            <div class="navegacionFooterJuego">
-                <img src="assets/pamplona/sonido.png" id="sonido" class="icono">
-                <p id="apuestaTexto">APUESTA:</p>
-                <p id="apuesta" class="creditosApuesta">20</p>
+            <div class="container-footer-nav">
+                <div class="navegacionFooterJuego">
+                    <img src="assets/pamplona/iconoInformacion.png" id="info" class="icoNavFoot">
+                    <p id="creditosTexto">CREDITOS:</p>
+                    <p id="creditosTotales" class="creditosApuesta">0</p>
+                </div>
+                <div class="navegacionFooterJuego">
+                    <img src="assets/pamplona/sonido.png" id="sonido" class="icoNavFoot">
+                    <p id="apuestaTexto">APUESTA:</p>
+                    <p id="apuesta" class="creditosApuesta">20</p>
+                </div>
             </div>
         </div>
         <div class="textoTragaperras">
             <h1 id="textoTragaperras">¡TIRE PARA GANAR!</h1>
         </div>
         <div class="contenedorBotones">
-            <img src="assets/pamplona/disminuirApuesta.png" id="disminuirApuesta" class="icono">
+            <img src="assets/pamplona/disminuirApuesta.png" id="disminuirApuesta" class="iconoBtn">
             <div class="jugar">
                 <img src="../assets/pamplona/botonTirar.png" class="botonTirar" id="botonTirar">
-                <img src="../assets/pamplona/historialTiradas.png" id="historialTiradasAbrir" class="icono">
+                <img src="../assets/pamplona/historialTiradas.png" id="historialTiradasAbrir" class="iconoBtn">
             </div>
-            <img src="../assets/pamplona/aumentarApuesta.png" id="aumentarApuesta" class="icono">
+            <img src="../assets/pamplona/aumentarApuesta.png" id="aumentarApuesta" class="iconoBtn">
         </div>
     </div>
 
-
-    <!-- <div class="modalInsertar" id="modalEuros">
-        <div class="contenido-modal">
-            <h2>¿Cuánto saldo deseas insertar?</h2>
-            <input type="number" id="cantidadEuros" placeholder="Ingresa la cantidad" required>
-            <br>
-            <button id="cerrarModal">Cancelar</button>
-            <button id="confirmarEuros">Confirmar</button>
-        </div>
-    </div>
-    <div class="modalInsertar" id="modalCreditos">
-        <div class="contenido-modal">
-            <h2>¿Cuántos creditos deseas solicitar?</h2>
-            <input type="number" id="cantidadCreditos" placeholder="Ingresa la cantidad" required>
-            <br>
-            <button id="cerrarModal">Cancelar</button>
-            <button id="confirmarCreditos">Confirmar</button>
-        </div>
-    </div> -->
-
+    <!-- MODALES -->
     <div id="modalSonidoPantalla" class="modalSonidoPantalla">
         <div id="modalSonido" class="modalSonido">
             <img id="iconoSonidoModal" src="assets/pamplona/sonidoMuteRojo.png">
