@@ -743,7 +743,7 @@ window.addEventListener("load", function () {
       success: function (historicos) {
 
         // Filtrar por los registros del juego
-        let idJuegoBuscado = 2;
+        let idJuegoBuscado = 3;
         let historicosFiltrados = historicos.filter(historico => Number(historico.idJuego) === idJuegoBuscado);
 
         // Ordenar por ID de manera descendente 
