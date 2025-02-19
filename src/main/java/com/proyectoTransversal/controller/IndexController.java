@@ -54,6 +54,18 @@ public class IndexController {
 		return "registro";
 	}
 
+	@GetMapping("/comprobarLobby")
+	public String comprobarLobby(HttpSession session) {
+		UsuarioEntity usuario = (UsuarioEntity) session.getAttribute("usuario");
+
+		if (usuario.getUsuarioVip() == true) {
+			return "redirect:/lobbyVip";
+		} else {
+			return "redirect:/lobby";
+		}
+
+	}
+
 	@GetMapping("/lobby")
 	public String lobby() {
 
