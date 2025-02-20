@@ -1,605 +1,1183 @@
-    @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
-    :root {
-        --primary-color: #7a9c2e;
-        --secundary-color: #FFFFFF;
-        --dark-bg-color: #1a1a1a;
+:root {
+    --primary-color: #7a9c2e;
+    --secundary-color: #FFFFFF;
+    --dark-bg-color: #1a1a1a;
+}
 
+* {
+    box-sizing: border-box;
+    cursor: url('../assets/crash/cursor.png'), auto;
+}
+
+/*SCROLL*/
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #003049;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    border-radius: 10px;
+    border: 1px solid #003049;
+}
+
+/* General body styling */
+body {
+    overflow-x: hidden;
+    font-family: 'Lilita One';
+    background-color: var(--primary-color);
+    color: var(--secundary-color);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-height: 100vh;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #7a9c2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    background-size: cover;
+    background-position: center bottom;
+}
+
+/* Contenedor del logo */
+.logo-container {
+    position: relative;
+    animation: bounce 5s infinite ease-in-out;
+}
+
+/* Logo animado */
+.logo_preloader {
+    width: 250px;
+    /* Tamaño del logo */
+    animation: bounce 5s infinite ease-in-out;
+}
+
+/* Sombra animada */
+.shadow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    animation: shadow 5s infinite ease-in-out;
+}
+
+/* Animación de rebote del logo */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+/* Animación de la sombra */
+@keyframes shadow {
+
+    0%,
+    100% {
+        width: 150px;
+        opacity: 0.2;
+    }
+
+    50% {
+        width: 200px;
+        opacity: 0.5;
+    }
+}
+
+
+.contentenedorVolverMain {
+    display: flex;
+    align-items: center;
+
+}
+
+.home {
+    width: 7vw;
+    height: auto;
+    margin-right: 2vw;
+
+}
+
+.logo {
+    width: 5vw;
+    height: 10vh;
+}
+
+h1 {
+    font-family: 'Lilita One';
+    font-size: 2vw;
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+
+}
+
+.hora {
+    font-family: 'Lilita One';
+    font-size: 1.5vw;
+    max-width: 100%;
+    width: 90%;
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+
+}
+
+.saldo {
+    display: flex;
+    align-items: center;
+}
+
+.saldo img {
+    width: 2vw;
+    height: 4vh;
+    margin-left: 2%;
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+}
+
+.saldo img:hover {
+
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transform: scale(1.1);
+    filter: brightness(1.3);
+
+}
+
+.saldo p {
+    font-family: 'Lilita One';
+    font-size: 1.5vw;
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+}
+
+.horaYConfi {
+    display: flex;
+    align-items: center;
+    padding: 0 2%;
+    width: 15%;
+
+}
+
+.horaYConfi img,
+.icono,
+.iconoBtn,
+.icoNavFoot {
+    width: 2vw;
+    height: 4vh;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 3%;
+    margin-top: 3%;
+
+}
+
+.btnCreditos-container {
+    width: 50%;
+}
+
+.horaYConfi img:hover {
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transform: scale(1.1);
+    filter: brightness(1.3);
+}
+
+.horaYConfi img,
+.icono {
+    width: 2vw;
+    height: 4vh;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 3%;
+    margin-top: 3%;
+
+}
+
+.ajustesModal {
+    display: none;
+}
+
+.depositarYRetirar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2%;
+    width: 100%;
+    height: 100%;
+}
+
+.saldoCreditosInfo {
+    font-size: 1.5vw;
+    margin: 1%;
+}
+
+.tablaPremios {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.326);
+    justify-content: center;
+}
+
+.tablaPremios h2 {
+    font-family: 'Lilita One';
+    font-size: 2.2vw;
+    color: #fdf0d5;
+    -webkit-text-stroke: 0.15vh #003049;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tablaEstilos {
+    width: 60%;
+    border-collapse: collapse;
+    background-color: #f2d7c3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tablaEstilos th,
+.tablaEstilos td {
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Lilita One';
+    color: #003049;
+}
+
+.tablaEstilos th {
+    background-color: #3a5a40;
+    color: #fdf0d5;
+    font-size: 1.5vw;
+    position: relative;
+}
+
+.tablaEstilos th img {
+    width: 1.5vw;
+    height: auto;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.tablaEstilos tr:nth-child(even) {
+    background-color: #eae2b7;
+}
+
+.tablaEstilos tr:nth-child(odd) {
+    background-color: #f4a261;
+}
+
+.tablaEstilos td {
+    font-size: 1.3vw;
+}
+
+/* Animación de entrada de la tabla */
+.tablaPremios {
+    animation: fadeIn 0.5s ease-out;
+}
+
+
+.tablaInstrucciones {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tablaInstrucciones h2 {
+    font-family: 'Lilita One';
+    font-size: 2.2vw;
+    color: #fdf0d5;
+    -webkit-text-stroke: 0.15vh #003049;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.326);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo para el contenido del modal */
+.contenidoModal {
+    background-image: url("../assets/tragaperras/fondo\ modal.jpg");
+    background-size: cover;
+    background-position: center top;
+    padding: 2%;
+    padding-top: 0;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+    border: 3px solid #3A5A40;
+
+}
+
+/* BOTON DE CIERRE MODAL */
+.cerrarModal {
+    position: absolute;
+    top: 0%;
+    right: 5%;
+    font-size: 2rem;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    font-family: 'Lilita One';
+    background: linear-gradient(180deg, #fdde89, #f86b0c);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.10vh #003049;
+}
+
+.botonesModal {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputModal {
+    width: 100%;
+    text-align: center;
+}
+
+.inputModal::placeholder {
+    text-align: center;
+    color: #003049;
+
+}
+
+.inputModal:focus {
+    outline: 2px solid #F4A261;
+    box-shadow: 0 0 8px rgba(244, 162, 97, 0.5), 0 0 12px rgba(244, 162, 97, 0.3);
+    transition: outline-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*ELIMINA LAS FLECHAS DEL INPUT NUMERICO*/
+.inputModal::-webkit-outer-spin-button,
+.inputModal::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.botonModal {
+    width: 40%;
+}
+
+/* Button styling */
+.botonModal,
+.inputModal {
+    font-family: 'Lilita One';
+    background-color: #FFCB77;
+    color: #003049;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #003049;
+    border-radius: 5px;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transition: all 0.3s ease;
+    margin-top: 2%;
+    -webkit-text-stroke: 0;
+
+}
+
+.botonModal:hover,
+.inputModal:hover {
+    background-color: #F4A261;
+
+}
+
+/* Estilo del Modal de Error */
+.modalError {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenido del Modal de Error */
+.contenidoModalError {
+    background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
+    color: #003049;
+    border: 5px solid #3A5A40;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    width: 30%;
+    text-align: center;
+    position: relative;
+}
+
+
+#mensajeError {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 1.5vw;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.cerrarModalError {
+    position: absolute;
+    top: 11px;
+    right: 14px;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transition: color 0.3s ease;
+}
+
+.cerrarModalError:hover {
+    color: #F4A261;
+}
+
+.contenidoAjustesModal {
+    background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
+
+}
+
+/* Estilo para los encabezados del modal de ajustes */
+.contenidoAjustesModal h2 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 2.2vw;
+    color: #FDF0D5;
+    -webkit-text-stroke: 0.15vh #003049;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.contenidoAjustesModal h3 {
+    font-family: 'Lilita One';
+    font-size: 1.6vw;
+    color: #EAE2B7;
+    -webkit-text-stroke: 0.1vh #003049;
+    padding: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+/* Animación de aparición del modal */
+.modalError .contenidoModalError,
+.modal .contenidoModal,
+.modalSonido,
+.modalTiradasAutomaticasPantalla,
+.modalVictoria {
+    animation: aparecerModal 0.5s ease-out forwards;
+}
+
+/* Animación de entrada */
+@keyframes aparecerModal {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.icono,
+.iconoBtn,
+.icoNavFoot,
+.iconoAjustes {
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.icono:hover,
+.iconoBtn:hover,
+.icoNavFoot:hover,
+.iconoAjustes:hover {
+    transform: scale(1.1);
+    filter: brightness(1.3);
+}
+
+.modo-oscuro {
+    filter: grayscale(1) brightness(0.8) contrast(1);
+    background-color: var(--dark-bg-color);
+    cursor: url('../assets/crash/cursorDarkMode.png'), auto;
+}
+
+/* Estilos para el scroll en modo oscuro */
+.modo-oscuro::-webkit-scrollbar-track {
+    background: #333333;
+    /* Fondo más oscuro para el track */
+}
+
+.modo-oscuro::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #555555, #888888);
+    /* Gradiente más oscuro para el thumb */
+    border: 1px solid #444444;
+    /* Borde más oscuro */
+}
+
+.modo-oscuro .saldo img:hover,
+.modo-oscuro .horaYConfi img:hover,
+.modo-oscuro .cerrarModal,
+.modo-oscuro .botonModal,
+.modo-oscuro .inputModal,
+.modo-oscuro .cerrarModalError,
+.modo-oscuro .icono,
+.modo-oscuro .cerrarModalVictoria,
+.modo-oscuro .modalSonido img:hover,
+.modo-oscuro .barraVolumen::-webkit-slider-thumb,
+.modo-oscuro .iniciarTiradas,
+.modo-oscuro .cerrarModalTiradas,
+.modo-oscuro .barraTiradas::-webkit-slider-thumb,
+.modo-oscuro .creditos,
+.modo-oscuro .botonTirar,
+.modo-oscuro .footer a img {
+
+    cursor: url('../assets/crash/cursorPointerDark.png'), pointer;
+
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent), url("../assets/header/header.jpg");
+    background-size: cover;
+    max-width: 100%;
+    padding: 0 5%;
+
+}
+
+.contenedorPrincipal {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.contenedorJuego {
+    position: relative;
+    background-image: url("../assets/tragaperras/fondoTragaperras.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 75%;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+
+
+}
+
+.contenedorTituloJuego {
+    position: absolute;
+    top: -3%;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.marco {
+    display: flex;
+    border-radius: 10%;
+    border: 30px solid;
+    border-image-source: url('../assets/tragaperras/texturaArbol.png');
+    border-image-slice: 800;
+    border-image-repeat: round;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin: 2%;
+    background: var(--primary-color);
+}
+
+.carrete {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+    border-radius: 15px;
+    background: #f2d7c3;
+    border: 4px solid #3a5a40;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    width: 7.81vw;
+    max-width: 100%;
+    height: 40vh;
+}
+
+
+.carrete img {
+
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+
+.destacar {
+    background-color: #f6af31;
+    border: 3px solid #ffdf00;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ffdf00;
+    animation: crecerReducir 1s infinite;
+    transition: background-color 0.5s ease, border 0.5s ease;
+}
+
+/* Animación de crecimiento */
+@keyframes crecerReducir {
+
+    0%,
+    100% {
+        transform: scale(1);
 
     }
 
-    * {
-        box-sizing: border-box;
-        cursor: url('../assets/crash/cursor.png'), auto;
+    50% {
+        transform: scale(1.1);
 
     }
+}
 
-    /*SCROLL*/
-    body::-webkit-scrollbar {
-        width: 12px;
+/* Estilo general del modal */
+.modalVictoria {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.modalVictoriaContenido {
+    background-color: #000000d0;
+    padding: 2%;
+    padding-top: 0;
+    border-radius: 13px;
+    width: 30%;
+    height: 45%;
+    text-align: center;
+}
+
+.modalVictoriaContenido img {
+    max-width: 100%;
+
+}
+
+.premioHeader {
+    position: absolute;
+    position: absolute;
+    width: 20vw;
+    top: 25%;
+    left: 40.5%;
+    transform: translateX(-50%);
+    animation: crecerReducir 1s infinite;
+}
+
+.girafaPremio {
+    height: 18vh;
+    animation: crecerReducir 1s infinite;
+    padding-bottom: 2%;
+}
+
+.mensajeVictoria {
+    margin-top: 20%;
+    margin-bottom: 10%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffd700;
+    text-align: center;
+    text-shadow: 2px 2px 8px #ff4500, 0 0 15px #ff8c00;
+    animation: crecerReducir 1s infinite;
+}
+
+.cerrarModalVictoria {
+    position: absolute;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    width: 3vw;
+    right: 35%;
+    top: 29%;
+}
+
+
+/* Animación de entrada */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
     }
 
-    body::-webkit-scrollbar-track {
-        background: #003049;
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 
+.footerJuego {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+
+
+}
+
+.modalSonido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 15vw;
+    height: 4vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    bottom: 30%;
+    right: 70%;
+    padding: 1%;
+    border-radius: 10px;
+
+}
+
+.modalSonidoPantalla {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    position: absolute;
+}
+
+.modalSonido img {
+    width: 10%;
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+}
+
+
+.modalSonido img:hover {
+    transform: scale(1.2);
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+}
+
+.barraVolumen {
+    appearance: none;
+    background: var(--primary-color);
+    border-radius: 5px;
+    height: 100%;
+}
+
+.barraVolumen::-webkit-slider-thumb {
+
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1vw;
+    height: 2vh;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    border: 1px solid #fff;
+
+
+}
+
+/* Estilo para el thumb cuando está en mute */
+.barraVolumen.mute,
+.mute::-webkit-slider-thumb {
+    background: #c30a0a;
+
+}
+
+
+.valorVolumen {
+    display: inline-block;
+    width: 2.5em;
+    text-align: center;
+    font-size: 1em;
+    color: white;
+}
+
+.modalTiradasAutomaticasContenido {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    color: #f6af31;
+    align-items: center;
+}
+
+.modalTiradasAutomaticasContenido span {
+    color: var(--secundary-color);
+}
+
+.contenedorElegirTiradas {
+    margin: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.iniciarTiradas {
+    background: #00b862;
+    font-family: 'Lilita One';
+    color: var(--secundary-color);
+    border: none;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    border-radius: 3px;
+    width: 100%;
+    height: 5vh;
+}
+
+.cerrarModalTiradas {
+    position: absolute;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    width: 3vw;
+    right: 32%;
+    top: 33%;
+}
+
+.tituloTiradas {
+    width: 100%;
+    font-size: 1.3vw;
+    height: auto;
+}
+
+.iniciarTiradas:hover {
+
+    background: #33bb7c;
+}
+
+
+
+.barraTiradas {
+    width: 70%;
+    appearance: none;
+    background: var(--primary-color);
+    border-radius: 10px;
+    height: 100%;
+}
+
+.barraTiradas::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1vw;
+    height: 2vh;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    border: 1px solid #fff;
+}
+
+.valorTiradas {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    font-size: 1em;
+    color: white;
+}
+
+.creditos {
+    text-align: center;
+    background-color: var(--secundary-color);
+    font-family: 'Lilita One';
+    font-size: 1vw;
+    color: #000000;
+    border-radius: 30px;
+    border: none;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    width: 100%;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 5%;
+
+}
+
+.creditos:hover {
+    transform: scale(1.2);
+    filter: brightness(1.1);
+
+}
+
+.navegacionFooterJuego {
+    width: 50%;
+    display: flex;
+    color: #f6af31;
+    align-items: center;
+}
+
+.navegacionFooterJuego p {
+    color: #f6af31;
+    padding-left: 15%;
+}
+
+
+.creditosApuesta {
+    color: var(--secundary-color) !important;
+    width: 100%;
+    padding-left: 4% !important;
+}
+
+
+.contenedorBotones {
+    display: flex;
+    width: 33%;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+
+}
+
+.jugar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cantidadTiradas {
+    display: none;
+}
+
+.botonTirar {
+    width: 8vw;
+    padding: 1vh 1vw;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    max-height: 100%;
+
+}
+
+.iconos {
+    width: 33%;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.iconosFoot {
+    width: 33%;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.textoTragaperras {
+    width: 33%;
+    display: flex;
+    text-align: center;
+
+}
+
+.textoTragaperras h1 {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: var(--secundary-color);
+}
+
+.botonTirar:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+.iconoAjustes {
+    width: 30%;
+}
+
+.botonTirar:hover {
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+}
+
+.girar {
+    animation: moverCarrete 3s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+
+@keyframes moverCarrete {
+
+    0% {
+        transform: translateY(0%);
     }
 
-    body::-webkit-scrollbar-thumb {
-
-        background: linear-gradient(180deg, #fdde89, #f86b0c);
-        border-radius: 10px;
-        border: 1px solid #003049;
+    50% {
+        transform: translateY(-1200%);
     }
 
-    /* General body styling */
-    body {
-        overflow-x: hidden;
-        font-family: 'Lilita One';
-        background-color: var(--primary-color);
-        color: var(--secundary-color);
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        max-height: 100vh;
-
+    100% {
+        transform: translateY(0%);
     }
 
-    .preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-       background-color: #7a9c2e;
-        display: flex;
+
+
+}
+
+@media (max-width: 768px) {
+
+    body{
+        background-color: #475b1a;
+    }    
+
+    /* ----------------HEADER---------------- */
+    header {
         align-items: center;
-        justify-content: center;
-        z-index: 9999;
+        text-align: center;
+        padding: 1vh 0;
         background-size: cover;
-        background-position: center bottom;
-    }
-    
-    /* Contenedor del logo */
-    .logo-container {
-        position: relative;
-        animation: bounce 5s infinite ease-in-out;
-    }
-    
-    /* Logo animado */
-    .logo_preloader {
-        width: 250px;
-        /* Tamaño del logo */
-        animation: bounce 5s infinite ease-in-out;
-    }
-    
-    /* Sombra animada */
-    .shadow {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 10px;
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 50%;
-        animation: shadow 5s infinite ease-in-out;
-    }
-    
-    /* Animación de rebote del logo */
-    @keyframes bounce {
-    
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-    
-        50% {
-            transform: translateY(-30px);
-        }
-    }
-    
-    /* Animación de la sombra */
-    @keyframes shadow {
-    
-        0%,
-        100% {
-            width: 150px;
-            opacity: 0.2;
-        }
-    
-        50% {
-            width: 200px;
-            opacity: 0.5;
-        }
-    }
-
-    .contentenedorVolverMain {
-        display: flex;
-        align-items: center;
-
+        background-position: center;
     }
 
     .home {
-        width: 7vw;
+        width: 8vh;
         height: auto;
-        margin-right: 2vw;
-
     }
 
-    .logo {
-        width: 5vw;
-        height: 10vh;
+    .contentenedorVolverMain {
+        align-items: center;
+        width: 100%;
     }
 
-    h1 {
-        font-family: 'Lilita One';
-        font-size: 2vw;
-        background: linear-gradient(180deg, #fdde89, #f86b0c);
-        -webkit-background-clip: text;
-        color: transparent;
-        -webkit-text-stroke: 0.10vh #003049;
+    .saldo {
+        justify-content: center;
+        font-size: 3vh;
+        width: 25vh;
+    }
+
+    .saldo img {
+        width: 6vw;
+        height: auto;
+    }
+
+    .horaYConfi {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
 
     }
 
     .hora {
-        font-family: 'Lilita One';
-        font-size: 1.5vw;
-        max-width: 100%;
-        width: 90%;
-        background: linear-gradient(180deg, #fdde89, #f86b0c);
-        -webkit-background-clip: text;
-        color: transparent;
-        -webkit-text-stroke: 0.10vh #003049;
-
-    }
-
-    .saldo {
-        display: flex;
-        align-items: center;
-    }
-
-    .saldo img {
-        width: 2vw;
-        height: 4vh;
-        margin-left: 2%;
-
-    }
-
-    .saldo img:hover {
-
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-
-    }
-
-    .saldo p {
-        font-family: 'Lilita One';
-        font-size: 1.5vw;
-        background: linear-gradient(180deg, #fdde89, #f86b0c);
-        -webkit-background-clip: text;
-        color: transparent;
-        -webkit-text-stroke: 0.10vh #003049;
-    }
-
-    .horaYConfi {
-        display: flex;
-        align-items: center;
-        padding: 0 2%;
-        width: 15%;
-
+        font-size: 4.5vw;
+        display: none;
     }
 
     .horaYConfi img {
-        margin-left: 10%;
-    }
-
-    .horaYConfi img:hover {
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-    }
-
-    .horaYConfi img,
-    .icono {
-        width: 2vw;
-        height: 4vh;
-        transition: transform 0.3s ease, filter 0.3s ease;
-        margin-bottom: 3%;
-        margin-top: 3%;
-
-    }
-
-    .ajustesModal {
-        display: none;
-    }
-
-    .depositarYRetirar {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 2%;
-        width: 100%;
-        height: 100%;
-    }
-
-    .saldoCreditosInfo {
-        font-size: 1.5vw;
-        margin: 1%;
-    }
-
-    .tablaPremios {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-    }
-
-    .tablaPremios h2 {
-        font-family: 'Lilita One';
-        font-size: 2.2vw;
-        color: #fdf0d5;
-        -webkit-text-stroke: 0.15vh #003049;
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .tablaEstilos {
-        width: 60%;
-        border-collapse: collapse;
-        background-color: #f2d7c3;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .tablaEstilos th,
-    .tablaEstilos td {
-        padding: 1rem;
-        text-align: center;
-        font-family: 'Lilita One';
-        color: #003049;
-    }
-
-    .tablaEstilos th {
-        background-color: #3a5a40;
-        color: #fdf0d5;
-        font-size: 1.5vw;
-        position: relative;
-    }
-
-    .tablaEstilos th img {
-        width: 1.5vw;
+        width: 10vw;
         height: auto;
-        margin-right: 0.5rem;
-        vertical-align: middle;
+        margin-left: 3vh;
     }
 
-    .tablaEstilos tr:nth-child(even) {
-        background-color: #eae2b7;
+    .logo {
+        width: auto;
     }
 
-    .tablaEstilos tr:nth-child(odd) {
-        background-color: #f4a261;
-    }
-
-    .tablaEstilos td {
-        font-size: 1.3vw;
-    }
-
-
-    /* Animación de entrada de la tabla */
-    .tablaPremios {
-        animation: fadeIn 0.5s ease-out;
-    }
-
-
-    .tablaInstrucciones {
+    .titulo {
         display: none;
-        flex-direction: column;
-        align-items: center;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-        animation: fadeIn 0.5s ease-out;
     }
 
-    .tablaInstrucciones h2 {
-        font-family: 'Lilita One';
-        font-size: 2.2vw;
-        color: #fdf0d5;
-        -webkit-text-stroke: 0.15vh #003049;
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-10%);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Estilo para el contenido del modal */
-    .contenidoModal {
-        background-image: url("../assets/tragaperras/fondo\ modal.jpg");
-        background-size: cover;
-        background-position: center top;
-        padding: 2%;
-        padding-top: 0;
-        border-radius: 10px;
-        width: 30%;
-        text-align: center;
-        border: 3px solid #3A5A40;
-
-    }
-
-    /* BOTON DE CIERRE MODAL */
-    .cerrarModal {
-        position: absolute;
-        top: 0%;
-        right: 5%;
-        font-size: 2rem;
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-        font-family: 'Lilita One';
-        background: linear-gradient(180deg, #fdde89, #f86b0c);
-        -webkit-background-clip: text;
-        color: transparent;
-        -webkit-text-stroke: 0.10vh #003049;
-    }
-
-    .botonesModal {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .inputModal {
-        width: 100%;
-        text-align: center;
-    }
-
-    .inputModal::placeholder {
-        text-align: center;
-        color: #003049;
-
-    }
-
-    .inputModal:focus {
-        outline: 2px solid #F4A261;
-        box-shadow: 0 0 8px rgba(244, 162, 97, 0.5), 0 0 12px rgba(244, 162, 97, 0.3);
-        transition: outline-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    /*ELIMINA LAS FLECHAS DEL INPUT NUMERICO*/
-    .inputModal::-webkit-outer-spin-button,
-    .inputModal::-webkit-inner-spin-button {
-        -webkit-appearance: none;
+    /* CONTENEDOR PRINCIPAL */
+    .contenedorPrincipal {
         margin: 0;
     }
 
-    .botonModal {
-        width: 40%;
-    }
-
-    /* Button styling */
-    .botonModal,
-    .inputModal {
-        font-family: 'Lilita One';
-        background-color: #FFCB77;
-        color: #003049;
-        padding: 0.8rem 1.5rem;
-        border: 2px solid #003049;
-        border-radius: 5px;
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-        transition: all 0.3s ease;
-        margin-top: 2%;
-        -webkit-text-stroke: 0;
-
-    }
-
-    .botonModal:hover,
-    .inputModal:hover {
-        background-color: #F4A261;
-
-    }
-
-    /* Estilo del Modal de Error */
-    .modalError {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Contenido del Modal de Error */
-    .contenidoModalError {
-        background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
-        color: #003049;
-        border: 5px solid #3A5A40;
-        border-radius: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        padding: 2rem;
-        width: 30%;
-        text-align: center;
-        position: relative;
-    }
-
-
-    #mensajeError {
-        font-family: 'Lilita One', sans-serif;
-        font-size: 1.5vw;
-        margin-bottom: 1rem;
-        color: #FFFFFF;
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-    }
-
-
-    .cerrarModalError {
-        position: absolute;
-        top: 11px;
-        right: 14px;
-        font-size: 1.5rem;
-        color: #FFFFFF;
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-        transition: color 0.3s ease;
-    }
-
-    .cerrarModalError:hover {
-        color: #F4A261;
-    }
-
-    .contenidoAjustesModal {
-        background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
-
-    }
-
-    /* Estilo para los encabezados del modal de ajustes */
-    .contenidoAjustesModal h2 {
-        font-family: 'Lilita One', sans-serif;
-        font-size: 2.2vw;
-        color: #FDF0D5;
-        -webkit-text-stroke: 0.15vh #003049;
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .contenidoAjustesModal h3 {
-        font-family: 'Lilita One';
-        font-size: 1.6vw;
-        color: #EAE2B7;
-        -webkit-text-stroke: 0.1vh #003049;
-        padding: 0.4rem;
-        margin-bottom: 1rem;
-    }
-
-
-
-
-    /* Animación de aparición del modal */
-    .modalError .contenidoModalError,
-    .modal .contenidoModal,
-    .modalSonido,
-    .modalTiradasAutomaticasPantalla,
-    .modalVictoria {
-        animation: aparecerModal 0.5s ease-out forwards;
-    }
-
-    /* Animación de entrada */
-    @keyframes aparecerModal {
-        from {
-            opacity: 0;
-            transform: scale(0.8);
-        }
-
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-
-    .icono {
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-        transition: transform 0.3s ease, filter 0.3s ease;
-
-    }
-
-    .icono:hover {
-        transform: scale(1.1);
-        filter: brightness(1.3);
-        /* Incrementa el brillo */
-    }
-
-    .modo-oscuro {
-        filter: grayscale(1) brightness(0.8) contrast(1.2);
-        background-color: var(--dark-bg-color);
-
-
-    }
-
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent), url("../assets/header/header.jpg");
-        background-size: cover;
-        max-width: 100%;
-        padding: 0 5%;
-
-    }
-
     .contenedorJuego {
-        position: relative;
-        background-image: url("../assets/tragaperras/fondoTragaperras.jpeg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        width: 75%;
-        margin: 0.5% auto;
-        margin-bottom: 2%;
-        border-radius: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        overflow: hidden;
-
-
-    }
-
-    .contenedorTituloJuego {
-        position: absolute;
-        top: -3%;
-        left: 50%;
-        transform: translateX(-50%);
-
+        width: 100%;
+        border-radius: 0;        
+        box-shadow: none;
+        height: auto;
+        
     }
 
     .marco {
         display: flex;
-        padding: 1%;
         border-radius: 10%;
         border: 30px solid;
-        border-image-source: url('../assets/tragaperras/texturaArbol.png');
+        border-image-source: url(../assets/tragaperras/texturaArbol.png);
         border-image-slice: 800;
         border-image-repeat: round;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         margin: 2%;
         background: var(--primary-color);
+        width: 60%;
+        height: 31VH;
     }
+
 
     .carrete {
         overflow: hidden;
@@ -610,386 +1188,112 @@
         background: #f2d7c3;
         border: 4px solid #3a5a40;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        width: 7.81vw;
+        width: auto;
         max-width: 100%;
-        height: 40vh;
+        height: auto;
     }
 
-
-    .carrete img {
-
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-
-    }
-
-
-    .destacar {
-        background-color: #f6af31;
-        border: 3px solid #ffdf00;
-        border-radius: 10px;
-        box-shadow: 0 0 15px #ffdf00;
-        animation: crecerReducir 1s infinite;
-        transition: background-color 0.5s ease, border 0.5s ease;
-    }
-
-    /* Animación de crecimiento */
-    @keyframes crecerReducir {
-
-        0%,
-        100% {
-            transform: scale(1);
-
-        }
-
-        50% {
-            transform: scale(1.1);
-
-        }
-    }
-
-    /* Estilo general del modal */
-    .modalVictoria {
-        display: none;
-        position: fixed;
-        z-index: 9999;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        align-items: center;
-        justify-content: center;
-
-    }
-
-
-    .modalVictoriaContenido {
-        background-color: #000000d0;
-        padding: 2%;
-        padding-top: 0;
-        border-radius: 13px;
-        width: 30%;
-        height: 45%;
-        text-align: center;
-    }
-
-    .modalVictoriaContenido img {
-        max-width: 100%;
-
-    }
-
-    .premioHeader {
+    .contenedorTituloJuego {
         position: absolute;
-        position: absolute;
-        width: 20vw;
-        /* Mantén el tamaño que prefieras */
-        top: 25%;
-        /* Controla cuánto sobresale por arriba */
-        left: 40.5%;
-        /* Posición horizontal centrada respecto al padre */
+        top: 1%;
+        left: 50%;
         transform: translateX(-50%);
-        /* Corrige el desplazamiento horizontal para centrar */
-        animation: crecerReducir 1s infinite;
-
     }
 
-    .girafaPremio {
-        height: 18vh;
-        animation: crecerReducir 1s infinite;
-        padding-bottom: 2%;
-    }
-
-    .mensajeVictoria {
-        margin-top: 20%;
-        margin-bottom: 10%;
-        font-size: 2rem;
-        font-weight: bold;
-        color: #ffd700;
-        text-align: center;
-        text-shadow: 2px 2px 8px #ff4500, 0 0 15px #ff8c00;
-        animation: crecerReducir 1s infinite;
-    }
-
-    .cerrarModalVictoria {
-        position: absolute;
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-        width: 3vw;
-        right: 35%;
-        top: 29%;
-    }
-
-
-    /* Animación de entrada */
-    @keyframes zoomIn {
-        0% {
-            transform: scale(0.7);
-            opacity: 0;
-        }
-
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
+    /* FOOTER CONTENEDOR PRINCIPAL */
 
     .footerJuego {
-        display: flex;
-        width: 100%;
-        height: auto;
-        justify-content: center;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 2vh;
-        align-items: center;
-
-
-    }
-
-    .modalSonido {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 15vw;
-        height: 4vh;
-        background-color: rgba(0, 0, 0, 0.9);
-        position: absolute;
-        bottom: 30%;
-        right: 70%;
-        padding: 1%;
-        border-radius: 10px;
-
-    }
-
-    .modalSonidoPantalla {
-        display: none;
-        align-items: center;
-        justify-content: center;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1000;
-        position: absolute;
-    }
-
-    .modalSonido img {
-        width: 10%;
-        transition: transform 0.3s ease, filter 0.3s ease;
-
-    }
-
-
-    .modalSonido img:hover {
-        transform: scale(1.2);
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-    }
-
-    .barraVolumen {
-        appearance: none;
-        background: var(--primary-color);
-        border-radius: 5px;
-        height: 100%;
-    }
-
-    .barraVolumen::-webkit-slider-thumb {
-
-        -webkit-appearance: none;
-        appearance: none;
-        width: 1vw;
-        height: 2vh;
-        background: var(--primary-color);
-        border-radius: 50%;
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-        border: 1px solid #fff;
-
-
-    }
-
-    /* Estilo para el thumb cuando está en mute */
-    .barraVolumen.mute,
-    .mute::-webkit-slider-thumb {
-        background: #c30a0a;
-
-    }
-
-
-    .valorVolumen {
-        display: inline-block;
-        width: 2.5em;
-        text-align: center;
-        font-size: 1em;
-        color: white;
-    }
-
-    .modalTiradasAutomaticasContenido {
+        /* height: 30vh; */
         display: flex;
         flex-direction: column;
-        padding: 2%;
-        background-color: rgba(0, 0, 0, 0.9);
-        border-radius: 10px;
-        color: #f6af31;
         align-items: center;
+        /* margin-top: 3px; */
+        background-color: #475b1a;
     }
 
-    .modalTiradasAutomaticasContenido span {
-        color: var(--secundary-color);
+    .icono {
+        width: 90%;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
     }
 
-    .contenedorElegirTiradas {
-        margin: 10%;
+    .iconoBtn {
+        width: 5vh;
+        display: flex;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .icoNavFoot {
+        width: 20%;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .iconosFoot {
         width: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-
-    }
-
-    .iniciarTiradas {
-        background: #00b862;
-        font-family: 'Lilita One';
-        color: var(--secundary-color);
-        border: none;
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-        border-radius: 3px;
-        width: 100%;
-        height: 5vh;
-    }
-
-    .cerrarModalTiradas {
-        position: absolute;
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-        width: 3vw;
-        right: 32%;
-        top: 33%;
-    }
-
-    .tituloTiradas {
-        width: 100%;
-        font-size: 1.3vw;
-        height: auto;
-    }
-
-    .iniciarTiradas:hover {
-
-        background: #33bb7c;
-    }
-
-
-
-    .barraTiradas {
-        width: 70%;
-        appearance: none;
-        background: var(--primary-color);
-        border-radius: 10px;
         height: 100%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
     }
 
-    .barraTiradas::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 1vw;
-        height: 2vh;
-        background: var(--primary-color);
-        border-radius: 50%;
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
-        border: 1px solid #fff;
+    .container-footer-nav {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .valorTiradas {
-        display: inline-block;
-        width: 30%;
-        text-align: center;
-        font-size: 1em;
-        color: white;
+    .btnCreditos-container {
+        width: 80%;
+
+    }
+
+    .navegacionFooterJuego {
+        width: 80%;
+        display: flex;
+        color: #f6af31;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2vh;
     }
 
     .creditos {
         text-align: center;
         background-color: var(--secundary-color);
         font-family: 'Lilita One';
-        font-size: 1vw;
+        font-size: 2vh;
         color: #000000;
         border-radius: 30px;
         border: none;
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
+        cursor: url(../assets/pamplona/cursorPointer.png), pointer;
         width: 100%;
-        transition: transform 0.3s ease, filter 0.3s ease;
+        transition: transform 0.3s ease, filter 0.3sease;
         margin-bottom: 5%;
-
+        height: 3vh;
     }
-
-    .creditos:hover {
-        transform: scale(1.2);
-        filter: brightness(1.1);
-
-    }
-
-    .navegacionFooterJuego {
-        width: 50%;
-        display: flex;
-        color: #f6af31;
-        align-items: center;
-    }
-
-    .navegacionFooterJuego p {
-        color: #f6af31;
-        padding-left: 15%;
-    }
-
 
     .creditosApuesta {
-        color: var(--secundary-color) !important;
-        width: 100%;
-        padding-left: 4% !important;
+        width: auto;
     }
-
-
-    .contenedorBotones {
-        display: flex;
-        width: 33%;
-        justify-content: center;
-        height: 100%;
-        align-items: center;
-
-    }
-
-    .jugar {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #cantidadTiradas {
-        display: none;
-    }
-
-    .botonTirar {
-        width: 8vw;
-        padding: 1vh 1vw;
-        transition: transform 0.3s ease, filter 0.3s ease;
-        max-height: 100%;
-
-    }
-
-    .iconos {
-        width: 33%;
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-    }
-
-
-
 
     .textoTragaperras {
-        width: 33%;
+        width: 100%;
         display: flex;
         text-align: center;
-
+        align-items: center;
+        justify-content: center;
+        margin: 2vh;
     }
 
     .textoTragaperras h1 {
@@ -997,65 +1301,155 @@
         height: 100%;
         text-align: center;
         color: var(--secundary-color);
+        font-size: 3vh;
     }
 
-    .botonTirar:hover {
-        filter: brightness(1.1);
-        transform: scale(1.05);
+    .contenedorBotones {
+        display: flex;
+        width: 5vh;
+        justify-content: center;
+        height: 100%;
+        align-items: center;
+        margin-top: 2vh;
     }
 
-
-
-    .botonTirar:hover {
-        cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    .botonTirar {
+        width: 15vh;
+        padding: 1vh 1vw;
+        transition: transform 0.3sease, filter 0.3sease;
+        max-height: 100%;
     }
 
-    .girar {
-        animation: moverCarrete 3s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    .navegacionFooterJuego p {
+        padding-left: 5%;
     }
 
-
-    @keyframes moverCarrete {
-
+    @keyframes moverDerecha {
         0% {
-            transform: translateY(0%);
-        }
-
-        50% {
-            transform: translateY(-1200%);
+            right: 58%;
+            /* Posición inicial */
         }
 
         100% {
-            transform: translateY(0%);
+            right: 33%;
+            /* Punto donde se detendrá */
         }
-
-
-
     }
 
-    footer {
+    /* MODALES */
 
-        display: flex;
-        align-items: center;
-        background-color: rgba(17, 40, 24, 1);
-        width: 100%;
-        padding: 1% 0;
+    .tablaInstrucciones h2 {
+        font-family: 'Lilita One';
+        font-size: 4vh;
+        color: #fdf0d5;
+        -webkit-text-stroke: 0.15vh #003049;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .tablaEstilos {
+        width: 95%;
+        height: 40%;
+        border-collapse: collapse;
+        background-color: #f2d7c3;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .tablaEstilos th {
+        background-color: #3a5a40;
+        color: #f4a261;
+        -webkit-text-stroke: 0.10vh #003049;
+        font-size: 3vh;
         position: relative;
-        min-height: 60px;
-        z-index: 10;
-        margin-top: auto;
-        color: #FDF0D5;
     }
 
-    footer a {
+    .tablaEstilos td {
+        font-size: 2vh;
+    }
+
+    .contenidoModal {
+        background-image: url(../assets/pamplona/fondo_modal.jpg);
+        background-size: cover;
+        background-position: center top;
+        padding: 2%;
+        padding-top: 7%;
+        border-radius: 10px;
+        width: 95%;
+        text-align: center;
+        border: 3px solid #3A5A40;
+    }
+
+    .contenidoModalError {
+        background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
+        color: #003049;
+        border: 5px solid #3A5A40;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        padding: 2rem;
+        width: 90%;
+        text-align: center;
+        position: relative;
+    }
+
+    #mensajeError {
+        font-family: 'Lilita One', sans-serif;
+        font-size: 3.1vh;
+        margin-top: 1rem;
+        color: #FFFFFF;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .saldoCreditosInfo {
+        font-size: 3.4vh;
+        margin: 1%;
+    }
+
+    .contenidoAjustesModal {
+        background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
+        width: 70% !important;
+    }
+
+    .contenidoAjustesModal h2 {
+        font-family: 'Lilita One', sans-serif;
+        font-size: 3.5vh;
+        color: #FDF0D5;
+        -webkit-text-stroke: 0.15vh #003049;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .contenidoAjustesModal h3 {
+        font-family: 'Lilita One';
+        font-size: 3vh;
+        color: #EAE2B7;
+        -webkit-text-stroke: 0.1vh #003049;
+        padding: 0.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .opcionAjustes {
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        height: 15%;
+        flex-direction: column;
     }
 
-    footer a img {
-        width: 40%;
-        height: auto;
+    .iconoAjustes {
+        width: 30%;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
     }
+
+    h1{
+        font-size: 2vh;
+    }
+
+
+}
