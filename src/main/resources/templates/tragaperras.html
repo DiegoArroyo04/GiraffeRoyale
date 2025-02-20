@@ -27,7 +27,7 @@
                 <img src="assets/header/LOGO_GIRAFFE_ROYALE.png" class="logo">
             </a>
         </div>
-        <h1>GIRAFFE ROYALE</h1>
+        <h1 class="titulo">GIRAFFE ROYALE</h1>
         <div class="saldo">
             <h1 id="saldo" class="saldo">Saldo:0€</h1>
             <img src="assets/header/añadir.png" id="añadirSaldo">
@@ -37,9 +37,8 @@
             <img id="configuracion" src="assets/header/configuracion.png">
         </div>
     </header>
-    <main>
+    <main class="contenedorPrincipal">
         <div id="contenedorJuego" class="contenedorJuego">
-
             <div class="contenedorTituloJuego">
                 <h1>GIRAFFE SPINS AND WINS</h1>
             </div>
@@ -99,35 +98,37 @@
 
             </div>
 
+              <!-- FOOTER JUEGO BOTONES -->
             <div class="footerJuego">
-
-                <div class="iconos">
+                <div class="iconosFoot">
                     <div class="navegacionFooterJuego">
                         <button id="creditos" class="creditos">Creditos</button>
                     </div>
-                    <div class="navegacionFooterJuego">
-                        <img src="assets/tragaperras/iconoInformacion.png" id="info" class="icono">
-                        <p id="creditosTexto">CREDITOS:</p>
-                        <p id="creditosTotales" class="creditosApuesta">0</p>
-                    </div>
-                    <div class="navegacionFooterJuego">
-                        <img src="assets/tragaperras/sonido.png" id="sonido" class="icono">
-                        <p id="apuestaTexto">APUESTA:</p>
-                        <p id="apuesta" class="creditosApuesta">20</p>
+                    <div class="container-footer-nav">
+                        <div class="navegacionFooterJuego">
+                            <img src="assets/tragaperras/iconoInformacion.png" id="info" class="icoNavFoot">
+                            <p id="creditosTexto">CREDITOS:</p>
+                            <p id="creditosTotales" class="creditosApuesta">0</p>
+                        </div>
+                        <div class="navegacionFooterJuego">
+                            <img src="assets/tragaperras/sonido.png" id="sonido" class="icoNavFoot">
+                            <p id="apuestaTexto">APUESTA:</p>
+                            <p id="apuesta" class="creditosApuesta">20</p>
+                        </div>
                     </div>
                 </div>
                 <div class="textoTragaperras">
                     <h1 id="textoTragaperras">¡TIRE PARA GANAR!</h1>
                 </div>
                 <div class="contenedorBotones">
-                    <img src="assets/tragaperras/disminuirApuesta.png" id="disminuirApuesta" class="icono">
+                    <img src="assets/tragaperras/disminuirApuesta.png" id="disminuirApuesta" class="iconoBtn">
                     <div class="jugar">
+                        <img src="assets/tragaperras/autoplay.png" id="tiradasAutomaticas" class="iconoBtn">
                         <img src="assets/tragaperras/botonTirar.png" class="botonTirar" id="botonTirar">
-                        <img src="assets/tragaperras/autoplay.png" id="tiradasAutomaticas" class="icono">
-                        <img src="assets/crash/historialTiradas.png" id="historialTiradasAbrir" class="icono">
+                        <img src="assets/crash/historialTiradas.png" id="historialTiradasAbrir" class="iconoBtn">
                         <p id="cantidadTiradas"></p>
                     </div>
-                    <img src="assets/tragaperras/aumentarApuesta.png" id="aumentarApuesta" class="icono">
+                    <img src="assets/tragaperras/aumentarApuesta.png" id="aumentarApuesta" class="iconoBtn">
                 </div>
             </div>
 
@@ -319,15 +320,7 @@
             </table>
         </div>
 
-    </main>
-
-    <footer>
-        <a href="https://www.juegoseguro.es">
-            <img src="assets/footer/juegasegurocasino.png" alt="Iconos Juego Seguro">
-        </a>
-        <p>© 2024 Giraffe Royale Casino</p>
-        <img src="assets/header/LOGO_GIRAFFE_ROYALE.png" class="logo">
-    </footer>
+    </main>    
 
     <script src="scripts/tragaperras.js"></script>
 </body>
