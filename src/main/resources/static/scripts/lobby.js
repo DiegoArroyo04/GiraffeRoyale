@@ -259,6 +259,12 @@ document.getElementById("cerrarModalJiraffe").addEventListener("click", function
 
 })
 
+//CERRAR MODAL AL HACER CLICK EN LA X
+document.getElementById("cerrarModalSanFermin").addEventListener("click", function () {
+    document.getElementById("modalSanFermin").style.display = "none";
+
+})
+
 // Cierra el modal al hacer clic fuera del contenido
 window.addEventListener("click", (event) => {
     if (event.target == document.getElementById("modalDepositar")) {
@@ -280,6 +286,10 @@ window.addEventListener("click", (event) => {
         document.getElementById("modalJiraffe").style.display = "none";
     }
 
+    if (event.target == document.getElementById("modalSanFermin")) {
+        document.getElementById("modalSanFermin").style.display = "none";
+    }
+
 });
 
 //AJUSTES
@@ -295,6 +305,11 @@ document.getElementById("abrirModalTragaperra").addEventListener("click", functi
 //ABRIR MODAL DESCRIPCIO JIRAFFE
 document.getElementById("abrirModalJiraffe").addEventListener("click", function () {
     document.getElementById("modalJiraffe").style.display = "flex";
+});
+
+//ABRIR MODAL DESCRIPCIO SAN FERMIN
+document.getElementById("abrirModalSanFermin").addEventListener("click", function () {
+    document.getElementById("modalSanFermin").style.display = "flex";
 });
 
 //MODO OSCURO
