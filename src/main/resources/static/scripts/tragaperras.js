@@ -50,11 +50,12 @@ var arbol = "iconoArbol.png";
 var loro = "iconoLoro.png";
 var platanos = "iconoPlatanos.png";
 var flor = "iconoFlor.png";
+var comodin = "comodin.png";
 
 // Matriz de imágenes de los carretes
 var carretes = [
     [girafa, arbol, loro, platanos, flor, flor, platanos, platanos, loro, arbol, flor, platanos, flor, loro, flor],
-    [girafa, arbol, loro, platanos, flor, flor, platanos, platanos, loro, arbol, flor, platanos, flor, loro, flor],
+    [girafa, arbol, loro, platanos, flor, flor, platanos, platanos, loro, arbol, flor, platanos, flor, loro, comodin],
     [girafa, arbol, loro, platanos, flor, flor, platanos, platanos, loro, arbol, flor, platanos, flor, loro, flor]
 ];
 
@@ -1291,6 +1292,7 @@ function comprobarSimbolos(carrete1, carrete2, carrete3, apuestaActual) {
     };
 
 
+
     //MULTIPLICADOR DE LA GIRAFA PARA TODOS LOS SIMBOLOS EN EL BONO DE LAS 3 GIRAFAS
     if (activadorGiros == true) {
 
@@ -1434,20 +1436,39 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
     //OBTENER EL NOMBRE DEL SIMBOLO 
     var nombreSimbolo = obtenerNombreImagen(simbolo.imagen).replace("icono", "").replace(".png", "").toUpperCase();
 
+
     // COMBINACION LINEA CENTRAL
-    if (obtenerNombreImagen(carrete1[1].src) === obtenerNombreImagen(carrete2[1].src) &&
-        obtenerNombreImagen(carrete1[1].src) === obtenerNombreImagen(carrete3[1].src) &&
+    if (
+        // COMPROBACIONES DE QUE EL PRIMER SEGUNDO Y TERCER CARRETE COINCIDAN Y SI HAY COMODIN
+        ((
+            obtenerNombreImagen(carrete1[1].src) === obtenerNombreImagen(carrete2[1].src) &&
+            obtenerNombreImagen(carrete1[1].src) === obtenerNombreImagen(carrete3[1].src)
+        ) ||
+            (
+                obtenerNombreImagen(carrete1[1].src) === obtenerNombreImagen(carrete3[1].src) &&
+                obtenerNombreImagen(carrete2[1].src) === comodin
+            ))
+        &&
         obtenerNombreImagen(simbolo.imagen) === obtenerNombreImagen(carrete1[1].src)) {
         multiplicadorTotal += simbolo.multiCentral;
         combinacionesGanadoras.push([carrete1[1], carrete2[1], carrete3[1]]);
         //CONCATENAR COMBINACION GANADORA
         combinacionTexto += "Central " + nombreSimbolo + " ";
-
     }
 
+
     // COMBINACION LINEA SUPERIOR
-    if (obtenerNombreImagen(carrete1[0].src) === obtenerNombreImagen(carrete2[0].src) &&
-        obtenerNombreImagen(carrete1[0].src) === obtenerNombreImagen(carrete3[0].src) &&
+    if (
+        // COMPROBACIONES DE QUE EL PRIMER SEGUNDO Y TERCER CARRETE COINCIDAN Y SI HAY COMODIN
+        ((
+            obtenerNombreImagen(carrete1[0].src) === obtenerNombreImagen(carrete2[0].src) &&
+            obtenerNombreImagen(carrete1[0].src) === obtenerNombreImagen(carrete3[0].src)
+        ) ||
+            (
+                obtenerNombreImagen(carrete1[0].src) === obtenerNombreImagen(carrete3[0].src) &&
+                obtenerNombreImagen(carrete2[0].src) === comodin
+            ))
+        &&
         obtenerNombreImagen(simbolo.imagen) === obtenerNombreImagen(carrete1[0].src)) {
         multiplicadorTotal += simbolo.multiHorizontalesArribaAbajo;
         combinacionesGanadoras.push([carrete1[0], carrete2[0], carrete3[0]]);
@@ -1455,9 +1476,19 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
         combinacionTexto += "Superior " + nombreSimbolo + " ";
     }
 
+
     // COMBINACION LINEA INFERIOR
-    if (obtenerNombreImagen(carrete1[2].src) === obtenerNombreImagen(carrete2[2].src) &&
-        obtenerNombreImagen(carrete1[2].src) === obtenerNombreImagen(carrete3[2].src) &&
+    if (
+        // COMPROBACIONES DE QUE EL PRIMER SEGUNDO Y TERCER CARRETE COINCIDAN Y SI HAY COMODIN
+        ((
+            obtenerNombreImagen(carrete1[2].src) === obtenerNombreImagen(carrete2[2].src) &&
+            obtenerNombreImagen(carrete1[2].src) === obtenerNombreImagen(carrete3[2].src)
+        ) ||
+            (
+                obtenerNombreImagen(carrete1[2].src) === obtenerNombreImagen(carrete3[2].src) &&
+                obtenerNombreImagen(carrete2[2].src) === comodin
+            ))
+        &&
         obtenerNombreImagen(simbolo.imagen) === obtenerNombreImagen(carrete1[2].src)) {
         multiplicadorTotal += simbolo.multiHorizontalesArribaAbajo;
         combinacionesGanadoras.push([carrete1[2], carrete2[2], carrete3[2]]);
@@ -1466,8 +1497,17 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
     }
 
     // COMBINACION DIAGONAL IZQUIERDA
-    if (obtenerNombreImagen(carrete1[0].src) === obtenerNombreImagen(carrete2[1].src) &&
-        obtenerNombreImagen(carrete1[0].src) === obtenerNombreImagen(carrete3[2].src) &&
+    if (
+        // COMPROBACIONES DE QUE EL PRIMER SEGUNDO Y TERCER CARRETE COINCIDAN Y SI HAY COMODIN
+        ((
+            obtenerNombreImagen(carrete1[0].src) === obtenerNombreImagen(carrete2[1].src) &&
+            obtenerNombreImagen(carrete1[0].src) === obtenerNombreImagen(carrete3[2].src)
+        ) ||
+            (
+                obtenerNombreImagen(carrete1[0].src) === obtenerNombreImagen(carrete3[2].src) &&
+                obtenerNombreImagen(carrete2[1].src) === comodin
+            ))
+        &&
         obtenerNombreImagen(simbolo.imagen) === obtenerNombreImagen(carrete1[0].src)) {
         multiplicadorTotal += simbolo.multiDiagonal;
         combinacionesGanadoras.push([carrete1[0], carrete2[1], carrete3[2]]);
@@ -1475,9 +1515,19 @@ function calcularPremioCombinado(simbolo, carrete1, carrete2, carrete3, apuestaA
         combinacionTexto += "Diagonal izquierda " + nombreSimbolo + " ";
     }
 
+
     // COMBINACION DIAGONAL DERECHA
-    if (obtenerNombreImagen(carrete3[0].src) === obtenerNombreImagen(carrete2[1].src) &&
-        obtenerNombreImagen(carrete3[0].src) === obtenerNombreImagen(carrete1[2].src) &&
+    if (
+        // COMPROBACIONES DE QUE EL PRIMER SEGUNDO Y TERCER CARRETE COINCIDAN Y SI HAY COMODIN
+        ((
+            obtenerNombreImagen(carrete3[0].src) === obtenerNombreImagen(carrete2[1].src) &&
+            obtenerNombreImagen(carrete3[0].src) === obtenerNombreImagen(carrete1[2].src)
+        ) ||
+            (
+                obtenerNombreImagen(carrete3[0].src) === obtenerNombreImagen(carrete1[2].src) &&
+                obtenerNombreImagen(carrete2[1].src) === comodin
+            ))
+        &&
         obtenerNombreImagen(simbolo.imagen) === obtenerNombreImagen(carrete3[0].src)) {
         multiplicadorTotal += simbolo.multiDiagonal;
         combinacionesGanadoras.push([carrete3[0], carrete2[1], carrete1[2]]);
