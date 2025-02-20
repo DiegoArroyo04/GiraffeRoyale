@@ -1,14 +1,12 @@
 package com.proyectoTransversal.services.implement;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proyectoTransversal.entity.HistoricoEntity;
 import com.proyectoTransversal.entity.UsuarioEntity;
 import com.proyectoTransversal.model.HistoricoDTO;
 import com.proyectoTransversal.model.UsuarioDTO;

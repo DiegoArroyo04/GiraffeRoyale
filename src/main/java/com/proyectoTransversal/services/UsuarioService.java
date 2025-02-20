@@ -3,7 +3,6 @@ package com.proyectoTransversal.services;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.proyectoTransversal.entity.HistoricoEntity;
 import com.proyectoTransversal.entity.UsuarioEntity;
 import com.proyectoTransversal.model.HistoricoDTO;
 import com.proyectoTransversal.model.UsuarioDTO;

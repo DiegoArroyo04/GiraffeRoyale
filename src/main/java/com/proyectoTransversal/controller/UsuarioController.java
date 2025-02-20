@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyectoTransversal.entity.HistoricoEntity;
+
 import com.proyectoTransversal.entity.UsuarioEntity;
 import com.proyectoTransversal.model.HistoricoDTO;
 import com.proyectoTransversal.model.UsuarioDTO;
