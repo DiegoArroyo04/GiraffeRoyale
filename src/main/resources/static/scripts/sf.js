@@ -1,12 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const img = new Image();
-  img.src = "assets/crash/header.jpg"; 
 
-  img.onload = function () {
-      setTimeout(() => {
-          document.getElementById("preloader").style.display = "none";
-      }, 5000); // Si quieres que dure 5 segundos
-  };
+  setTimeout(() => {
+    document.getElementById("preloader").style.display = "none";
+  }, 3000); // Si quieres que dure 3 segundos
+
 });
 
 const barraVolumen = document.getElementById("barraVolumen");
@@ -879,9 +876,7 @@ function cargarHora(zonaHoraria) {
   });
 
   document.getElementById('hora').innerHTML = horaActual;
-
-  // Ocultar el preloader cuando cargue la hora una vez
-  document.getElementById("preloader").style.display = "none";
+  
   //CARGAR MUSICA AL CARGAR LA PAGINA
   if (musicaSuena == true) {
     musica.play();
