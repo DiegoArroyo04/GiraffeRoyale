@@ -1,3 +1,14 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const img = new Image();
+  img.src = "assets/crash/header.jpg"; 
+
+  img.onload = function () {
+      setTimeout(() => {
+          document.getElementById("preloader").style.display = "none";
+      }, 5000); // Si quieres que dure 5 segundos
+  };
+});
+
 const barraVolumen = document.getElementById("barraVolumen");
 const valorVolumen = document.getElementById("valorVolumen");
 var volumen = barraVolumen.value / 100; // Convertir el valor de 0-100 a 0.0-1.0

@@ -1,3 +1,14 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const img = new Image();
+    img.src = "assets/crash/header.jpg"; 
+
+    img.onload = function () {
+        setTimeout(() => {
+            document.getElementById("preloader").style.display = "none";
+        }, 5000); // Si quieres que dure 5 segundos
+    };
+});
+
 var estaGirando = false;
 // Referencia a la barra de volumen y el texto del volumen
 const barraVolumen = document.getElementById("barraVolumen");
