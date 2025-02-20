@@ -295,7 +295,7 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(8px);   
+    backdrop-filter: blur(8px);
     background: rgba(0, 0, 0, 0.326);
     font-size: 1.5rem;
     align-items: center;
@@ -633,13 +633,17 @@ h1 {
     }
 }
 
-.icono {
+.icono, .iconoAjustes {
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
     transition: transform 0.3s ease, filter 0.3s ease;
 
 }
 
-.icono:hover {
+.iconoAjustes{
+    width: 30%;
+}
+
+.icono:hover, .iconoAjustes:hover {
     transform: scale(1.1);
     filter: brightness(1.3);
     /* Incrementa el brillo */
@@ -721,51 +725,31 @@ footer a img {
 
     /* ----------------HEADER---------------- */
     header {
-        flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 10px 5%;
+        padding: 1vh 0;
         background-size: cover;
         background-position: center;
     }
 
-    .contentenedorVolverMain {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        gap: 10px;
-    }
-
     .home {
-        width: 15vw;
-        margin-right: 0;
-    }
-
-    .logo {
-        width: 20vw;
+        width: 8vh;
         height: auto;
     }
 
-    h1,
-    .encabezadoTitulo {
-        font-size: 6vw;
-    }
+    .contentenedorVolverMain {
 
-    .horaYConfi {
+        align-items: center;
         width: 100%;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px 0;
-    }
 
-    .hora {
-        font-size: 4.5vw;
     }
 
     .saldo {
         justify-content: center;
-        gap: 10px;
+
+        font-size: 3vh;
+        width: 25vh;
+
     }
 
     .saldo img {
@@ -773,18 +757,44 @@ footer a img {
         height: auto;
     }
 
-    .saldo p {
-        font-size: 4vw;
+    .horaYConfi {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+
     }
 
-    .horaYConfi img,
-    .icono {
-        width: 6vw;
+    .hora {
+        font-size: 4.5vw;
+        display: none;
+    }
+
+    .horaYConfi img {
+        width: 10vw;
         height: auto;
-        margin: 0;
+        margin-left: 3vh;
+    }
+
+    .logo {
+        width: auto;
+    }
+
+    .titulo{
+        display: none;
     }
 
     /* ----------------SECCIÓN PRINCIPAL---------------- */
+
+    .encabezadoTitulo {
+        font-family: 'Lilita One';
+        font-size: 4vh;
+        background: linear-gradient(180deg, #fdde89, #f86b0c);
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-stroke: 0.10vh #003049;
+        text-align: center;
+    }
+
     .cards-container {
         flex-direction: column;
         align-items: center;
@@ -831,6 +841,45 @@ footer a img {
 
     #mensajeError {
         font-size: 4vw;
+    }
+
+    .contenidoAjustesModal {
+        background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
+        width: 70% !important;
+    }
+
+    .contenidoAjustesModal h2 {
+        font-family: 'Lilita One', sans-serif;
+        font-size: 3.5vh;
+        color: #FDF0D5;
+        -webkit-text-stroke: 0.15vh #003049;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .contenidoAjustesModal h3 {
+        font-family: 'Lilita One';
+        font-size: 3vh;
+        color: #EAE2B7;
+        -webkit-text-stroke: 0.1vh #003049;
+        padding: 0.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .opcionAjustes {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .iconoAjustes {
+        width: 30%;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
     }
 
     /* -----------------FOOTER----------------- */
