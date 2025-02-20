@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
 :root {
     --primary-color: #7a9c2e;
     --secundary-color: #FFFFFF;
     --dark-bg-color: #1a1a1a;
-
-}
-
-* {
-
-    box-sizing: border-box;
 
 }
 
@@ -145,9 +147,20 @@ h1 {
 
 }
 
-.horaYConfi img {
-    margin-left: 10%;
+.horaYConfi img,
+.icono,
+.iconoBtn,
+.icoNavFoot {
+    width: 2vw;
+    height: 4vh;
     transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 3%;
+    margin-top: 3%;
+
+}
+
+.btnCreditos-container {
+    width: 50%;
 }
 
 .horaYConfi img:hover {
@@ -194,7 +207,8 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.326);
     justify-content: center;
 }
 
@@ -248,11 +262,10 @@ h1 {
     font-size: 1.3vw;
 }
 
-
-/* Animación de entrada de la tabla */
-.tablaInstrucciones {
-    animation: fadeIn 0.5s ease-out;
+.footerJuegoMovil {
+    display: none;
 }
+
 
 @keyframes fadeIn {
     from {
@@ -274,7 +287,8 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);   
+    background: rgba(0, 0, 0, 0.326);
     align-items: center;
     justify-content: center;
 }
@@ -372,7 +386,8 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);   
+    background: rgba(0, 0, 0, 0.326);
     align-items: center;
     justify-content: center;
 }
@@ -459,17 +474,24 @@ h1 {
     }
 }
 
-.icono {
+.icono,
+.iconoBtn,
+.icoNavFoot,
+.iconoAjustes {
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
     transition: transform 0.3s ease, filter 0.3s ease;
 
 }
 
-.icono:hover {
+.icono:hover,
+.iconoBtn:hover,
+.icoNavFoot:hover,
+.iconoAjustes:hover {
     transform: scale(1.1);
     filter: brightness(1.3);
     /* Incrementa el brillo */
 }
+
 
 .modo-oscuro {
     filter: grayscale(1) brightness(0.8) contrast(1);
@@ -524,8 +546,11 @@ header {
 
 }
 
-main {
-    height: 100vh;
+.contenedorPrincipal {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .contenedorJuego {
@@ -542,7 +567,7 @@ main {
     align-items: center;
     flex-direction: column;
     overflow: hidden;
-    height: 75%;
+    height: 75vh;
     animation: moverFondo 10000s linear infinite;
     animation-play-state: paused;
     /* Pausar la animación por defecto */
@@ -617,7 +642,7 @@ main {
 .multi {
     display: none;
     position: absolute;
-    top: -9%;
+    top: 0.5%;
     font-size: 5vw;
     animation: crecerReducir 1s infinite, brillar 1s infinite;
 }
@@ -646,12 +671,10 @@ main {
 
 .contenedorTituloJuego {
     position: absolute;
-    top: 11%;
+    top: 15.5%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
-
-
 }
 
 .contenedorTituloJuego h1 {
@@ -919,6 +942,15 @@ main {
 
 }
 
+.iconosFoot {
+    width: 33%;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .textoTragaperras {
     width: 33%;
     display: flex;
@@ -944,32 +976,381 @@ main {
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
 }
 
-
-footer {
-
-    display: flex;
-    align-items: center;
-    background-color: rgba(17, 40, 24, 1);
-    width: 100%;
-    padding: 1% 0;
-    position: relative;
-    min-height: 60px;
-    z-index: 10;
-    margin-top: auto;
-    color: #FDF0D5;
+.iconoAjustes {
+    width: 30%;
 }
 
-footer a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 15%;
 
-}
+@media (max-width: 768px) {
 
-footer a img {
-    width: 40%;
-    height: auto;
-    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    body{
+        background-color: #475b1a;
+    }
+    /* ----------------HEADER---------------- */
+    header {
+        /* flex-direction: column; */
+        align-items: center;
+        text-align: center;
+        padding: 1vh 0;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .home {
+        width: 8vh;
+        height: auto;
+        /* margin-right: 2vw; */
+    }
+
+    .contentenedorVolverMain {
+        /* flex-direction: column; */
+        /* justify-content: center; */
+        align-items: center;
+        width: 100%;
+        /* gap: 10px; */
+    }
+
+    .saldo {
+        justify-content: center;
+        /* gap: 10px; */
+        font-size: 3vh;
+        width: 25vh;
+        /* margin: -2vh; */
+    }
+
+    .saldo img {
+        width: 6vw;
+        height: auto;
+    }
+
+    .horaYConfi {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+
+    }
+
+    .hora {
+        font-size: 4.5vw;
+        display: none;
+    }
+
+    .horaYConfi img {
+        width: 10vw;
+        height: auto;
+        margin-left: 3vh;
+    }
+
+    .logo {
+        width: auto;
+    }
+
+    .titulo {
+        display: none;
+    }
+
+   
+
+    /* MAIN CONTENEDOR PRINCIPAL */
+
+
+    .contenedorPrincipal {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* height: 100vh; */
+    }
+
+    .contenedorJuego {
+        width: 100%;
+        border-radius: 0;
+        height: 85vh;
+        margin: 0;
+        background-size: auto 64%;
+        box-shadow: none;
+    }
+
+    .imagenGirafa {
+        position: absolute;
+        top: 14%;
+        width: 25vh;
+        animation: trotar 0.6s ease-in-out infinite;
+        animation-play-state: paused;
+    }
+
+    /* Animación para mover el fondo */
+    @keyframes moverFondo {
+        from {
+            background-position: 0 0;
+            /* Posición inicial */
+        }
+
+        to {
+            background-position: 120000% 0;
+            /* Mueve el fondo hacia la izquierda */
+        }
+    }
+
+    .imagenLeon {
+        display: none;
+        position: absolute;
+        top: 3%;
+        width: 50vh;
+        right: 58%;
+        animation: trotar 0.6s ease-in-out forwards, moverDerecha 0.6s ease-in-out forwards;
+    }
+
+    .multi {
+        display: none;
+        position: absolute;
+        top: 0.5%;
+        font-size: 10vh;
+        animation: crecerReducir 1s infinite, brillar 1s infinite;
+    }
+
+    .footerJuego {
+        /* height: 30vh; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* margin-top: 3px; */
+        background-color: #475b1a;
+    }
+
+    .icono {
+        width: 90%;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .iconoBtn {
+        width: 5vh;
+        display: flex;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .icoNavFoot {
+        width: 20%;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .iconosFoot {
+        width: 100%;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+
+    .container-footer-nav {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btnCreditos-container {
+        width: 80%;
+
+    }
+
+
+    .navegacionFooterJuego {
+        width: 80%;
+        display: flex;
+        color: #f6af31;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .creditos {
+        text-align: center;
+        background-color: var(--secundary-color);
+        font-family: 'Lilita One';
+        font-size: 2vh;
+        color: #000000;
+        border-radius: 30px;
+        border: none;
+        cursor: url(../assets/pamplona/cursorPointer.png), pointer;
+        width: 100%;
+        transition: transform 0.3sease, filter 0.3sease;
+        margin-bottom: 5%;
+        height: 3vh;
+    }
+
+    .creditosApuesta {
+        width: auto;
+    }
+
+    .textoTragaperras {
+        width: 100%;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        margin: 2vh;
+    }
+
+    .textoTragaperras h1 {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        color: var(--secundary-color);
+        font-size: 3vh;
+    }
+
+    .contenedorBotones {
+        display: flex;
+        width: 5vh;
+        justify-content: center;
+        height: 100%;
+        align-items: center;
+        margin-top: 2vh;
+    }
+
+    .botonTirar {
+        width: 15vh;
+        padding: 1vh 1vw;
+        transition: transform 0.3sease, filter 0.3sease;
+        max-height: 100%;
+    }
+
+    .navegacionFooterJuego p {
+        padding-left: 5%;
+    }
+
+    @keyframes moverDerecha {
+        0% {
+            right: 58%;
+            /* Posición inicial */
+        }
+    
+        100% {
+            right: 33%;
+            /* Punto donde se detendrá */
+        }
+    }
+
+    /* MODALES */
+
+    .tablaInstrucciones h2 {
+        font-family: 'Lilita One';
+        font-size: 4vh;
+        color: #fdf0d5;
+        -webkit-text-stroke: 0.15vh #003049;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .tablaEstilos {
+        width: 95%;
+        height: 40%;
+        border-collapse: collapse;
+        background-color: #f2d7c3;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .tablaEstilos th {
+        background-color: #3a5a40;
+        color: #f4a261;
+        -webkit-text-stroke: 0.10vh #003049;
+        font-size: 3vh;
+        position: relative;
+    }
+
+    .tablaEstilos td {
+        font-size: 2vh;
+    }    
+
+    .contenidoModal {
+        background-image: url(../assets/pamplona/fondo_modal.jpg);
+        background-size: cover;
+        background-position: center top;
+        padding: 2%;
+        padding-top: 7%;
+        border-radius: 10px;
+        width: 95%;
+        text-align: center;
+        border: 3px solid #3A5A40;
+    }
+
+    .contenidoModalError {
+        background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
+        color: #003049;
+        border: 5px solid #3A5A40;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        padding: 2rem;
+        width: 90%;
+        text-align: center;
+        position: relative;
+    }
+
+    #mensajeError {
+        font-family: 'Lilita One', sans-serif;
+        font-size: 3.1vh;
+        margin-top: 1rem;
+        color: #FFFFFF;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .saldoCreditosInfo {
+        font-size: 3.4vh;
+        margin: 1%;
+    }
+
+    .contenidoAjustesModal {
+        background-image: linear-gradient(to bottom right, #F86B0C, #FDDE89);
+        width: 70% !important;
+    }
+
+    .contenidoAjustesModal h2 {
+        font-family: 'Lilita One', sans-serif;
+        font-size: 3.5vh;
+        color: #FDF0D5;
+        -webkit-text-stroke: 0.15vh #003049;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .contenidoAjustesModal h3 {
+        font-family: 'Lilita One';
+        font-size: 3vh;
+        color: #EAE2B7;
+        -webkit-text-stroke: 0.1vh #003049;
+        padding: 0.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .opcionAjustes {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .iconoAjustes {
+        width: 30%;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
