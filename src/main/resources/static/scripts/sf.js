@@ -85,8 +85,8 @@ i18next.init({
         tituloInstrucciones: "Instrucciones del Juego",
         reglaColumna: "Regla",
         descripcionColumna: "Descripción",
-        evitaLeonTitulo: "Evita al León",
-        evitaLeonDescripcion: "El león intentará atraparte. Si lo hace, pierdes el juego.",
+        evitaLeonTitulo: "Corre por tu vida",
+        evitaLeonDescripcion: "El toro intentará cogerte. Si lo hace, pierdes el juego.",
         retiraATiempoTitulo: "Retira tus Ganancias",
         retirarATiempoDescripcion: "Puedes retirar las ganancias en cualquier momento para ganar el multiplicador actual.",
         multiplicadoresInformacionTitulo: "Multiplicadores",
@@ -148,8 +148,8 @@ i18next.init({
         tituloInstrucciones: "Game Instructions",
         reglaColumna: "Rule",
         descripcionColumna: "Description",
-        evitaLeonTitulo: "Avoid the Lion",
-        evitaLeonDescripcion: "The lion will try to catch you. If it does, you lose the game.",
+        evitaLeonTitulo: "Run for your life",
+        evitaLeonDescripcion: "The bull will try to catch you. If it does, you lose the game.",
         retiraATiempoTitulo: "Withdraw your earnings",
         retirarATiempoDescripcion: "You can withdraw the winnings at any time to win the current multiplier.",
         multiplicadoresInformacionTitulo: "Multipliers",
@@ -739,22 +739,11 @@ window.addEventListener("load", function () {
     //PETICION GET PARA OBTENER LOS HISTORICOS DEL USUARIO 
     $.ajax({
       type: "GET",
-      url: `/usuarios/obtenerHistoricosUsuario?dni=${usuario.dni}`, //MANDAR DNI DEL USUARIO PARA BUSCARLO
+      url: `/usuarios/obtenerHistoricosUsuario?dni=${usuario.dni}&idJuego=3`, //MANDAR DNI DEL USUARIO PARA BUSCARLO
       success: function (historicos) {
-
-        // Filtrar por los registros del juego
-        let idJuegoBuscado = 3;
-        let historicosFiltrados = historicos.filter(historico => Number(historico.idJuego) === idJuegoBuscado);
-
-        // Ordenar por ID de manera descendente 
-        historicos.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
-
-        // Ordenar por ID de manera descendente 
-        historicosFiltrados.sort((a, b) => Number(b.idHistorico) - Number(a.idHistorico));
 
         //obtener ultimas 5 tiradas
         ultimas5tiradas = historicos.slice(0, 5);
-
 
         var tablaHistorialBody = document.getElementById("tablaHistorialBody");
 
@@ -791,6 +780,7 @@ window.addEventListener("load", function () {
 
       }
     });
+
   });
 });
 
