@@ -1,3 +1,14 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const img = new Image();
+    img.src = "assets/crash/header.jpg"; 
+
+    img.onload = function () {
+        setTimeout(() => {
+            document.getElementById("preloader").style.display = "none";
+        }, 5000); // Si quieres que dure 5 segundos
+    };
+});
+
 // Referencia a la barra de volumen y el texto del volumen
 const barraVolumen = document.getElementById("barraVolumen");
 const valorVolumen = document.getElementById("valorVolumen");
@@ -192,7 +203,7 @@ window.addEventListener("load", function () {
 
     // URLs de las imágenes
     const imageUrls = [
-        "../assets/crash/Preload.jpeg",
+        "../assets/crash/header.jpg",
         "../assets/crash/home.png",
         "../assets/crash/logo giraffe royale.png",
         "../assets/crash/añadir.png",
@@ -223,7 +234,7 @@ window.addEventListener("load", function () {
 
             // ARRAY QUE ASIGNA LAS IMAGENES A LOS ELEMENTOS DEL HTML
             const imageElements = [
-                { id: "preloader", type: "img", index: 0 },
+                { id: "preloader", type: "background", index: 0 },
                 { selector: "a[href='https://girafferoyale.vercel.app/'] img.home", type: "img", index: 1 },
                 { selector: "a[href='https://girafferoyale.vercel.app/'] img.logo", type: "img", index: 2 },
                 { id: "añadirSaldo", type: "img", index: 3 },
@@ -264,6 +275,7 @@ window.addEventListener("load", function () {
         }
     };
 
+   
     // Enviar las URLs al Web Worker
     worker.postMessage(imageUrls);
 
@@ -935,7 +947,7 @@ function cargarHora(zonaHoraria) {
     document.getElementById('hora').innerHTML = horaActual;
 
     // Ocultar el preloader cuando cargue la hora una vez
-    document.getElementById("preloader").style.display = "none";
+    // document.getElementById("preloader").style.display = "none";
     //CARGAR MUSICA AL CARGAR LA PAGINA
     if (musicaSuena == true) {
         musica.play();
@@ -1189,3 +1201,5 @@ window.addEventListener('beforeunload', function (event) {
     }
 });
 
+
+  

@@ -1,5 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", function () {
+
+    setTimeout(() => {
+        document.getElementById("preloader").style.display = "none";
+    }, 5000); // Si quieres que dure 5 segundos
+
     cargarHoraInicial()
     actualizarTexto(); // Llamar a la función solo cuando el DOM está listo
     document.getElementById("giraffeRush").addEventListener("click", function () {
@@ -12,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("pamplonaRush").addEventListener("click", function () {
         window.location.href = "/juegoSanFermin";
     });
+
 });
 
 var usuario = {};
