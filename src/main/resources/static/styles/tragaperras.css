@@ -1316,7 +1316,7 @@ header {
     .botonTirar {
         width: 15vh;
         padding: 1vh 1vw;
-        transition: transform 0.3sease, filter 0.3sease;
+        transition: transform 0.3s ease, filter 0.3sease;
         max-height: 100%;
     }
 
@@ -1327,12 +1327,10 @@ header {
     @keyframes moverDerecha {
         0% {
             right: 58%;
-            /* Posición inicial */
         }
 
         100% {
-            right: 33%;
-            /* Punto donde se detendrá */
+            right: 33%;           
         }
     }
 
