@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(() => {
         document.getElementById("preloader").style.display = "none";
-    }, 5000); // Si quieres que dure 5 segundos
+    }, 3000); // Si quieres que dure 3 segundos
 
     cargarHoraInicial()
     actualizarTexto(); // Llamar a la función solo cuando el DOM está listo
@@ -14,9 +14,24 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "/tragaperras";
     });
 
-    document.getElementById("pamplonaRush").addEventListener("click", function () {
-        window.location.href = "/juegoSanFermin";
-    });
+    if (window.location.pathname.includes("lobbyVip")) {
+        //EVENTOS JUEGO VIP
+        document.getElementById("pamplonaRush").addEventListener("click", function () {
+            window.location.href = "/juegoSanFermin";
+        });
+
+        //ABRIR MODAL DESCRIPCION SAN FERMIN
+        document.getElementById("abrirModalSanFermin").addEventListener("click", function () {
+            document.getElementById("modalSanFermin").style.display = "flex";
+        });
+
+
+        //CERRAR MODAL AL HACER CLICK EN LA X
+        document.getElementById("cerrarModalSanFermin").addEventListener("click", function () {
+            document.getElementById("modalSanFermin").style.display = "none";
+
+        })
+    }
 
 });
 
@@ -265,11 +280,7 @@ document.getElementById("cerrarModalJiraffe").addEventListener("click", function
 
 })
 
-//CERRAR MODAL AL HACER CLICK EN LA X
-document.getElementById("cerrarModalSanFermin").addEventListener("click", function () {
-    document.getElementById("modalSanFermin").style.display = "none";
 
-})
 
 // Cierra el modal al hacer clic fuera del contenido
 window.addEventListener("click", (event) => {
@@ -313,10 +324,6 @@ document.getElementById("abrirModalJiraffe").addEventListener("click", function 
     document.getElementById("modalJiraffe").style.display = "flex";
 });
 
-//ABRIR MODAL DESCRIPCIO SAN FERMIN
-document.getElementById("abrirModalSanFermin").addEventListener("click", function () {
-    document.getElementById("modalSanFermin").style.display = "flex";
-});
 
 //MODO OSCURO
 document.getElementById("modoOscuro").addEventListener("click", function () {
