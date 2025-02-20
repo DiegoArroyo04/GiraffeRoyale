@@ -51,14 +51,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-/* Estilo del Preloader */
 .preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: url("../assets/crash/header.jpg") no-repeat center bottom;
+    background-color: #7a9c2e;
     display: flex;
     align-items: center;
     justify-content: center;
