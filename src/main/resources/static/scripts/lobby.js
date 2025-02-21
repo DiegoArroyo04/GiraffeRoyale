@@ -163,9 +163,21 @@ document.getElementById("añadirSaldo").addEventListener('click', function () {
 document.getElementById("depositarBtn").addEventListener('click', function () {
 
     // CONVERTIR A DECIMAL
-    var deposito = parseFloat(document.getElementById("inputDeposito").value);
+    var deposito = document.getElementById("inputDeposito").value.trim();
+    var decimalesValidados = false;
+    //SEPARAR DECIMALES Y ENTEROS
+    var decimales = 0;
+    if (deposito.includes(".")) {
+        let partes = deposito.split(".");
+        decimales = partes[1].length;
+    }
 
-    if (!isNaN(deposito) && deposito > 0) {
+    if (decimales < 3) {
+        deposito = parseFloat(deposito);
+        decimalesValidados = true;
+    }
+
+    if (!isNaN(deposito) && deposito > 0 && decimalesValidados) {
         saldo += deposito;
         var datos = {
             dni: usuario.dni,
@@ -204,11 +216,23 @@ document.getElementById("depositarBtn").addEventListener('click', function () {
 // RETIRAR SALDO Y ACTUALIZARLO
 document.getElementById("retirarBtn").addEventListener('click', function () {
 
-    //CONVERTIR A DECIMAL
-    var retiro = parseFloat(document.getElementById("inputRetiro").value);
+    // CONVERTIR A DECIMAL
+    var retiro = document.getElementById("inputRetiro").value.trim();
+    var decimalesValidados = false;
+    //SEPARAR DECIMALES Y ENTEROS
+    var decimales = 0;
+    if (retiro.includes(".")) {
+        let partes = retiro.split(".");
+        decimales = partes[1].length;
+    }
+
+    if (decimales < 3) {
+        retiro = parseFloat(retiro);
+        decimalesValidados = true;
+    }
 
     // Verifica si el valor es válido y que no sea mayor que el saldo
-    if (!isNaN(retiro) && retiro > 0 && retiro <= saldo) {
+    if (!isNaN(retiro) && retiro > 0 && retiro <= saldo && decimalesValidados) {
         saldo -= retiro; // Resta el saldo retirado
 
         var datos = {
