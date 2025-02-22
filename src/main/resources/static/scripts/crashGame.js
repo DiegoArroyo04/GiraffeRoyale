@@ -374,11 +374,23 @@ window.addEventListener("load", function () {
     //GUARDAR SALDO Y ACTUALIZARLO
     document.getElementById("depositarBtn").addEventListener('click', function () {
 
-        // CONVERTIR A DECIMAL
-        var deposito = parseFloat(document.getElementById("inputDeposito").value);
+        var deposito = document.getElementById("inputDeposito").value.trim();
+        var decimalesValidados = false;
 
-        if (!isNaN(deposito) && deposito > 0) {
-            saldo += deposito;
+        //SEPARAR DECIMALES Y ENTEROS
+        var decimales = 0;
+        if (deposito.includes(".")) {
+            let partes = deposito.split(".");
+            decimales = partes[1].length;
+        }
+
+        if (decimales < 3) {
+            deposito = parseFloat(deposito);
+            decimalesValidados = true;
+        }
+
+        if (!isNaN(deposito) && deposito > 0 && decimalesValidados) {
+            saldo = parseFloat((saldo + deposito).toFixed(2));
             var datos = {
                 dni: usuario.dni,
                 presupuesto: saldo
@@ -414,16 +426,31 @@ window.addEventListener("load", function () {
 
     });
 
+
+
+
+
     // RETIRAR SALDO Y ACTUALIZARLO
     document.getElementById("retirarBtn").addEventListener('click', function () {
 
-        //CONVERTIR A DECIMAL
-        var retiro = parseFloat(document.getElementById("inputRetiro").value);
+        var retiro = document.getElementById("inputRetiro").value.trim();
+        var decimalesValidados = false;
+        //SEPARAR DECIMALES Y ENTEROS
+        var decimales = 0;
+        if (retiro.includes(".")) {
+            let partes = retiro.split(".");
+            decimales = partes[1].length;
+        }
+
+        if (decimales < 3) {
+            retiro = parseFloat(retiro);
+            decimalesValidados = true;
+        }
+
 
         // Verifica si el valor es válido y que no sea mayor que el saldo
-        if (!isNaN(retiro) && retiro > 0 && retiro <= saldo) {
-            saldo -= retiro; // Resta el saldo retirado
-
+        if (!isNaN(retiro) && retiro > 0 && retiro <= saldo && decimalesValidados) {
+            saldo = parseFloat((saldo - retiro).toFixed(2));
             var datos = {
                 dni: usuario.dni,
                 presupuesto: saldo
@@ -605,16 +632,34 @@ window.addEventListener("load", function () {
     });
     //CONVERSION DE EUROS A CREDITOS
     document.getElementById("convertirBtn").addEventListener("click", function () {
-        var eurosACreditos = parseFloat(document.getElementById("inputEurosACreditos").value);
 
-        if (!isNaN(eurosACreditos) && eurosACreditos > 0 && eurosACreditos <= saldo) {
+        var eurosACreditos = document.getElementById("inputEurosACreditos").value.trim();
+        var decimalesValidados = false;
+
+        //SEPARAR DECIMALES Y ENTEROS
+        var decimales = 0;
+        if (eurosACreditos.includes(".")) {
+            let partes = eurosACreditos.split(".");
+            decimales = partes[1].length;
+        }
+
+        if (decimales < 3) {
+            eurosACreditos = parseFloat(eurosACreditos);
+            decimalesValidados = true;
+        }
+
+        if (!isNaN(eurosACreditos) && eurosACreditos > 0 && eurosACreditos <= saldo && decimalesValidados) {
+
             //PETICION GET PARA OBTENER CUANTOS CREDITOS TIENE ESTE JUEGO PARA CONVERTIR USUARIO DE PRUEBA
             $.ajax({
                 type: "GET",
                 url: "/convertirACreditos?id=2", // URL del endpoint en el backend junto con el id del juego
                 success: function (multiplicador) {
-                    creditos += (eurosACreditos * multiplicador);
+
+
+                    creditos += parseFloat((eurosACreditos * multiplicador).toFixed(2));
                     saldo -= eurosACreditos;
+
                     var datos = {
                         dni: usuario.dni,
                         presupuesto: saldo
@@ -627,12 +672,12 @@ window.addEventListener("load", function () {
                         data: JSON.stringify(datos),
                         success: function (response) {
 
-                            document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo });
-                            document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo });
+                            document.getElementById("saldo").textContent = i18next.t('saldo', { saldo: saldo.toFixed(2) });
+                            document.getElementById("saldoCreditosInfo").textContent = i18next.t('saldoActual', { saldo: saldo.toFixed(2) });
                             document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
                             document.getElementById("creditosTotales").innerHTML = creditos;
                             document.getElementById("inputEurosACreditos").value = "";
-                            mostrarError(i18next.t('hasConvertido') + eurosACreditos + i18next.t('eurosA') + (eurosACreditos * multiplicador) + i18next.t('creditosTextoModalConversion'));
+                            mostrarError(i18next.t('hasConvertido') + eurosACreditos + i18next.t('eurosA') + (parseFloat((eurosACreditos * multiplicador).toFixed(2))) + i18next.t('creditosTextoModalConversion'));
 
                         },
                         error: function (error) {
@@ -671,15 +716,17 @@ window.addEventListener("load", function () {
     document.getElementById("retirarCreditosBtn").addEventListener("click", function () {
         var creditosAEuros = parseFloat(document.getElementById("inputRetiroCreditos").value);
 
-        if (!isNaN(creditosAEuros) && creditosAEuros > 0 && creditosAEuros <= creditos) {
+        if (!isNaN(creditosAEuros) && creditosAEuros > 0 && creditosAEuros <= creditos && Number.isInteger(creditosAEuros)) {
             //PETICION GET PARA OBTENER CUANTOS CREDITOS TIENE ESTE JUEGO PARA CONVERTIR USUARIO DE PRUEBA
             $.ajax({
                 type: "GET",
                 url: "/convertirACreditos?id=2", // URL del endpoint en el backend junto con el id del juego
                 success: function (multiplicador) {
-                    saldo += parseFloat((creditosAEuros / multiplicador).toFixed(2));
-                    creditos -= creditosAEuros;
 
+                    // EVITAR ERRORES DE PRECISION AL DIVIDIR
+                    saldo = (saldo * 100 + (creditosAEuros * 100) / multiplicador) / 100;
+                    saldo = parseFloat(saldo.toFixed(2)); // Aplicar toFixed(2) solo al final
+                    creditos -= creditosAEuros;
 
                     var datos = {
                         dni: usuario.dni,
@@ -1163,8 +1210,10 @@ window.addEventListener('beforeunload', function (event) {
             type: "GET",
             url: "/convertirACreditos?id=2", // URL del endpoint en el backend junto con el id del juego
             success: function (multiplicador) {
-                //REDONDEAR A DOS DECIMALES EL SALDO PARA ASEGURARNOS QUE LA INSERCCION SERA CON DOS DECIMALES 
-                saldo += parseFloat((creditos / multiplicador).toFixed(2));
+
+                // EVITAR ERRORES DE PRECISION AL DIVIDIR
+                saldo = (saldo * 100 + (creditos * 100) / multiplicador) / 100;
+                saldo = parseFloat(saldo.toFixed(2));
                 creditos = 0;
 
                 var datos = {

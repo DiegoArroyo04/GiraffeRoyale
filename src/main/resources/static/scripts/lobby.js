@@ -162,9 +162,10 @@ document.getElementById("añadirSaldo").addEventListener('click', function () {
 //GUARDAR SALDO Y ACTUALIZARLO
 document.getElementById("depositarBtn").addEventListener('click', function () {
 
-    // CONVERTIR A DECIMAL
+
     var deposito = document.getElementById("inputDeposito").value.trim();
     var decimalesValidados = false;
+
     //SEPARAR DECIMALES Y ENTEROS
     var decimales = 0;
     if (deposito.includes(".")) {
@@ -178,7 +179,7 @@ document.getElementById("depositarBtn").addEventListener('click', function () {
     }
 
     if (!isNaN(deposito) && deposito > 0 && decimalesValidados) {
-        saldo += deposito;
+        saldo = parseFloat((saldo + deposito).toFixed(2));
         var datos = {
             dni: usuario.dni,
             presupuesto: saldo
@@ -216,7 +217,7 @@ document.getElementById("depositarBtn").addEventListener('click', function () {
 // RETIRAR SALDO Y ACTUALIZARLO
 document.getElementById("retirarBtn").addEventListener('click', function () {
 
-    // CONVERTIR A DECIMAL
+
     var retiro = document.getElementById("inputRetiro").value.trim();
     var decimalesValidados = false;
     //SEPARAR DECIMALES Y ENTEROS
@@ -233,7 +234,7 @@ document.getElementById("retirarBtn").addEventListener('click', function () {
 
     // Verifica si el valor es válido y que no sea mayor que el saldo
     if (!isNaN(retiro) && retiro > 0 && retiro <= saldo && decimalesValidados) {
-        saldo -= retiro; // Resta el saldo retirado
+        saldo = parseFloat((saldo - retiro).toFixed(2));
 
         var datos = {
             dni: usuario.dni,
