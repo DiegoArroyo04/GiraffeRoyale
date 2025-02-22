@@ -719,7 +719,7 @@ header {
 
 .contenedorTituloJuego {
     position: absolute;
-    top: 15.5%;
+    top: 14.5%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
