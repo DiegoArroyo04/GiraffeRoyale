@@ -300,15 +300,46 @@ h1 {
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.247);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 500px;
+
 }
 
 .card img {
     width: 100%;
     border-radius: 20px;
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    height: 100%;
+}
+
+.card img#tragaperras {
+    transition: background-image 0.3s ease-in-out;
 
 }
 
+.card img#tragaperras:hover {
+    content: url("../assets/lobby/Tragaperras.gif");
+    height: 100%;
+}
+
+.card img#giraffeRush {
+    transition: background-image 0.3s ease-in-out;
+
+}
+
+.card img#giraffeRush:hover {
+    content: url("../assets/lobby/GiraffeRush.gif");
+    height: 100%;
+}
+
+.card img#pamplonaRush {
+    transition: background-image 0.3s ease-in-out;
+
+}
+
+.card img#pamplonaRush:hover {
+    content: url("../assets/lobby/Pamplona.gif");
+    height: 100%;
+}
 
 
 
