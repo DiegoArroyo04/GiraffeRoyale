@@ -251,7 +251,57 @@ El proyecto utiliza técnicas avanzadas como **Web Workers** para mejorar el ren
 4. **Objetivo:** Maximiza el multiplicador sin perder tu apuesta inicial.
 
 ---
+## Usuarios
+El usuario es el eje principal de este proyecto, por lo que se han implementado diversas funcionalidades para mejorar su experiencia y seguridad.
 
+### Registro e Inicio de Sesión
+- Los datos de los usuarios se almacenan en la base de datos desde el momento del registro.
+- Al iniciar sesión, se verifica la existencia del usuario y la coincidencia de su contraseña.
+- Según el tipo de usuario, se redirige a la página correspondiente.
+
+### Gestión de Saldo y Créditos
+- Cada usuario dispone de un **monedero** donde puede consultar su saldo disponible.
+- Puede depositar más saldo para seguir jugando.
+- Un usuario puede convertir su saldo en **créditos** para jugar.  
+  - Cada juego tiene un multiplicador por defecto (obtenido de la base de datos) que transforma el saldo en créditos.
+  - Los créditos pueden convertirse nuevamente en saldo cuando el usuario lo desee.
+- En cada momento del juego, el usuario puede consultar su saldo disponible en créditos y el saldo total en su monedero.
+- El usuario no podrá jugar si no dispone de créditos suficientes.
+- La gestión de añadir y retirar saldo se realiza mediante un **modal compartido**.
+
+### Tipos de Usuarios
+Se han implementado distintos **roles** de usuario:
+
+#### **Usuarios Free**
+- Se registran mediante el formulario de registro estándar.
+- Solo tienen acceso a los juegos  **Giraffe Spins And Wins** y  **Giraffe Rush**.
+- Pueden añadir y retirar saldo ficticio libremente para jugar.
+
+#### **Usuarios VIP**
+- Se registran mediante el mismo formulario con la opción **"¿Quieres ser usuario VIP?"**.
+- Si se marca, se despliegan nuevos campos para incluir una **tarjeta de crédito ficticia** o una **cuenta bancaria**.
+  - **Tarjeta de crédito:** Se verifica la longitud de los campos, la fecha de expiración y el CVC.
+  - **Cuenta bancaria:** Se verifica la longitud de los campos y el propietario de la cuenta.
+- Estos usuarios tienen acceso a **todos los juegos**, incluyendo:
+  - **Giraffe Spins And Wins**
+  - **Giraffe Rush**
+  - **Pamplona Rush** (exclusivo para VIPs).
+
+### Restricción de Acceso
+- Se han implementado **redirecciones automáticas** según el rol del usuario al iniciar sesión.
+- **Endpoints protegidos**:
+  - Un usuario **free** no puede acceder a la **lobby VIP** ni a los juegos exclusivos mediante la URL.
+  - Se verifica su rol antes de permitir el acceso.
+
+### Seguridad en el Registro
+- Antes de registrar a un nuevo usuario, se verifica en la base de datos que no exista ya un usuario con:
+  - **DNI**
+  - **Correo electrónico**
+  - **Nombre de usuario**
+  - **Número de teléfono**
+- Si alguno de estos datos ya está registrado, el sistema **impide la creación de la cuenta**.
+
+---
 
 ## Contacto
 - **Desarrollador:** [Diego Arroyo González](https://github.com/DiegoArroyo04)
