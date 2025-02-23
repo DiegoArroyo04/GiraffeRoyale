@@ -19,7 +19,12 @@ var intervaloMulti; // Intervalo para el incremento del multiplicador
 var duracionJuego; // Duración aleatoria del juego
 var timeoutJuego;//TIMEOUT PARA EL JUEGO
 
+//CANCION 
+var musica = new Audio('assets/pamplona/musica.mp3');
+musica.loop = true;
+var musicaSuena = true;
 
+//SALDO APUESTAS
 var saldo = 0.00;
 var creditos = 0;
 var apuesta = 20;
@@ -751,7 +756,7 @@ window.addEventListener("load", function () {
   });
 
   //SONIDO
-  document.getElementById("iconoSonidoModal").addEventListener("click", function () {
+  document.getElementById("sonido").addEventListener("click", function () {
 
     //PAUSAR LA MUSICA
     if (musicaSuena == true) {
@@ -760,6 +765,10 @@ window.addEventListener("load", function () {
       musicaSuena = false;
       document.getElementById("sonido").src = "./assets/pamplona/sonidoRojo.png";
       document.getElementById("iconoSonidoModal").src = "./assets/pamplona/sonidoMuteRojo.png";
+
+      //ABRO EL MODAL DE SONIDO
+      document.getElementById("modalSonidoPantalla").style.display = "flex";
+
 
       // Cambia el color de la barra y del slider thumb a rojo
       barraVolumen.classList.add("mute");
@@ -770,6 +779,58 @@ window.addEventListener("load", function () {
       musicaSuena = true;
       document.getElementById("sonido").src = "./assets/pamplona/sonido.png";
       document.getElementById("iconoSonidoModal").src = "./assets/pamplona/sonido.png";
+      //CIERRO EL MODAL DE SONIDO
+      document.getElementById("modalSonidoPantalla").style.display = "none";
+
+      //VOLER AL COLOR ORIGINAL EN LA BARRA
+      barraVolumen.classList.remove("mute");
+
+    }
+
+  });
+
+
+  // Ajusta el volumen de todos los audios de la página
+  barraVolumen.addEventListener("input", function () {
+    volumen = barraVolumen.value / 100; // Convertir el valor de 0-100 a 0.0-1.0
+    valorVolumen.textContent = barraVolumen.value; // Mostrar el valor actual
+
+    musica.play();
+    musica.volume = volumen;
+    document.getElementById("iconoSonidoModal").src = "./assets/crash/sonido.png";
+    document.getElementById("sonido").src = "./assets/crash/sonido.png"
+
+    if (volumen == 0.0) {
+      document.getElementById("iconoSonidoModal").src = "./assets/crash/sonidoMuteRojo.png";
+      document.getElementById("sonido").src = "./assets/crash/sonidoRojo.png"
+      barraVolumen.classList.add("mute"); // Añade la clase de mute
+
+    } else {
+      barraVolumen.classList.remove("mute"); // Elimina la clase de mute
+
+    }
+
+  });
+
+  document.getElementById("iconoSonidoModal").addEventListener("click", function () {
+
+    //PAUSAR LA MUSICA
+    if (musicaSuena == true) {
+      musica.pause();
+      volumen = 0.0;
+      musicaSuena = false;
+      document.getElementById("sonido").src = "./assets/crash/sonidoRojo.png";
+      document.getElementById("iconoSonidoModal").src = "./assets/crash/sonidoMuteRojo.png";
+
+      // Cambia el color de la barra y del slider thumb a rojo
+      barraVolumen.classList.add("mute");
+
+    } else {
+      //REAUNUDAR LA MUSICA
+      musica.play();
+      musicaSuena = true;
+      document.getElementById("sonido").src = "./assets/crash/sonido.png";
+      document.getElementById("iconoSonidoModal").src = "./assets/crash/sonido.png";
 
       //VOLER AL COLOR ORIGINAL EN LA BARRA
       barraVolumen.classList.remove("mute");

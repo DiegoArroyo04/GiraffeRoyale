@@ -38,7 +38,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-   background-color: #7a9c2e;
+    background-color: #7a9c2e;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -191,7 +191,9 @@ h1 {
 }
 
 .horaYConfi img,
-.icono, .iconoBtn, .icoNavFoot  {
+.icono,
+.iconoBtn,
+.icoNavFoot {
     width: 2vw;
     height: 4vh;
     transition: transform 0.3s ease, filter 0.3s ease;
@@ -309,7 +311,7 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(8px);   
+    backdrop-filter: blur(8px);
     background: rgba(0, 0, 0, 0.326);
     align-items: center;
     justify-content: center;
@@ -408,7 +410,7 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(2px);   
+    backdrop-filter: blur(2px);
     background: rgba(0, 0, 0, 0.326);
     align-items: center;
     justify-content: center;
@@ -496,19 +498,25 @@ h1 {
     }
 }
 
-.icono, .iconoBtn, .icoNavFoot, .iconoAjustes {
+.icono,
+.iconoBtn,
+.icoNavFoot,
+.iconoAjustes {
     cursor: url('../assets/pamplona/cursorPointer.png'), pointer;
     transition: transform 0.3s ease, filter 0.3s ease;
 
 }
 
-.icono:hover, .iconoBtn:hover, .icoNavFoot:hover, .iconoAjustes:hover {
+.icono:hover,
+.iconoBtn:hover,
+.icoNavFoot:hover,
+.iconoAjustes:hover {
     transform: scale(1.1);
     filter: brightness(1.3);
     /* Incrementa el brillo */
 }
 
-.container-footer-nav{
+.container-footer-nav {
     width: 50%;
 }
 
@@ -639,7 +647,7 @@ video {
 
 /* Estilo general del modal */
 .modalVictoria {
-    display: none;
+    display: flex;
     position: fixed;
     z-index: 9999;
     left: 0;
@@ -669,7 +677,6 @@ video {
 }
 
 .premioHeader {
-    position: absolute;
     position: absolute;
     width: 20vw;
     top: 25%;
@@ -704,6 +711,22 @@ video {
     top: 29%;
 }
 
+/* Animación de crecimiento */
+@keyframes crecerReducir {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+    }
+
+    50% {
+        transform: scale(1.1);
+
+    }
+}
+
+
 
 /* Animación de entrada */
 @keyframes zoomIn {
@@ -723,7 +746,7 @@ video {
     display: flex;
     width: 100%;
     height: auto;
-    justify-content: center;   
+    justify-content: center;
     align-items: center;
     padding: 2vh;
 }
@@ -771,7 +794,8 @@ video {
     appearance: none;
     background: var(--primary-color);
     border-radius: 5px;
-    height: 100%;
+    height: 1vh;
+
 }
 
 .barraVolumen::-webkit-slider-thumb {
@@ -784,7 +808,6 @@ video {
     border-radius: 50%;
     cursor: url('../assets/pamplona/cursorPointer.png'), pointer;
     border: 1px solid #fff;
-
 
 }
 
@@ -825,7 +848,7 @@ video {
 
 }
 
-.btnCreditos-container{
+.btnCreditos-container {
     width: 50%;
 }
 
@@ -886,7 +909,7 @@ video {
 
 }
 
-.iconosFoot{
+.iconosFoot {
     width: 33%;
     display: flex;
     height: 100%;
@@ -920,7 +943,7 @@ video {
     cursor: url('../assets/pamplona/cursorPointer.png'), pointer;
 }
 
-.iconoAjustes{
+.iconoAjustes {
     width: 30%;
 }
 
@@ -968,7 +991,7 @@ video {
         width: 100%;
         justify-content: center;
         gap: 10px;
-       
+
     }
 
     .hora {
@@ -986,13 +1009,14 @@ video {
         width: auto;
     }
 
-    .titulo{
+    .titulo {
         display: none;
     }
 
-    h1, .encabezadoTitulo {
+    h1,
+    .encabezadoTitulo {
         font-size: 6vw;
-        
+
     }
 
     video {
@@ -1052,7 +1076,7 @@ video {
         display: none;
     }
 
-   
+
 
     .modalSonido {
         width: 80%;
@@ -1069,7 +1093,7 @@ video {
 
     .icono {
         width: 90%;
-        display: flex    ;
+        display: flex;
         height: 100%;
         flex-direction: column;
         justify-content: center;
@@ -1094,7 +1118,7 @@ video {
 
     .iconosFoot {
         width: 100%;
-        display: flex    ;
+        display: flex;
         height: 100%;
         justify-content: center;
         flex-direction: column;
@@ -1110,11 +1134,11 @@ video {
         align-items: center;
     }
 
-    .btnCreditos-container{
+    .btnCreditos-container {
         width: 80%;
-        
+
     }
-   
+
 
     .navegacionFooterJuego {
         width: 80%;
@@ -1213,7 +1237,7 @@ video {
 
     .tablaEstilos td {
         font-size: 2vh;
-    }    
+    }
 
     .contenidoModal {
         background-image: url(../assets/pamplona/fondo_modal.jpg);
@@ -1291,6 +1315,5 @@ video {
         justify-content: center;
     }
 
-    /* Falta ajustar el modal de las victorias  */
-}
 
+}
