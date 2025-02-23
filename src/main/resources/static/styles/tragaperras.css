@@ -11,6 +11,10 @@
     cursor: url('../assets/crash/cursor.png'), auto;
 }
 
+a {
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+}
+
 /*SCROLL*/
 body::-webkit-scrollbar {
     width: 12px;
@@ -118,12 +122,14 @@ body {
     width: 7vw;
     height: auto;
     margin-right: 2vw;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
 
 }
 
 .logo {
     width: 5vw;
     height: 10vh;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
 }
 
 h1 {
@@ -198,9 +204,7 @@ h1 {
 
 }
 
-.btnCreditos-container {
-    width: 50%;
-}
+
 
 .horaYConfi img:hover {
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
@@ -519,6 +523,91 @@ h1 {
     margin-bottom: 1rem;
 }
 
+
+
+/*BOTON CERRAR SESION PANEL DE CONFIGURACION*/
+.cerrarSesionBtn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+    margin: 4% 0;
+}
+
+
+.sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign svg {
+    width: 17px;
+}
+
+.sign svg path {
+    fill: white;
+}
+
+.text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+
+.opcionAjustes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cerrarSesionBtn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.cerrarSesionBtn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+
+
+.cerrarSesionBtn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+
+.cerrarSesionBtn:active {
+    transform: translate(2px, 2px);
+}
+
+.cerrarSesionBtn a {
+    text-decoration: none;
+}
+
 /* Animación de aparición del modal */
 .modalError .contenidoModalError,
 .modal .contenidoModal,
@@ -540,6 +629,10 @@ h1 {
         transform: scale(1);
     }
 }
+
+
+
+
 
 .icono,
 .iconoBtn,
