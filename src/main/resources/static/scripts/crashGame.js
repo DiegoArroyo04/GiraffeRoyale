@@ -279,8 +279,6 @@ window.addEventListener("load", function () {
     //JUEGO
     const botonTirar = document.getElementById("botonTirar");
 
-    // Accede a su atributo `src`
-    console.log(botonTirar.src);
 
     //APUESTAS
     //BOTON DE AUMENTAR APUESTA
