@@ -116,6 +116,7 @@ i18next.init({
                 loro: "Loro",
                 platanos: "Plátanos",
                 flor: "Flor",
+                comodin: "Comodin",
                 lineaCentral: "Línea central",
                 lineaSuperiorInferior: "Línea superior/inferior",
                 lineaDiagonal: "Línea en Diagonal",
@@ -123,6 +124,7 @@ i18next.init({
                 activadorGirosDescripcion: "3 Jirafas activan 10 giros gratuitos con el multiplicador de la jirafa aplicado a todos los símbolos.",
                 acumuladorMultiplicadores: "Acumulador de multiplicadores",
                 acumuladorMultiplicadoresDescripcion: "¡Si se obtienen varias combinaciones ganadoras, ¡los multiplicadores de todas se suman!",
+                descripcionComodin: "El comodín reemplaza cualquier símbolo y forma combinaciones ganadoras.",
                 creditosTexto: "CREDITOS:",
                 apuestaTexto: "APUESTA:",
                 tituloTiradas: "NUMERO DE TIRADAS AUTOMÁTICAS",
@@ -191,6 +193,7 @@ i18next.init({
                 loro: "Parrot",
                 platanos: "Bananas",
                 flor: "Flower",
+                comodin: "Wild",
                 lineaCentral: "Central line",
                 lineaSuperiorInferior: "Top / Bottom Line",
                 lineaDiagonal: "Diagonal Line",
@@ -198,6 +201,7 @@ i18next.init({
                 activadorGirosDescripcion: "3 giraffes activate 10 free spins with the giraffe multiplier applied to all symbols.",
                 acumuladorMultiplicadores: "Multiplier accumulator",
                 acumuladorMultiplicadoresDescripcion: "If multiple winning combinations are obtained, all multipliers are add up!",
+                descripcionComodin: "The wild replaces any symbol and form of winning combinations.",
                 creditosTexto: "CREDITS:",
                 apuestaTexto: "BET:",
                 tituloTiradas: "SELECT A NUMBER OF AUTOMATIC SPINS",
@@ -1004,6 +1008,7 @@ function actualizarTexto() {
     document.getElementById("arbol").innerHTML = '<img src="assets/tragaperras/iconoArbol.png" alt="Árbol"> ' + i18next.t('arbol');
     document.getElementById("loro").innerHTML = '<img src="assets/tragaperras/iconoLoro.png" alt="Loro"> ' + i18next.t('loro');
     document.getElementById("platanos").innerHTML = '<img src="assets/tragaperras/iconoPlatanos.png" alt="Plátanos"> ' + i18next.t('platanos');
+    document.getElementById("comodin").innerHTML = '<img src="assets/tragaperras/comodin.png" alt="Comodin"> ' + i18next.t('comodin');
     document.getElementById("flor").innerHTML = '<img src="assets/tragaperras/iconoFlor.png" alt="Flor"> ' + i18next.t('flor');
     document.getElementById("lineaCentral").textContent = i18next.t('lineaCentral');
     document.getElementById("lineaSuperiorInferior").textContent = i18next.t('lineaSuperiorInferior');
@@ -1012,6 +1017,7 @@ function actualizarTexto() {
     document.getElementById("activadorGirosDescripcion").textContent = i18next.t('activadorGirosDescripcion');
     document.getElementById("acumuladorMultiplicadores").textContent = i18next.t('acumuladorMultiplicadores');
     document.getElementById("acumuladorMultiplicadoresDescripcion").textContent = i18next.t('acumuladorMultiplicadoresDescripcion');
+    document.getElementById("descripcionComodin").textContent = i18next.t('descripcionComodin');
     document.getElementById("creditosTexto").textContent = i18next.t('creditosTexto');
     document.getElementById("apuestaTexto").textContent = i18next.t('apuestaTexto');
     document.getElementById("tituloTiradas").textContent = i18next.t('tituloTiradas');
