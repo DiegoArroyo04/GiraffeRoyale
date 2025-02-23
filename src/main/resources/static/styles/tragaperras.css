@@ -284,7 +284,8 @@ h1 {
     position: relative;
 }
 
-.tablaEstilos th img {
+.tablaEstilos th img,
+.tablaEstilos td img {
     width: 1.5vw;
     height: auto;
     margin-right: 0.5rem;
@@ -1091,9 +1092,9 @@ header {
 
 @media (max-width: 768px) {
 
-    body{
+    body {
         background-color: #475b1a;
-    }    
+    }
 
     /* ----------------HEADER---------------- */
     header {
@@ -1158,10 +1159,10 @@ header {
 
     .contenedorJuego {
         width: 100%;
-        border-radius: 0;        
+        border-radius: 0;
         box-shadow: none;
         height: auto;
-        
+
     }
 
     .marco {
@@ -1330,7 +1331,7 @@ header {
         }
 
         100% {
-            right: 33%;           
+            right: 33%;
         }
     }
 
@@ -1445,7 +1446,7 @@ header {
         justify-content: center;
     }
 
-    h1{
+    h1 {
         font-size: 2vh;
     }
 
