@@ -220,8 +220,8 @@ window.addEventListener("load", function () {
       // ARRAY QUE ASIGNA LAS IMAGENES A LOS ELEMENTOS DEL HTML
       const imageElements = [
         { id: "preloader", type: "img", index: 0 },
-        { selector: "a[href='https://girafferoyale.vercel.app/'] img.home", type: "img", index: 1 },
-        { selector: "a[href='https://girafferoyale.vercel.app/'] img.logo", type: "img", index: 2 },
+        { selector: "a[href='/comprobarLobby'] img.home", type: "img", index: 1 },
+        { selector: "a[href='/comprobarLobby'] img.logo", type: "img", index: 2 },
         { id: "añadirSaldo", type: "img", index: 3 },
         { id: "configuracion", type: "img", index: 4 },
         { id: "imagenGirafa", type: "img", index: 5 },
@@ -1005,9 +1005,6 @@ function empezarJuego() {
   // Terminar el juego automáticamente después de la duración aleatoria
   timeout = setTimeout(() => {
 
-    // var sonidoRugido = new Audio('../assets/crash/rugidoLeon.mp3');
-    // sonidoRugido.volume = volumen;
-    // sonidoRugido.play();
 
     document.getElementById("textoTragaperras").textContent = i18next.t('sigueJugando');
     document.getElementById("botonTirar").src = "./assets/pamplona/botonTirar.png";
@@ -1024,16 +1021,18 @@ function empezarJuego() {
       document.getElementById("textoTragaperras").textContent = i18next.t('tirar');
       document.getElementById("multi").style.display = "none";
 
+      //RESETEAR CAMPOS
+      premioTotal = 0;
+      hayPremio = false;
+      estaJugando = false;
+      finalizarTirada();
+
     }, 3000);
 
     // Cancelar timeout y intervalo
     clearTimeout(timeout); // Detiene el rugido del león
     clearInterval(intervaloMulti); // Detiene el incremento del multiplicador
 
-    premioTotal = 0;
-    hayPremio = false;
-    estaJugando = false;
-    finalizarTirada();
   }, duracionJuego);
 }
 
