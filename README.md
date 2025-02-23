@@ -76,7 +76,8 @@ Entre sus características destacan:
 - **Girar los carretes**: Usa el botón de girar o la barra espaciadora para iniciar una tirada.
 - **Bonos**: Si aparecen tres símbolos especiales (jirafas), se activa un **bono de giros gratis** con multiplicadores mejorados.
 - **Tiradas automáticas**: Configura un número de tiradas automáticas y el sistema gestionará el juego por ti.
-- **Comodin**: Si aparece un símbolo especial (wild), reemplazara ayudando a combinar .
+- **🃏 Comodín (Wild)**: Si aparece un **símbolo especial** (wild), este actuará como un **sustituto**, ayudando a completar combinaciones ganadoras y aumentando las probabilidades de premio.  
+
 
 ---
 
@@ -110,6 +111,7 @@ Entre sus características destacan:
 - **AJAX, JSON y jQuery**: Comunicación con el backend.
 - **Spring Boot y MVC**: Gestión del servidor y datos del usuario.
 
+
 ---
 
 #### 🕹️ ¿Cómo jugar?
@@ -123,101 +125,61 @@ Entre sus características destacan:
 Este juego forma parte del proyecto transversal, combinando diseño, desarrollo en cliente y servidor, y despliegue para lograr una experiencia de casino completa y funcional. 🎰✨  
 
 
-## Descripción
-**Giraffe Rush** es un emocionante juego desarrollado en JavaScript y gestionado en el backend con **Spring Boot**. Combina estrategia, suspenso y diversión. En este juego, el jugador controla a una jirafa que debe esquivar a un león mientras acumula multiplicadores de apuesta. La clave es decidir cuándo retirarse para maximizar las ganancias antes de ser atrapado.
+# 🦒 Giraffe Rush: Crash Game
 
-El proyecto incorpora técnicas avanzadas como **Web Workers** para optimizar el rendimiento de carga de imágenes, gestión de datos mediante **Spring Boot**, y operaciones asíncronas realizadas con **AJAX** y **jQuery**.
+## 🎮 Descripción  
 
----
+**Giraffe Rush** es un emocionante juego de apuestas desarrollado en **JavaScript** con gestión backend en **Spring Boot**. En este juego, el jugador controla a una jirafa que debe huir de un león mientras acumula multiplicadores de apuesta. La clave está en decidir **cuándo retirarse** para maximizar las ganancias antes de ser alcanzado.  
 
-## Características Principales
-- **Interactividad Dinámica:** 
-  - Animaciones fluidas de la jirafa y el león.
-  - Botón interactivo que cambia de estado entre "Tirar" y "Parar".
+El proyecto implementa técnicas avanzadas como **Web Workers** para optimizar el rendimiento, gestión de datos con **Spring Boot**, y operaciones asíncronas mediante **AJAX** y **jQuery**.  
 
-- **Riesgo Progresivo:** 
-  - A medida que el multiplicador crece, aumenta la probabilidad de que el león alcance a la jirafa.
+---  
 
-- **Optimización con Web Workers:**
-  - Las imágenes del juego se cargan en paralelo para minimizar el tiempo de carga inicial.
+## 🚀 Características Principales  
 
-- **Gestión Backend con Spring Boot:**
-  - Datos de usuarios, históricos de tiradas y reglas gestionados mediante servicios RESTful.
+### 🎭 Interactividad Dinámica  
+- Animaciones fluidas de la jirafa y el león.  
+- Botón interactivo que cambia de estado entre **"Tirar"** y **"Parar"**.  
 
-- **Conexión Base de Datos:**
-  - Utilización de **Maven** como gestor de dependencias.
-  - Base de datos conectada al proyecto para almacenar usuarios y tiradas.
+### ⚠️ Riesgo Progresivo  
+- Cuanto mayor sea el **multiplicador**, mayor será la probabilidad de que el león atrape a la jirafa.  
 
----
+### ⚡ Optimización con Web Workers  
+- Carga de imágenes en segundo plano para reducir tiempos de espera.  
 
-## Tecnologías Utilizadas
+### 🖥️ Backend con Spring Boot  
+- Servicios RESTful para gestionar datos de usuarios y tiradas.  
+- Base de datos conectada para almacenar **usuarios e historiales de apuestas**.  
 
-### Frontend
-- **HTML5 y CSS3:**
-  - Diseño atractivo y funcional con un enfoque en la experiencia de usuario.
+---  
 
-- **JavaScript:**
-  - Animaciones y lógica del juego.
+## 🛠️ Tecnologías Utilizadas  
 
-- **jQuery:**
-  - Manipulación eficiente del DOM y operaciones AJAX.
+### 🔹 Frontend  
+- **HTML5 y CSS3:** Interfaz atractiva y funcional.  
+- **JavaScript:** Lógica del juego y animaciones.  
+- **jQuery:** Manipulación del DOM y gestión AJAX.  
 
-### Backend
-- **Spring Boot:**
-  - Gestión de servicios RESTful.
+### 🔸 Backend  
+- **Spring Boot:** Desarrollo de API REST.  
+- **Java:** Procesamiento de lógica del servidor.  
+- **Maven:** Gestión de dependencias del proyecto.  
 
-- **Java:**
-  - Gestión de lógica del backend y conexión con la base de datos.
+### 🛠️ Herramientas Adicionales  
+- **GitHub:** Control de versiones y colaboración.  
+- **Visual Studio Code:** Entorno de desarrollo.  
+- **Web Workers:** Procesamiento en paralelo para optimización de rendimiento.  
 
-- **Maven:**
-  - Gestor de dependencias del proyecto.
+---  
 
-### Herramientas
-- **GitHub:**
-  - Control de versiones y colaboración.
+## 🕹️ Cómo Jugar  
 
-- **Visual Studio:**
-  - Entorno de desarrollo integrado.
-
-- **Web Workers:**
-  - Manejo de procesos en paralelo para optimizar el rendimiento.
+1. **Inicio del Juego:** Presiona el botón **"Tirar"** para comenzar.  
+2. **Evita el León:** Observa cómo la jirafa avanza mientras el multiplicador aumenta.  
+3. **Decide Cuándo Parar:** Haz clic en **"Parar"** antes de que el león alcance a la jirafa para asegurar tus ganancias.  
+4. **Objetivo:** Maximiza el multiplicador sin perder tu apuesta inicial.  
 
 ---
-
-## Guía de Instalación
-
-1. Clona el repositorio desde GitHub:
-
-```bash
-git clone [https://github.com/DiegoArroyo04/CrashGame.git]
-```
-
-2. Configura la base de datos en el archivo `application.properties` de Spring Boot.
-
-3. Construye el proyecto con Maven:
-
-```bash
-mvn clean install
-```
-
-4. Ejecuta el servidor backend.
-
-5. Abre el proyecto en tu editor de código preferido (por ejemplo, Visual Studio) para gestionar el frontend.
-
-6. Configura un servidor local (puedes usar extensiones como Live Server).
-
-7. Accede al juego desde tu navegador web.
-
----
-
-## Cómo Jugar
-1. **Inicio del Juego:** Presiona el botón "Tirar" para comenzar.
-2. **Evita el León:** Observa cómo la jirafa se mueve mientras aumenta el multiplicador.
-3. **Decide Cuándo Parar:** Haz clic en "Parar" antes de que el león alcance a la jirafa para obtener tus ganancias.
-4. **Objetivo:** Maximiza el multiplicador sin perder tu apuesta inicial.
-
----
-
 
 ## Contacto
 - **Desarrollador:** [Diego Arroyo González](https://github.com/DiegoArroyo04)
