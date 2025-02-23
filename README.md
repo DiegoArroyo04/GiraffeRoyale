@@ -1,4 +1,23 @@
-# Giraffe Rush: Juego de Aventura
+# Giraffe Royale Casino:Proyecto Transversal 2º DAW
+
+## Introducción
+
+Este proyecto transversal tiene como objetivo el desarrollo de un **casino online** completamente funcional, integrando conocimientos adquiridos en diversas áreas del desarrollo web. A lo largo del proyecto, abordamos el proceso completo de creación de una aplicación web, desde el diseño de interfaces hasta su despliegue final.
+
+La propuesta consiste en construir una plataforma de juegos de azar donde varios usuarios podrán acceder a diferentes juegos, gestionar su saldo y disfrutar de una experiencia inmersiva. Para diferenciar este casino en particular, se ha definido una **identidad visual única con temática de jungla**, incluyendo:
+
+- **Nombre del casino**
+- **Logo e iconografía corporativa**
+- **Paleta de colores distintiva**
+- **Imágenes y elementos gráficos personalizados**
+
+El acceso a la plataforma se realizará mediante un **sistema de autenticación**, permitiendo a los usuarios registrarse y acceder a su cuenta. Además, existirá la opción de registrarse como **usuario VIP**, lo que requerirá un pago y otorgará acceso exclusivo a juegos adicionales. Dependiendo del tipo de usuario (estándar o VIP), se ofrecerán diferentes juegos y beneficios. En todo momento, los jugadores podrán consultar su saldo y gestionar su monedero.
+
+Los juegos estarán organizados dentro de una interfaz dinámica e intuitiva. Al seleccionar un juego, el usuario será redirigido a su página específica para jugar y realizar apuestas. Se fomenta la inclusión de elementos interactivos como **animaciones, efectos visuales y una jugabilidad optimizada y atractiva** para mejorar la experiencia del usuario.
+
+Este proyecto no solo busca el desarrollo técnico de la aplicación, sino también fomentar el **trabajo colaborativo**, la organización mediante **reparto de tareas**, el uso de **GitHub con trabajo en ramas** y la integración de múltiples disciplinas dentro del desarrollo web. 🔥
+
+
 
 ## Descripción
 **Giraffe Rush** es un emocionante juego desarrollado en JavaScript y gestionado en el backend con **Spring Boot**. Combina estrategia, suspenso y diversión. En este juego, el jugador controla a una jirafa que debe esquivar a un león mientras acumula multiplicadores de apuesta. La clave es decidir cuándo retirarse para maximizar las ganancias antes de ser atrapado.
