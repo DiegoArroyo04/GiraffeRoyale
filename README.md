@@ -181,7 +181,7 @@ El proyecto implementa técnicas avanzadas como **Web Workers** para optimizar e
 
 ---
 
-### 2.6 🦒 Pamplona Rush: Crash Game
+### 2.6 🐂 Pamplona Rush: Crash Game
 
 ## Descripción
 **Pamplona Rush** es un emocionante juego desarrollado en JavaScript y gestionado en el backend con **Spring Boot**. En este juego, el jugador controla a un corredor de San Fermín que debe esquivar un toro mientras acumula multiplicadores de apuesta. El desafío consiste en decidir el momento adecuado para retirarse y maximizar las ganancias antes de ser alcanzado por el toro.
