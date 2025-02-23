@@ -58,22 +58,52 @@ public class IndexController {
 	public String comprobarLobby(HttpSession session) {
 		UsuarioEntity usuario = (UsuarioEntity) session.getAttribute("usuario");
 
-		if (usuario.getUsuarioVip() == true) {
-			return "redirect:/lobbyVip";
+		// COMPROBAMOS SI EL USUARIO ESTA LOGUEADO Y SI LO ESTA A QUE LOBBY REDIRIGIRLO
+		if (usuario == null) {
+			return "redirect:/";
 		} else {
-			return "redirect:/lobby";
+			if (usuario.getUsuarioVip() == true) {
+				return "redirect:/lobbyVip";
+			} else {
+				return "redirect:/lobby";
+			}
 		}
 
 	}
 
 	@GetMapping("/lobby")
-	public String lobby() {
+	public String lobby(HttpSession session) {
+
+		UsuarioEntity usuario = (UsuarioEntity) session.getAttribute("usuario");
+
+		// COMPROBAMOS SI EL USUARIO ESTA LOGUEADO
+		if (usuario == null) {
+			return "redirect:/";
+		} else {
+			// COMPROBACION DE QUE UN USUARIO QUE ES VIP NO PUEDA ACCEDER A EL LOBBY NORMAL
+			if (usuario.getUsuarioVip() == true) {
+				return "redirect:/lobbyVip";
+			}
+		}
 
 		return "lobby";
 	}
 
 	@GetMapping("/lobbyVip")
-	public String lobbyVip() {
+	public String lobbyVip(HttpSession session) {
+
+		UsuarioEntity usuario = (UsuarioEntity) session.getAttribute("usuario");
+
+		// COMPROBAMOS SI EL USUARIO ESTA LOGUEADO
+		if (usuario == null) {
+			return "redirect:/";
+		} else {
+			// COMPROBACION DE QUE UN USUARIO QUE NO ES VIP NO PUEDA ACCEDER A EL LOBBY VIP
+			if (usuario.getUsuarioVip() == false) {
+				return "redirect:/lobby";
+			}
+		}
+
 		return "lobbyVip";
 	}
 
