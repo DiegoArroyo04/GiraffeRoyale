@@ -145,7 +145,8 @@ i18next.init({
                 historialApuesta: "Apuesta",
                 historialCombinacion: "Combinación",
                 historialResultado: "Creditos obtenidos",
-                cerrarSesion: "Cerrar Sesión"
+                cerrarSesion: "Cerrar Sesión",
+                sigueJugando: "¡SIGUE INTENTANDOLO!",
 
             }
         },
@@ -209,7 +210,7 @@ i18next.init({
                 iniciarTiradas: "START AUTOMATIC STRIPS",
                 apuestaMaxima: "BET MAXIMUM REACHED!",
                 apuestaMinima: "BET MINIMUM REACHED!",
-                buenaSuerte: "GOOD LOOK!",
+                buenaSuerte: "GOOD LUCK!",
                 tiradasRestantes: "REMAINING SPINS: ",
                 noCreditosParaApostar: "YOU HAVE NO SUFFICIENT CREDITS FOR THAT BET!",
                 hasGanado: "YOU'VE WON ",
@@ -219,7 +220,8 @@ i18next.init({
                 historialApuesta: "Bet",
                 historialCombinacion: "Combination",
                 historialResultado: "Credits obtained",
-                cerrarSesion: "Log out"
+                cerrarSesion: "Log out",
+                sigueJugando: "KEEP TRYING!",
 
             }
         }
@@ -1276,16 +1278,18 @@ function girarCarretes(carretes) {
                 //SI HAY PREMIO ESPERAR A QUE CAMBIE EL TEXTO DE LA TRAGAPERRAS
                 if (hayPremio == true) {
 
-
                     setTimeout(() => {
                         estaGirando = false; // Liberar para la siguiente tirada
                         hayPremio = false;
                     }, 5000); // Esperar 5 segundos antes de la siguiente tirada
 
                 } else {
-
-                    estaGirando = false;
-                    hayPremio = false;
+                    document.getElementById("textoTragaperras").textContent = i18next.t('sigueJugando');
+                    setTimeout(() => {
+                        document.getElementById("textoTragaperras").textContent = i18next.t('tirar');
+                        estaGirando = false; // Liberar para la siguiente tirada
+                        hayPremio = false;
+                    }, 2000); // Esperar 5 segundos antes de la siguiente tirada
                 }
 
 
