@@ -118,6 +118,7 @@ i18next.init({
         historialApuesta: "Apuesta",
         historialMulti: "Multiplicador",
         historialResultado: "Creditos obtenidos",
+        cerrarSesion: "Cerrar Sesión"
 
       }
     },
@@ -181,6 +182,7 @@ i18next.init({
         historialApuesta: "Bet",
         historialMulti: "Multiplier",
         historialResultado: "Credits obtained",
+        cerrarSesion: "Log out"
 
       }
     }
@@ -940,6 +942,7 @@ function actualizarTexto() {
   document.getElementById("historialApuesta").textContent = i18next.t('historialApuesta');
   document.getElementById("historialMulti").textContent = i18next.t('historialMulti');
   document.getElementById("historialResultado").textContent = i18next.t('historialResultado');
+  document.getElementById("cerrarSesion").textContent = i18next.t('cerrarSesion');
 
 }
 
@@ -1222,7 +1225,7 @@ window.addEventListener('beforeunload', function (event) {
             document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
             document.getElementById("creditosTotales").innerHTML = creditos;
             document.getElementById("inputRetiroCreditos").value = "";
-            mostrarError(i18next.t('hasConvertido') + creditosAEuros + i18next.t('creditosA') + (creditosAEuros / multiplicador).toFixed(2) + " €");
+
           },
           error: function (error) {
             console.error("Error en la solicitud AJAX:", error);

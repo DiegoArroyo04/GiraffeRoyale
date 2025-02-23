@@ -145,6 +145,7 @@ i18next.init({
                 historialApuesta: "Apuesta",
                 historialCombinacion: "Combinación",
                 historialResultado: "Creditos obtenidos",
+                cerrarSesion: "Cerrar Sesión"
 
             }
         },
@@ -218,6 +219,7 @@ i18next.init({
                 historialApuesta: "Bet",
                 historialCombinacion: "Combination",
                 historialResultado: "Credits obtained",
+                cerrarSesion: "Log out"
 
             }
         }
@@ -641,7 +643,7 @@ window.addEventListener("load", function () {
 
         } else {
             document.getElementById("textoModoOscuro").textContent = i18next.t('textoModoOscuro');
-            iconoModoOscuro.src = "./assets/traperras/modoOscuro.png"; // Icono para el modo oscuro
+            iconoModoOscuro.src = "./assets/tragaperras/modoOscuro.png"; // Icono para el modo oscuro
         }
 
     });
@@ -1026,6 +1028,7 @@ function actualizarTexto() {
     document.getElementById("historialApuesta").textContent = i18next.t('historialApuesta');
     document.getElementById("historialCombinacion").textContent = i18next.t('historialCombinacion');
     document.getElementById("historialResultado").textContent = i18next.t('historialResultado');
+    document.getElementById("cerrarSesion").textContent = i18next.t('cerrarSesion');
 
 }
 
@@ -1790,7 +1793,7 @@ window.addEventListener('beforeunload', function (event) {
                         document.getElementById("creditosInfo").textContent = i18next.t('creditosActuales', { creditos: creditos });
                         document.getElementById("creditosTotales").innerHTML = creditos;
                         document.getElementById("inputRetiroCreditos").value = "";
-                        mostrarError(i18next.t('hasConvertido') + creditosAEuros + i18next.t('creditosA') + (creditosAEuros / multiplicador).toFixed(2) + " €");
+
                     },
                     error: function (error) {
                         console.error("Error en la solicitud AJAX:", error);
