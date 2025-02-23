@@ -125,7 +125,7 @@ Entre sus características destacan:
 Este juego forma parte del proyecto transversal, combinando diseño, desarrollo en cliente y servidor, y despliegue para lograr una experiencia de casino completa y funcional. 🎰✨  
 
 
-# 🦒 Giraffe Rush: Crash Game
+### 2.4. 🎰 Giraffe Spins And Wins: Tragaperras Multilingüe
 
 ## 🎮 Descripción  
 
