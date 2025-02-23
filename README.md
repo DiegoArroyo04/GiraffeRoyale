@@ -56,6 +56,71 @@ Aprender un nuevo juego y comprender su sistema de apuestas puede ser complicado
 
 Esto garantiza que los jugadores puedan aprender rápidamente y mejorar su experiencia dentro del casino.  
 
+### 2.4. 🎰 Giraffe Spins And Wins: Tragaperras Multilingüe
+
+#### Descripción
+
+Este juego de **máquina tragaperras** ha sido desarrollado con **JavaScript, HTML y CSS**, ofreciendo una experiencia de juego interactiva con múltiples funcionalidades avanzadas. Su objetivo es simular un entorno de casino realista con animaciones, multiplicadores y opciones personalizables.
+
+Entre sus características destacan:
+- Animaciones de giro en los carretes.
+- Multiplicadores dinámicos según las combinaciones ganadoras.
+- Función de bono especial con giros gratis y multiplicadores mejorados.
+- **Interfaz multilingüe** (español e inglés).
+- Controles intuitivos: posibilidad de jugar con botones visuales o con la **barra espaciadora**.
+- Implementación de un **comodín** para mejorar las combinaciones ganadoras.
+
+---
+
+#### 🎮 Jugabilidad
+- **Girar los carretes**: Usa el botón de girar o la barra espaciadora para iniciar una tirada.
+- **Bonos**: Si aparecen tres símbolos especiales (jirafas), se activa un **bono de giros gratis** con multiplicadores mejorados.
+- **Tiradas automáticas**: Configura un número de tiradas automáticas y el sistema gestionará el juego por ti.
+- **Comodin**: Si aparece un símbolo especial (wild), reemplazara ayudando a combinar .
+
+---
+
+#### 🌍 Multilingüe
+- Soporte para **español** e **inglés**.
+- Traducción de textos dinámicos y estáticos en la interfaz.
+- Mantiene las imágenes y estilos al cambiar de idioma.
+
+---
+
+#### 🔥 Multiplicadores y premios
+- Cada símbolo tiene diferentes **multiplicadores** según su posición en los carretes (línea central, superior, inferior, diagonal).
+- Los multiplicadores se ajustan dinámicamente durante el bono de giros gratis.
+- Los **premios acumulados** se actualizan en tiempo real.
+
+---
+
+#### ⚙️ Funciones técnicas
+- **Bloqueo de acciones** mientras los carretes están girando para evitar errores.
+- **Ajustes personalizados**: permite cambiar entre **modo oscuro y claro**, insertar créditos y realizar retiros.
+- **Gestión de saldos y apuestas** para mejorar la experiencia del usuario.
+- **Conexión con backend** mediante **AJAX, JSON y jQuery**, utilizando métodos **POST y GET** para la comunicación con **Spring Boot** bajo el **patrón MVC**.
+
+---
+
+#### 🚀 Tecnologías utilizadas
+- **JavaScript**: Lógica del juego, gestión de eventos, animaciones y dinámicas del proyecto.
+- **HTML**: Estructura de la interfaz de usuario.
+- **CSS**: Estilos para la interfaz y animaciones de los carretes.
+- **[i18next](https://www.i18next.com/)**: Biblioteca para la traducción multilingüe.
+- **AJAX, JSON y jQuery**: Comunicación con el backend.
+- **Spring Boot y MVC**: Gestión del servidor y datos del usuario.
+
+---
+
+#### 🕹️ ¿Cómo jugar?
+1. **Accede al juego** desde la pantalla principal del casino.
+2. **Configura tu experiencia**: elige idioma, ajusta el modo de pantalla y define tu saldo inicial.
+3. **Disfruta del juego**:  
+   - Gira los carretes con el botón o la **barra espaciadora**.  
+   - Activa **tiradas automáticas** o juega manualmente.  
+   - Gana premios con los **multiplicadores** y accede al **modo bono** con giros gratis.  
+
+Este juego forma parte del proyecto transversal, combinando diseño, desarrollo en cliente y servidor, y despliegue para lograr una experiencia de casino completa y funcional. 🎰✨  
 
 
 ## Descripción
