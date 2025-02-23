@@ -17,6 +17,45 @@ Los juegos estarán organizados dentro de una interfaz dinámica e intuitiva. Al
 
 Este proyecto no solo busca el desarrollo técnico de la aplicación, sino también fomentar el **trabajo colaborativo**, la organización mediante **reparto de tareas**, el uso de **GitHub con trabajo en ramas** y la integración de múltiples disciplinas dentro del desarrollo web. 🔥
 
+## 2. Juegos
+
+A lo largo del curso, en las diferentes asignaturas, hemos diseñado varios juegos de casino que se han integrado en este proyecto transversal. Sin embargo, para mejorar la experiencia del usuario, se ha añadido un nuevo juego exclusivo para usuarios VIP y se han realizado mejoras en los juegos ya existentes.
+
+### 2.1. Máquinas Tragaperras y Crash Game
+
+En el caso de los juegos previamente creados, simplemente ha sido necesario integrarlos en este proyecto como parte del casino. Dado que el desarrollo se ha realizado en parejas, se han seleccionado los juegos mejor valorados y con menor carga de trabajo en cuanto a mejoras. No obstante, aunque estos juegos ya existieran, ha sido imprescindible optimizarlos tanto en diseño como en funcionalidad.
+
+- **Mejoras de diseño:** Se han aplicado las sugerencias de los profesores de la parte de front-end para optimizar la interfaz y la experiencia del usuario.  
+- **Mejoras de funcionalidad:** Se han adaptado los juegos a los conceptos teóricos vistos en las asignaturas, como AJAX, jQuery, JSON, web workers, entre otros.  
+
+Por ejemplo, en la asignatura de **Desarrollo Web en Entorno Cliente**, hemos aprendido a realizar peticiones GET y POST para gestionar datos en la base de datos. Este conocimiento se ha aplicado en todos los juegos, como:  
+
+- 🎰 **Giraffe Spins and Wins** (máquina tragaperras temática de jirafas). Se ha implementado una mejora con comodines y un sistema de notificación al usuario cuando pierde.  
+- 🦒 **Giraffe Rush** (crash game en el que una jirafa corre mientras un león intenta atraparla, permitiendo retirarse en cualquier momento para salvarse).  
+- 🐂 **Pamplona Rush** – Un crash game inspirado en los Sanfermines. En él, un corredor huye de un toro y debe retirarse en el momento oportuno antes de ser alcanzado.    
+
+Además, se ha estructurado el código siguiendo el **patrón MVC**, tal y como se ha estudiado en las asignaturas de desarrollo en cliente y servidor.
+
+### 2.2. Nuevos Juegos
+
+Para ampliar la oferta del casino y mejorar la exclusividad del usuario VIP, el equipo ha implementado **un juego adicional**, una variación de uno existente que requería mejoras significativas y aún no había sido aprobado por completo por una de las partes del equipo. Este juego ha sido adaptado a las condiciones del casino y se ha integrado como un título más en la plataforma.  
+
+El nuevo juego está accesible desde la pantalla principal para los usuarios VIP y sigue el mismo esquema de funcionamiento que los juegos ya existentes.  
+
+En nuestro caso, uno de los compañeros debía recuperar el tema del **crash game**, por lo que decidimos adaptar su juego al casino. Nuestro nuevo juego es:  
+
+🐂 **Pamplona Rush** – Un crash game inspirado en los Sanfermines. En él, un corredor huye de un toro y debe retirarse en el momento adecuado antes de ser alcanzado.  
+
+### 2.3. ¿Cómo jugar?
+
+Aprender un nuevo juego y comprender su sistema de apuestas puede ser complicado para algunos usuarios. Por ello, muchos casinos ofrecen tutoriales o vídeos explicativos dentro de la plataforma.  
+
+📌 **Nuestra solución:**  
+- Se ha incluido un **modal con información del juego** dentro del propio juego y en la pantalla principal.  
+- Se ha creado un **vídeo tutorial** que simula algunas tiradas para explicar la mecánica de cada juego de forma visual.  
+
+Esto garantiza que los jugadores puedan aprender rápidamente y mejorar su experiencia dentro del casino.  
+
 
 
 ## Descripción
