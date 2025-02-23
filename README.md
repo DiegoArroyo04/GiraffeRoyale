@@ -125,7 +125,7 @@ Entre sus características destacan:
 Este juego forma parte del proyecto transversal, combinando diseño, desarrollo en cliente y servidor, y despliegue para lograr una experiencia de casino completa y funcional. 🎰✨  
 
 
-### 2.4. 🎰 Giraffe Spins And Wins: Tragaperras Multilingüe
+### 2.5 🦒 Giraffe Rush: Crash Game
 
 ## 🎮 Descripción  
 
@@ -180,6 +180,78 @@ El proyecto implementa técnicas avanzadas como **Web Workers** para optimizar e
 4. **Objetivo:** Maximiza el multiplicador sin perder tu apuesta inicial.  
 
 ---
+
+### 2.6 🦒 Pamplona Rush: Crash Game
+
+## Descripción
+**Pamplona Rush** es un emocionante juego desarrollado en JavaScript y gestionado en el backend con **Spring Boot**. En este juego, el jugador controla a un corredor de San Fermín que debe esquivar un toro mientras acumula multiplicadores de apuesta. El desafío consiste en decidir el momento adecuado para retirarse y maximizar las ganancias antes de ser alcanzado por el toro.
+
+El proyecto utiliza técnicas avanzadas como **Web Workers** para mejorar el rendimiento de carga de imágenes, gestión de datos mediante **Spring Boot**, y operaciones asíncronas con **AJAX** y **jQuery**.
+
+---
+
+## Características Principales
+- **Interactividad Dinámica:** 
+  - Animaciones fluidas del corredor y el toro.
+  - Botón interactivo que cambia de estado entre "Correr" y "Parar".
+
+- **Riesgo Progresivo:** 
+  - A medida que el multiplicador crece, aumenta la probabilidad de que el toro alcance al corredor.
+
+- **Optimización con Web Workers:**
+  - Las imágenes del juego se cargan en paralelo para minimizar el tiempo de carga inicial.
+
+- **Gestión Backend con Spring Boot:**
+  - Datos de usuarios, históricos de tiradas y reglas gestionados mediante servicios RESTful.
+
+- **Conexión a Base de Datos:**
+  - Utilización de **Maven** como gestor de dependencias.
+  - Base de datos conectada al proyecto para almacenar usuarios y progresos.
+
+---
+
+## Tecnologías Utilizadas
+
+### Frontend
+- **HTML5 y CSS3:**
+  - Diseño atractivo y funcional con un enfoque en la experiencia de usuario.
+
+- **JavaScript:**
+  - Animaciones y lógica del juego.
+
+- **jQuery:**
+  - Manipulación eficiente del DOM y operaciones AJAX.
+
+### Backend
+- **Spring Boot:**
+  - Gestión de servicios RESTful.
+
+- **Java:**
+  - Lógica del backend y conexión con la base de datos.
+
+- **Maven:**
+  - Gestor de dependencias del proyecto.
+
+### Herramientas
+- **GitHub:**
+  - Control de versiones y colaboración.
+
+- **Visual Studio:**
+  - Entorno de desarrollo integrado.
+
+- **Web Workers:**
+  - Manejo de procesos en paralelo para optimizar el rendimiento.
+
+---
+
+## Cómo Jugar
+1. **Inicio del Juego:** Presiona el botón "Correr" para comenzar.
+2. **Evita el Toro:** Observa cómo el corredor avanza mientras el multiplicador aumenta.
+3. **Decide Cuándo Parar:** Haz clic en "Parar" antes de que el toro alcance al corredor para obtener tus ganancias.
+4. **Objetivo:** Maximiza el multiplicador sin perder tu apuesta inicial.
+
+---
+
 
 ## Contacto
 - **Desarrollador:** [Diego Arroyo González](https://github.com/DiegoArroyo04)
