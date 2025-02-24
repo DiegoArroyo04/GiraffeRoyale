@@ -302,6 +302,11 @@ Se han implementado distintos **roles** de usuario:
 - Si alguno de estos datos ya está registrado, el sistema **impide la creación de la cuenta**.
 
 ---
+## Prototipo Interactivo Lobby
+
+Puedes acceder al prototipo interactivo del lobby en el siguiente enlace:
+
+[Prototipo Interactivo - Figma](https://www.figma.com/design/rLlbjnBLas8i3pdI6o1Qpl/BOCETO-INICIO-SESION-CASINO?node-id=0-1&t=BxVPBShTHUS4w8WY-1)
 
 ## Contacto
 - **Desarrollador:** [Diego Arroyo González](https://github.com/DiegoArroyo04)
