@@ -392,7 +392,8 @@ h1 {
     -webkit-text-stroke: 0.10vh #003049;
 }
 
-.botonModal, .inputModal {
+.botonModal,
+.inputModal {
     font-family: 'Lilita One';
     background-color: #FFCB77;
     color: #003049;
@@ -669,6 +670,10 @@ h1 {
     cursor: url('../assets/crash/cursorDarkMode.png'), auto;
 }
 
+.modo-oscuro * {
+    cursor: url('../assets/crash/cursorDarkMode.png'), auto;
+}
+
 /* Estilos para el scroll en modo oscuro */
 .modo-oscuro::-webkit-scrollbar-track {
     background: #333333;
@@ -697,10 +702,15 @@ h1 {
 .modo-oscuro .barraTiradas::-webkit-slider-thumb,
 .modo-oscuro .creditos,
 .modo-oscuro .botonTirar,
-.modo-oscuro .footer a img {
+.modo-oscuro img,
+.modo-oscuro .botonTirar:hover {
 
     cursor: url('../assets/crash/cursorPointerDark.png'), pointer;
 
+}
+
+.modo-oscuro .carrete img {
+    cursor: url('../assets/crash/cursorDarkMode.png'), auto;
 }
 
 /* HEADER */
@@ -841,7 +851,6 @@ header {
 }
 
 .premioHeader {
-    position: absolute;
     position: absolute;
     width: 20vw;
     top: 25%;
@@ -1446,6 +1455,21 @@ header {
 
     /* MODALES */
 
+
+    .modalVictoriaContenido {
+        width: 80%;
+    }
+
+    .premioHeader {
+        width: 26vh;
+        top: 25%;
+        left: 25%;
+    }
+
+    .cerrarModalVictoria {
+        right: 15%;
+    }
+
     .tablaInstrucciones h2 {
         font-family: 'Lilita One';
         font-size: 4vh;
@@ -1558,7 +1582,7 @@ header {
         flex-direction: column;
         align-items: center;
     }
-    
+
     #logoHeader {
         display: none;
     }

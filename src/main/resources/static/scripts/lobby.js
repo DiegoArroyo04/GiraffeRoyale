@@ -79,7 +79,8 @@ i18next.init({
                 cambiarIdiomaTexto: "Cambiar Idioma A Ingles:",
                 textoModoOscuro: "Cambiar A Modo Oscuro:",
                 textoModoColor: "Cambiar A Modo Color:",
-                cerrarSesion: "Cerrar Sesión"
+                cerrarSesion: "Cerrar Sesión",
+                juegosDestacados: "JUEGOS DESTACADOS"
 
             }
         },
@@ -104,7 +105,8 @@ i18next.init({
                 cambiarIdiomaTexto: "Change Language To Spanish",
                 textoModoOscuro: "Switch to Dark Mode:",
                 textoModoColor: "Switch to Color Mode:",
-                cerrarSesion: "Log out"
+                cerrarSesion: "Log out",
+                juegosDestacados: "FEATURED GAMES"
 
             }
         }
@@ -133,7 +135,7 @@ function actualizarTexto() {
     document.getElementById("cambiarIdiomaTexto").textContent = i18next.t('cambiarIdiomaTexto');
     document.getElementById("textoModoOscuro").textContent = i18next.t('textoModoOscuro');
     document.getElementById("cerrarSesion").textContent = i18next.t('cerrarSesion');
-
+    document.getElementById("juegosDestacados").textContent = i18next.t('juegosDestacados');
 }
 
 //AÑADIR SALDO

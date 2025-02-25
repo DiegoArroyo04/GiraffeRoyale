@@ -760,6 +760,9 @@ window.addEventListener("load", function () {
   //SONIDO
   document.getElementById("sonido").addEventListener("click", function () {
 
+    //DETECTAR SI LLAMAMOS AL EVENTO DESDE UN TELEFONO
+    let esMovil = window.matchMedia("(max-width: 768px)").matches;
+
     //PAUSAR LA MUSICA
     if (musicaSuena == true) {
       musica.pause();
@@ -768,8 +771,12 @@ window.addEventListener("load", function () {
       document.getElementById("sonido").src = "./assets/pamplona/sonidoRojo.png";
       document.getElementById("iconoSonidoModal").src = "./assets/pamplona/sonidoMuteRojo.png";
 
-      //ABRO EL MODAL DE SONIDO
-      document.getElementById("modalSonidoPantalla").style.display = "flex";
+
+
+      //ABRIR EL MODAL SI NO ESTAMOS EN UN MOVIL
+      if (!esMovil) {
+        document.getElementById("modalSonidoPantalla").style.display = "flex";
+      }
 
 
       // Cambia el color de la barra y del slider thumb a rojo

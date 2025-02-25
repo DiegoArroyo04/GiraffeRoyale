@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
 * {
-    
+
     box-sizing: border-box;
 
 }
@@ -607,6 +607,17 @@ h1 {
 }
 
 
+.modo-oscuro {
+    filter: grayscale(1) brightness(0.8) contrast(1);
+    background-color: var(--dark-bg-color);
+    cursor: url('../assets/crash/cursorDarkMode.png'), auto;
+}
+
+.modo-oscuro * {
+    cursor: url('../assets/crash/cursorDarkMode.png'), auto;
+}
+
+
 /* Estilos para el scroll en modo oscuro */
 .modo-oscuro::-webkit-scrollbar-track {
     background: #333333;
@@ -635,7 +646,8 @@ h1 {
 .modo-oscuro .barraTiradas::-webkit-slider-thumb,
 .modo-oscuro .creditos,
 .modo-oscuro .botonTirar,
-.modo-oscuro .footer a img {
+.modo-oscuro a img:hover,
+.modo-oscuro .footerJuego img:hover {
 
     cursor: url('../assets/pamplona/cursorPointerDark.png'), pointer;
 
@@ -1106,7 +1118,7 @@ video {
         display: none;
     }
 
-    
+
     .encabezadoTitulo {
         font-size: 6vw;
 
@@ -1303,6 +1315,19 @@ video {
     }
 
     /* MODALES */
+    .modalVictoriaContenido {
+        width: 80%;
+    }
+
+    .premioHeader {
+        width: 26vh;
+        top: 25%;
+        left: 25%;
+    }
+
+    .cerrarModalVictoria {
+        right: 15%;
+    }
 
     .tablaInstrucciones h2 {
         font-family: 'Lilita One';
@@ -1407,7 +1432,7 @@ video {
         justify-content: center;
     }
 
-    
+
 
     .botonesModal {
         flex-direction: column;

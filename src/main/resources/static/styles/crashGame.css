@@ -6,7 +6,7 @@
     cursor: url('../assets/crash/cursor.png'), auto;
 }
 
-a {
+a img:hover {
     cursor: url('../assets/crash/cursorPointer.png'), pointer;
 }
 
@@ -17,9 +17,6 @@ a {
 
 }
 
-a {
-    cursor: url('../assets/crash/cursorPointer.png'), pointer;
-}
 
 /* General body styling */
 body {
@@ -641,7 +638,10 @@ h1 {
     filter: grayscale(1) brightness(0.8) contrast(1);
     background-color: var(--dark-bg-color);
     cursor: url('../assets/crash/cursorDarkMode.png'), auto;
+}
 
+.modo-oscuro * {
+    cursor: url('../assets/crash/cursorDarkMode.png'), auto;
 }
 
 /* Estilos para el scroll en modo oscuro */
@@ -672,9 +672,17 @@ h1 {
 .modo-oscuro .barraTiradas::-webkit-slider-thumb,
 .modo-oscuro .creditos,
 .modo-oscuro .botonTirar,
-.modo-oscuro .footer a img {
+.modo-oscuro img,
+.modo-oscuro img:hover {
 
     cursor: url('../assets/crash/cursorPointerDark.png'), pointer;
+
+}
+
+.modo-oscuro .imagenLeon:hover,
+.modo-oscuro .imagenGirafa:hover {
+
+    cursor: url('../assets/crash/cursorDarkMode.png'), auto;
 
 }
 
@@ -695,7 +703,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 .contenedorJuego {
@@ -1398,6 +1406,20 @@ header {
 
     /* MODALES */
 
+    .modalVictoriaContenido {
+        width: 80%;
+    }
+
+    .premioHeader {
+        width: 26vh;
+        top: 25%;
+        left: 25%;
+    }
+
+    .cerrarModalVictoria {
+        right: 15%;
+    }
+
     .tablaInstrucciones h2 {
         font-family: 'Lilita One';
         font-size: 4vh;
@@ -1501,13 +1523,13 @@ header {
         justify-content: center;
     }
 
-    
+
 
     .botonesModal {
         flex-direction: column;
         align-items: center;
     }
-    
+
     #logoHeader {
         display: none;
     }
