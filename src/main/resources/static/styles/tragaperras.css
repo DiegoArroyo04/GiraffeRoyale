@@ -392,6 +392,19 @@ h1 {
     -webkit-text-stroke: 0.10vh #003049;
 }
 
+.botonModal, .inputModal {
+    font-family: 'Lilita One';
+    background-color: #FFCB77;
+    color: #003049;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #003049;
+    border-radius: 5px;
+    cursor: url(../assets/crash/cursorPointer.png), pointer;
+    transition: all 0.3sease;
+    margin-top: 2%;
+    -webkit-text-stroke: 0;
+}
+
 .botonesModal {
     width: 100%;
     display: flex;
@@ -725,7 +738,6 @@ header {
     align-items: center;
     flex-direction: column;
     overflow: hidden;
-
 
 }
 
@@ -1153,7 +1165,7 @@ header {
 }
 
 .iconoAjustes {
-    width: 30%;
+    width: 15%;
 }
 
 .botonTirar:hover {
@@ -1241,8 +1253,12 @@ header {
         width: auto;
     }
 
-    .titulo {
+    .titulo-header {
         display: none;
+    }
+
+    .titulo {
+        font-size: 2vh;
     }
 
     /* CONTENEDOR PRINCIPAL */
@@ -1463,16 +1479,10 @@ header {
         font-size: 2vh;
     }
 
-    .contenidoModal {
-        background-image: url(../assets/pamplona/fondo_modal.jpg);
-        background-size: cover;
-        background-position: center top;
-        padding: 2%;
-        padding-top: 7%;
-        border-radius: 10px;
-        width: 95%;
-        text-align: center;
-        border: 3px solid #3A5A40;
+    .contenidoModal,
+    .contenidoModalError {
+        width: 90%;
+        padding: 5%;
     }
 
     .contenidoModalError {
@@ -1532,16 +1542,30 @@ header {
     }
 
     .iconoAjustes {
-        width: 30%;
+        width: 15%;
         display: flex;
         height: 100%;
         flex-direction: column;
         justify-content: center;
     }
 
+
     h1 {
-        font-size: 2vh;
+        font-size: 4.5vh;
     }
 
+    .botonesModal {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #logoHeader {
+        display: none;
+    }
+
+    .botonModal {
+        width: 100%;
+        font-size: 1rem;
+    }
 
 }
