@@ -300,19 +300,11 @@ h1 {
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.247);
-    border: 2px solid #00304982; 
+    border: 2px solid #00304982;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* .card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 10px 10px 30px rgba(0, 48, 73, 0.6), 
-                -10px -10px 30px rgba(255, 102, 0, 0.3); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid #003049; 
-} */
+
 
 .card img {
     width: 100%;
@@ -335,6 +327,7 @@ h1 {
     transition: background-image 0.3s ease-in-out;
 
 }
+
 
 .card img#giraffeRush:hover {
     content: url("../assets/lobby/GiraffeRush.gif");
@@ -944,6 +937,17 @@ footer a img {
 
     .card img {
         border-radius: 15px;
+    }
+
+    .card img#tragaperras:hover,
+    .card img#giraffeRush:hover,
+    .card img#pamplonaRush:hover {
+        content: none;
+    }
+
+    .card:hover {
+
+        transform: none;
     }
 
     .play-button {
