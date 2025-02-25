@@ -10,7 +10,7 @@
 * {
 
     box-sizing: border-box;
-    cursor: url('../assets/crash/cursor.png'), auto;
+
 
 }
 
@@ -521,7 +521,21 @@ h1 {
     color: #ffcc80;
     margin-bottom: 10px;
     -webkit-text-stroke: 0.15vh #003049;
+    text-align: center;
+
 }
+
+.modalInfo a {
+    color: #003049;
+    text-decoration: none;
+}
+
+.modalInfo a:hover {
+    text-decoration: underline;
+    cursor: url('../assets/crash/cursorPointer.png'), pointer;
+}
+
+
 
 .modalInfo p {
     color: white;
@@ -767,7 +781,10 @@ h1 {
     filter: grayscale(1) brightness(0.8) contrast(1);
     background-color: var(--dark-bg-color);
     cursor: url('../assets/crash/cursorDarkMode.png'), auto;
+}
 
+.modo-oscuro * {
+    cursor: url('../assets/crash/cursorDarkMode.png'), auto;
 }
 
 /* Estilos para el scroll en modo oscuro */
@@ -798,7 +815,9 @@ h1 {
 .modo-oscuro .barraTiradas::-webkit-slider-thumb,
 .modo-oscuro .creditos,
 .modo-oscuro .botonTirar,
-.modo-oscuro .footer a img {
+.modo-oscuro img,
+.modo-oscuro .footer a img,
+.modo-oscuro .iconoAjustes:hover {
 
     cursor: url('../assets/crash/cursorPointerDark.png'), pointer;
 

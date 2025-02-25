@@ -828,7 +828,8 @@ window.addEventListener("load", function () {
     //SONIDO
     document.getElementById("sonido").addEventListener("click", function () {
 
-
+        //DETECTAR SI LLAMAMOS AL EVENTO DESDE UN TELEFONO
+        let esMovil = window.matchMedia("(max-width: 768px)").matches;
 
         //PAUSAR LA MUSICA
         if (musicaSuena == true) {
@@ -837,8 +838,12 @@ window.addEventListener("load", function () {
             musicaSuena = false;
             document.getElementById("sonido").src = "./assets/tragaperras/sonidoRojo.png";
             document.getElementById("iconoSonidoModal").src = "./assets/tragaperras/sonidoMuteRojo.png";
-            //ABRO EL MODAL DE SONIDO
-            document.getElementById("modalSonidoPantalla").style.display = "flex";
+
+            //ABRIR EL MODAL SI NO ESTAMOS EN UN MOVIL
+            if (!esMovil) {
+                document.getElementById("modalSonidoPantalla").style.display = "flex";
+            }
+
 
             // Cambia el color de la barra y del slider thumb a rojo
             barraVolumen.classList.add("mute");
