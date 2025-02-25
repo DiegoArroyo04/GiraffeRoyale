@@ -304,6 +304,11 @@ Se han implementado distintos **roles** de usuario:
 ---
 ## Prototipo Interactivo Lobby
 
+Boceto Lobby VIP:
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d075b333-5afe-42ef-b36f-a28bf86dbb11" alt="Boceto Lobby VIP" width="50%" height="auto" />
+</p>
+
 Puedes acceder al prototipo interactivo del lobby en el siguiente enlace:
 
 [Prototipo Interactivo - Figma](https://www.figma.com/design/rLlbjnBLas8i3pdI6o1Qpl/BOCETO-INICIO-SESION-CASINO?node-id=0-1&t=BxVPBShTHUS4w8WY-1)
