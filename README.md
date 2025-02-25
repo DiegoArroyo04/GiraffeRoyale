@@ -124,6 +124,9 @@ Entre sus características destacan:
 
 Este juego forma parte del proyecto transversal, combinando diseño, desarrollo en cliente y servidor, y despliegue para lograr una experiencia de casino completa y funcional. 🎰✨  
 
+Tutorial de Como Jugar: [Ver Video](https://youtu.be/ydVZ0fA3cl4)
+
+
 
 ### 2.5 🦒 Giraffe Rush: Crash Game
 
@@ -178,6 +181,9 @@ El proyecto implementa técnicas avanzadas como **Web Workers** para optimizar e
 2. **Evita el León:** Observa cómo la jirafa avanza mientras el multiplicador aumenta.  
 3. **Decide Cuándo Parar:** Haz clic en **"Parar"** antes de que el león alcance a la jirafa para asegurar tus ganancias.  
 4. **Objetivo:** Maximiza el multiplicador sin perder tu apuesta inicial.  
+
+Tutorial de Como Jugar: [Ver Video](https://youtu.be/yxrS1mAGhd4)
+
 
 ---
 
@@ -249,6 +255,8 @@ El proyecto utiliza técnicas avanzadas como **Web Workers** para mejorar el ren
 2. **Evita el Toro:** Observa cómo el corredor avanza mientras el multiplicador aumenta.
 3. **Decide Cuándo Parar:** Haz clic en "Parar" antes de que el toro alcance al corredor para obtener tus ganancias.
 4. **Objetivo:** Maximiza el multiplicador sin perder tu apuesta inicial.
+
+Tutorial de Como Jugar: [Ver Video](https://youtu.be/z0Z2hvp0a_I)
 
 ---
 ## Usuarios
