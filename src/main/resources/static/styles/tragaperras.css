@@ -290,10 +290,10 @@ h1 {
 
 .tablaEstilos th img,
 .tablaEstilos td img {
-    width: 1.5vw;
+    width: 2vw;
     height: auto;
-    margin-right: 0.5rem;
     vertical-align: middle;
+    justify-content: center;
 }
 
 .tablaEstilos tr:nth-child(even) {
@@ -769,6 +769,8 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     margin: 2%;
     background: var(--primary-color);
+    justify-content: center;
+    align-items: center;
 }
 
 .carrete {
@@ -788,7 +790,7 @@ header {
 
 .carrete img {
 
-    height: 100%;
+    height: 13.3vh;
     width: 100%;
     object-fit: cover;
 
@@ -1286,7 +1288,7 @@ header {
     .marco {
         display: flex;
         border-radius: 10%;
-        border: 30px solid;
+        border: 20px solid;
         border-image-source: url(../assets/tragaperras/texturaArbol.png);
         border-image-slice: 800;
         border-image-repeat: round;
@@ -1309,14 +1311,26 @@ header {
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         width: auto;
         max-width: 100%;
-        height: auto;
+        height: 25vh;
     }
+
+    .carrete img {
+        height: 8vh;
+    }
+
+
 
     .contenedorTituloJuego {
         position: absolute;
-        top: 1%;
+        top: -1.5%;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+
+    .titulo {
+        font-size: 2.5vh;
+        white-space: nowrap;
     }
 
     /* FOOTER CONTENEDOR PRINCIPAL */
@@ -1455,6 +1469,10 @@ header {
 
     /* MODALES */
 
+    .tablaPremios h2 {
+        font-size: 4.5vh;
+    }
+
 
     .modalVictoriaContenido {
         width: 80%;
@@ -1495,12 +1513,20 @@ header {
         background-color: #3a5a40;
         color: #f4a261;
         -webkit-text-stroke: 0.10vh #003049;
-        font-size: 3vh;
+        font-size: 2vh;
         position: relative;
+        padding: 0.2rem;
+    }
+
+    .tablaEstilos th img,
+    .tablaEstilos td img {
+        width: 40px;
+        height: auto;
     }
 
     .tablaEstilos td {
         font-size: 2vh;
+        padding: 0.2rem;
     }
 
     .contenidoModal,
@@ -1591,5 +1617,39 @@ header {
         width: 100%;
         font-size: 1rem;
     }
+
+}
+
+@media (max-width: 480px) {
+    .carrete {
+        height: 20vh;
+
+    }
+
+    .carrete img {
+
+        flex: 1;
+        /* Asegura que ocupen el mismo espacio */
+        width: auto;
+        max-height: calc(100% / 3);
+        /* Siempre 1/3 del carrete */
+        object-fit: contain;
+        /* Mantiene la imagen bien ajustada */
+    }
+
+    .marco {
+        display: flex;
+        border-radius: 10%;
+        border: 15px solid;
+        border-image-source: url(../assets/tragaperras/texturaArbol.png);
+        border-image-slice: 800;
+        border-image-repeat: round;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        margin: 2%;
+        background: var(--primary-color);
+        width: 60%;
+        height: 31VH;
+    }
+
 
 }
