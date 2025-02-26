@@ -321,6 +321,9 @@ Puedes acceder al prototipo interactivo del lobby en el siguiente enlace:
 
 [Prototipo Interactivo - Figma](https://www.figma.com/design/rLlbjnBLas8i3pdI6o1Qpl/BOCETO-INICIO-SESION-CASINO?node-id=0-1&t=BxVPBShTHUS4w8WY-1)
 
+## Despliegue Guia
+[Descargar PDF](Despliegue/Guia%20Despliegue.pdf)
+
 ## Contacto
 - **Desarrollador:** [Diego Arroyo González](https://github.com/DiegoArroyo04)
 - **Correo Electrónico:** diegoarroyogonzalez04@gmail.com
