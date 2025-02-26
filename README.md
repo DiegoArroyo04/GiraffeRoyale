@@ -324,6 +324,8 @@ Puedes acceder al prototipo interactivo del lobby en el siguiente enlace:
 ## Despliegue Guia
 [Descargar PDF](Despliegue/Guia%20Despliegue.pdf)
 
+Dominio: https://casinoproyectotransversal-production.up.railway.app
+
 ## Contacto
 - **Desarrolladores:** [Diego Arroyo González](https://github.com/DiegoArroyo04) y [Jesus Manuel Plana Campos](https://github.com/jesusmplana) 
 - **Correo Electrónico:** diegoarroyogonzalez04@gmail.com
