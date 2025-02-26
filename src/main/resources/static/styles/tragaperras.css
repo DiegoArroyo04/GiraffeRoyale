@@ -1622,11 +1622,13 @@ header {
         width: 2vh;
     }
 
-    .tituloTiradas {       
-        font-size: 2vh;        
+    .tituloTiradas {
+        font-size: 2vh;
     }
 
-    
+    .cerrarModalTiradas {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {

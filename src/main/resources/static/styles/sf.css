@@ -33,6 +33,7 @@ body {
     width: 100%;
     max-height: 100vh;
     cursor: url('../assets/pamplona/cursor.png'), auto;
+    overflow-x: hidden;
 }
 
 .preloader {
@@ -720,6 +721,7 @@ i {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 
