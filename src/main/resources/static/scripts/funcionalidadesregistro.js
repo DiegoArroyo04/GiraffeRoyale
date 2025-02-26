@@ -539,7 +539,7 @@ var fechaExpiracion = document.getElementById("fechaExpiracion");
 // Obtener la fecha actual (AÑO y MES)
 var fechaActual = new Date();
 var año = fechaActual.getFullYear();
-var mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0');//MES DE DOS DIGITIOS
+var mes = (fechaActual.getMonth() + 2).toString().padStart(2, '0');//MES DE DOS DIGITIOS
 var fechaMinima = `${año}-${mes}`;
 
 // Establecer el mínimo permitido en el campo
