@@ -999,8 +999,6 @@ function cargarHora(zonaHoraria) {
 
     document.getElementById('hora').innerHTML = horaActual;
 
-    // Ocultar el preloader cuando cargue la hora una vez
-    // document.getElementById("preloader").style.display = "none";
     //CARGAR MUSICA AL CARGAR LA PAGINA
     if (musicaSuena == true) {
         musica.play();
