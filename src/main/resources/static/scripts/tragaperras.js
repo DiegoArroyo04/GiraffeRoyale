@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("preloader").style.display = "none";
     }, 3000); // Si quieres que dure 3 segundos
 
+
 });
 
 var estaGirando = false;
@@ -1763,6 +1764,8 @@ function tiradasAutomaticas() {
             }
         }, 16000); // Tiempo entre tiradas (16 segundos por si gana de tiempo al modal)
     }
+
+
 
 }
 

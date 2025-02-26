@@ -795,7 +795,7 @@ header {
 .multi {
     display: none;
     position: absolute;
-    top: 0.5%;
+    top: -8%;
     font-size: 5vw;
     animation: crecerReducir 1s infinite, brillar 1s infinite;
 }
@@ -824,7 +824,7 @@ header {
 
 .contenedorTituloJuego {
     position: absolute;
-    top: 14.5%;
+    top: 11.5%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
